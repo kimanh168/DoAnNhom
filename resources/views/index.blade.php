@@ -39,7 +39,12 @@
                     <i class="bi bi-envelope fs-1 text-primary me-3"></i>
                     <div class="text-start">
                         <h6 class="text-uppercase mb-1">Email Us</h6>
-                        <span>hileo52@gmail.com</span>
+                        <span class="pe-2">hileo52@gmail.com</span>
+                    </div>
+                    <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
+                    <div class="text-start">
+                        <h6 class="text-uppercase mb-1">Call Us</h6>
+                        <span>+012 345 6789</span>
                     </div>
                 </div>
             </div>
@@ -50,12 +55,15 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 text-center bg-secondary py-3">
+            <div class="col-lg-4 text-center bg-secondary py-4 pt-4">
                 <div class="d-inline-flex align-items-center justify-content-center">
-                    <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
+                    <i class="fa fa-users fs-2 text-primary me-3"></i>
                     <div class="text-start">
-                        <h6 class="text-uppercase mb-1">Call Us</h6>
-                        <span>+012 345 6789</span>
+                        <a href=""><h5 class="text-uppercase ">Login</h5></a>
+                    </div>
+                    <i class="fas fa-shopping-cart fs-2 text-primary me-3 ps-5"></i>
+                    <div class="text-start">
+                        <a href=""><h5 class="text-uppercase ">Cart</h5></a>
                     </div>
                 </div>
             </div>
