@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{name?}', function ($id="index") {
-    return view($id);
-});
+Route::get('/',[MyController::class,'index']);
 
+Route::get('/{id}',[MyController::class,'goto']);
