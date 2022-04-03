@@ -93,7 +93,13 @@
                         <a href="{{ url('/testimonial')}}" class="dropdown-item">Testimonial</a>
                     </div>
                 </div>
-                <a href="{{ url('/contact')}}" class="nav-item nav-link">Contact Us</a>
+                <a href="{{ url('/contact')}}" class="nav-item nav-link  pe-5">Contact Us</a>
+                <nav class="navbar">
+                        <form class="d-flex">
+                        <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </nav>
             </div>
         </div>
     </nav>

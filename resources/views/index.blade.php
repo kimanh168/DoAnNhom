@@ -1,20 +1,21 @@
 @extends('master')
 @section('content')
+
     <!-- Hero Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 hero-header">
-        <div class="container py-5">
-            <div class="row justify-content-start">
-                <div class="col-lg-8 text-center text-lg-start">
-                    <h1 class="font-secondary text-primary mb-4">Super Crispy</h1>
-                    <h1 class="display-1 text-uppercase text-white mb-4">Delicious</h1>
-                    <h1 class="text-uppercase text-white">The Best Cake In VietNam</h1>
-                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                        <a href="" class="btn btn-primary border-inner py-3 px-5 me-5">Read More</a>
+    <div class="container-fluid  py-5 mb-5 hero-header">
+            <div class="container py-5">
+                <div class="row justify-content-start">
+                    <div class="col-lg-8 text-center text-lg-start">
+                        <h1 class="font-secondary text-primary mb-4">Super Crispy</h1>
+                        <h1 class="display-1 text-uppercase text-white mb-4">Delicious</h1>
+                        <h1 class="text-uppercase text-white">The Best Cake In VietNam</h1>
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
+                            <a href="" class="btn btn-primary border-inner py-3 px-5 me-5">Read More</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <!-- Hero End -->
 
     <!-- About Start -->
@@ -31,8 +32,9 @@
                     </div>
                 </div>
                 <div class="col-lg-6 pb-5">
-                    <h4 class="mb-4">Delicious Bakery is a French pastry brand of the Delicious pastry joint stock company. Established in 2021 in a small street in Thu Duc, Vietnam. Delicious Bakery products are made from imported ingredients from countries with traditional baking such as Newzeland, USA, France, Belgium. With delicious flavors typical of cream, butter, milk, cheese, almonds, chocolate... under the skillful hands of experienced bakers.</h4>
-                    <p class="mb-5"> Delicious Bakery always brings customers the best quality products, absolutely guaranteed on food safety and hygiene.</p>
+                    <p class="mb-4">Pairing a small pastry with your coffee or tea is your favorite thing? Craving for sweets during the long working day? Having party with frends or family and want offer for them a sweet happiness? Foodlover and like to discover new product?</p>
+                    <h4 class="mb-5">Delicious Bakery is a French pastry brand of the Delicious pastry joint stock company. Established in 2021 in a small street in Thu Duc, Vietnam. Delicious Bakery products are made from imported ingredients from countries with traditional baking such as Newzeland, USA, France, Belgium. With delicious flavors typical of cream, butter, milk, cheese, almonds, chocolate... under the skillful hands of experienced bakers.</h4>
+                   
                     <div class="row g-5">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center justify-content-center bg-primary border-inner mb-4" style="width: 90px; height: 90px;">
@@ -54,7 +56,6 @@
         </div>
     </div>
     <!-- About End -->
-
 
     <!-- Facts Start -->
     <div class="container-fluid bg-img py-5 mb-5">
@@ -108,7 +109,6 @@
         </div>
     </div>
     <!-- Facts End -->
-
 
     <!-- Products Start -->
     <div class="container-fluid about py-5">
