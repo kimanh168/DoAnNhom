@@ -16,7 +16,7 @@
     <div class="container-fluid pt-5">
         <div class="container">
             <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
-                <h1 class="display-4 text-uppercase">Welcome To CakeZone</h1>
+                <h1 class="display-4 text-uppercase">Welcome To DELICIOUS</h1>
             </div>
             <div class="row gx-5">
                 <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 400px;">
@@ -33,14 +33,14 @@
                                 <i class="fa fa-heartbeat fa-2x text-white"></i>
                             </div>
                             <h4 class="text-uppercase">100% Healthy</h4>
-                            <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita nonumy dolor magna dolor vero</p>
+                            <p class="mb-0">With carefully selected ingredients in each stage, we put the health of consumers first</p>
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center justify-content-center bg-primary border-inner mb-4" style="width: 90px; height: 90px;">
                                 <i class="fa fa-award fa-2x text-white"></i>
                             </div>
                             <h4 class="text-uppercase">Award Winning</h4>
-                            <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita nonumy dolor magna dolor vero</p>
+                            <p class="mb-0">Products trusted by 100,000 people around the world</p>
                         </div>
                     </div>
                 </div>
