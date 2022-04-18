@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Protype;
 
 class MyController extends Controller
 {
@@ -13,5 +15,9 @@ class MyController extends Controller
 
     function goto($id){
         return view($id);
+    }
+    function getAllProduct(){
+        $product = Product::all();
+        return view('index',['data'=>$product]);
     }
 }
