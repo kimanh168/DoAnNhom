@@ -19,11 +19,10 @@ class CreateProductTable extends Migration
             $table->integer('type_id');
             $table->integer('price');
             $table->string('image');
-            $table->string('description');
+            $table->text('description');
             $table->date('created_at');
             $table->integer('expiry');
-            $table->string('master_chef');
-            $table->string('promotion_id');
+            $table->integer('promotion');
         });
     }
 
