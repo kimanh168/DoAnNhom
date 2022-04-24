@@ -18,4 +18,8 @@ class MyController extends Controller
     function goto($id){
         return view($id);
     }
+    function getAllProduct(){
+        $product = Product::all();
+        return view('index',['data'=>$product]);
+    }
 }
