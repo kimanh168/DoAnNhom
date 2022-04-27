@@ -21,6 +21,7 @@ class CreateUserTable extends Migration
             $table->String('fullname');
             $table->String('address');
             $table->integer('phone');
+            $table->String('email');
         });
     }
 

@@ -126,7 +126,7 @@
                     @endforeach
                 </ul>
                 <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div id="tab-1" class="tab-pane fade show p-0 active ">
                         <!-- Products tab & slick -->
 							<!-- tab -->
                             <div class="row multiple-items ">
@@ -146,11 +146,7 @@
 												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
 											</div>
 											<h3 class="product-name"><a href="#">{{ $row-> product_name }}</a></h3>
-<<<<<<< HEAD
-											<h4 class="product-price">{{ $row-> price }}  <del class="product-old-price">$990.00</del></h4>
-=======
 											<h4 class="product-price"> {{ $row-> price }} <del class="product-old-price">$990.00</del></h4>
->>>>>>> 43eaf765fad734f622592846be60829ee6b67be5
 										</div>
 										<div class="add-to-cart">
 											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>

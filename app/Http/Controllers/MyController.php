@@ -12,6 +12,7 @@ class MyController extends Controller
     function index(){
         $product = Product::all();
         $protype = Protype::all();
+        //return view('index',['data'=>$product]);
         return view('index',['data'=>$product,'dulieu'=>$protype]);
     }
 
@@ -20,6 +21,13 @@ class MyController extends Controller
     }
     function getAllProduct(){
         $product = Product::all();
-        return view('index',['data'=>$product]);
+        $protype = Protype::all();
+        return view('menu',['dulieu'=>$protype,'data'=>$product]);
     }
+    // public function getProductById($id)
+    // {
+    //     $protype = Protype::all();
+    //     $product = Product::all();
+    //     return view('menu',['dulieu'=>$protype,'data'=>$product]);
+    // }
 }
