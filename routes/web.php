@@ -15,7 +15,7 @@ use App\Http\Controllers\MyController;
 Route::get('/',[MyController::class,'index']);
 Route::get('/index',[MyController::class,'index']);
 Route::get('/menu',[MyController::class,'getAllProduct']);
-// Route::get('/{id}',[MyController::class,'goto']);
+//Route::get('/{id}',[MyController::class,'goto']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
