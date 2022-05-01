@@ -20,7 +20,7 @@ class CreateProductTable extends Migration
             $table->integer('price');
             $table->string('image');
             $table->text('description');
-            $table->date('created_at');
+            $table->time_stamps=false;
             $table->integer('expiry');
             $table->integer('promotion');
         });

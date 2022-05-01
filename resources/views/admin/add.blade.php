@@ -23,7 +23,7 @@
 
     <!-- Main content -->
     <section class="content">
-    <form action="add.php" method="POST" roles="form" enctype="multipart/form-data">      
+    <form action="" method="POST" roles="form" enctype="multipart/form-data">      
         @csrf
         <div class="row">
             <div class="col-md-12">
@@ -39,13 +39,15 @@
                 <div class="card-body">
                 <div class="form-group">
                     <label for="inputName">Tên Sản Phẩm</label>
-                    <input type="text" name="name" id="inputName" class="form-control" placeholder="Nhập tên sản phẩm" require>
+                    <input type="text" name="product_name" id="inputName" class="form-control" placeholder="Nhập tên sản phẩm" require>
                 </div>
                 <div class="form-group">
                     <label for="inputType">Loại Sản Phẩm</label>
-                    <select id="inputType" name="type" class="form-control custom-select">
+                    <select id="inputType" name="type_id" class="form-control custom-select">
                     <option selected disabled>Select one</option>
-                    
+                    @foreach($allprotype as $protype)
+                        <option value ='{{ $protype -> type_id }}'> {{ $protype -> type_name  }}</option>
+                    @endforeach
                     </select>
                 </div>
                 <div class="form-group">
@@ -61,14 +63,12 @@
                     <textarea id="summernote" name="description" class="form-control" rows="6"></textarea>
                 </div>
                 <div class="form-group">
-                    <label >Nổi Bật</label>
-                    <div class="radio">
-                    <label class="px-5">
-                        <input type="radio" name="feature" value="1" checked="checked"> Có
-                    </label>
-                    <label>
-                        <input type="radio" name="feature" value="0" > Không
-                    </label>
+                    <label for="inputPrice">Hạn Sử Dụng</label>
+                    <input type="number" name="expiry" id="inputExpiry" class="form-control" placeholder="Nhập hạn sử dụng" require>
+                </div>
+                <div class="form-group">
+                    <label for="inputPromotion">Giảm Giá</label>
+                    <input type="number" name="promotion" id="inputPromotion" class="form-control" placeholder="Nhập khuyến mãi" require>
                 </div>
                 </div>
                 </div>
@@ -79,8 +79,8 @@
         </div>
         <div class="row">
             <div class="col-12">
-            <a href="products.php" class="btn btn-secondary">Cancel</a>
-            <input type="submit" value="Create new Porject" class="btn btn-success float-right" name="submit" >
+                <a href="{{ route('products') }}" class="btn btn-secondary">Cancel</a>
+                <input type="submit" value="Create new Porject" class="btn btn-success float-right" >
             </div>
         </div>
         </form>
