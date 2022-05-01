@@ -410,7 +410,7 @@ h6,
   
   .product .product-body .product-btns>button:hover {
     background-image: linear-gradient(#9e6edd 50%,#96abd9) !important;
-    color: #D10024;
+    color: #ffffff;
     border-radius: 50%;
   }
   
@@ -503,4 +503,5 @@ h6,
     opacity: 1;
     visibility: visible;
   }
+  
   

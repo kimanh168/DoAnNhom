@@ -6,10 +6,12 @@
                 <div class="company-details ">
                     <div class="shadow"></div>
                         <div class="wrapper-1">
-                            <div class="logo">
-                                <div class="icon-food">
+                            <a href="/">
+                                <div class="logo">
+                                    <div class="icon-food">
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                             <h1 class="title">Delicious</h1>
                             <div class="slogan">We deliver cakes to you.</div>
                         </div>
@@ -56,7 +58,7 @@
                                     </div>
                                     <div class="flex items-center justify-end ">
                                         <x-button type="submit"  class="signup"> {{ __('Register') }} </x-button>
-                                        <a href="#" class="login">login</a>
+                                        <a href="/login" class="login">Login</a>
                                     </div>  
                                 </form>
                             </x-guest-layout>

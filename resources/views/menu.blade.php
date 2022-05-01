@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layout.master')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid bg-dark bg-img p-5 mb-5">
