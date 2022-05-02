@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,15 +23,20 @@ Route::get('/menu',[HomeController::class,'menu'])->name('home.menu');
 
 
 
-Route::group(['prefix' => 'admin'],function(){
+Route::get('/register', function () {return view('/auth/register');})->name('register');
+Route::get('/login', function () {return view('/auth/login');})->name('login');
+
+Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
+
+    // Route::get('/register', function () {return view('/auth/register');})->name('register');
+    // Route::get('/login', function () {return view('/auth/login');})->name('login');
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth'])->name('dashboard');
     require __DIR__.'/auth.php';
 
-    Route::get('products',[ProductController::class,'index'])->name('products');
-    Route::get('product-del-{id}',[ProductController::class,'delete'])->name('product_del');
-    Route::get('product-edit-{id}',[ProductController::class,'edit'])->name('product_edit');
-    Route::get('product-add',[ProductController::class,'add'])->name('product_add');
-    Route::post('product-add',[ProductController::class,'post_add'])->name('product_add');
+    include 'protype.php';
+    include 'product.php';
+    
 });

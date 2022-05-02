@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Protype;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -40,7 +41,13 @@ class ProductController extends Controller
 
     //Post thêm sản phâm lên:
     function post_add(Request $request){
-
+        $this->validate($request,[
+            'product_name' => 'required',
+            'price' => 'required|min:0|not_in:0'
+        ],[
+            'product_name.required' => 'Tên sản phẩm không được để trống',
+            'product_name.unique' => 'Tên sản phẩm đã có trong CSDL',
+        ]);
         Product::create($request->all());
         return redirect()->route('products');
     }

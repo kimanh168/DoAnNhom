@@ -59,10 +59,9 @@
                                                     @endif
 
                                                     <x-button class="signup">
-                                                        {{ __('Log in') }}
-                                                        
+                                                        {{ __('Log in') }} 
                                                     </x-button>
-                                                    <a href="/register" class="login">Register</a>
+                                                    <a href="{{route('register')}}" class="login">Register</a>
                                                 </div>
                                             </form>
                                         </div>

@@ -9,6 +9,8 @@ class Protype extends Model
 {
     protected $table = 'protypes';
     public $primaryKey='type_id';
+    protected $fillable = ['type_id','type_name'];
+    public $timestamps = false;
     // function product(){
     //     return $this->hasMany(Product::class,'type_id');
     // }

@@ -125,14 +125,8 @@
               <p>Products</p>
             </a>
           </li>
-          <li class="nav-item">
-                <a href="manufactures.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manufactures</p>
-                </a>
-              </li>
               <li class="nav-item">
-                <a href="protype.php" class="nav-link">
+                <a href="{{ route('protypes') }}" class="nav-link <?php if($page == 'protypes'){echo 'active';}?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Protypes</p>
                 </a>
@@ -144,15 +138,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="protypeadd.php" class="nav-link ">
+                <a href="{{ route('protype_add') }}" class="nav-link <?php if($page == 'protypeadd'){echo 'active';}?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Protype</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="manufactureadd.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Manufacture </p>
                 </a>
               </li>
         </ul>

@@ -40,6 +40,9 @@
                 <div class="form-group">
                     <label for="inputName">Tên Sản Phẩm</label>
                     <input type="text" name="product_name" id="inputName" class="form-control" placeholder="Nhập tên sản phẩm" require>
+                    @if($errors->has('product_name'))
+                        {{ $errors->frist('product_name') }}
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="inputType">Loại Sản Phẩm</label>
@@ -53,6 +56,9 @@
                 <div class="form-group">
                     <label for="inputPrice">Giá Sản Phẩm</label>
                     <input type="number" name="price" id="inputPrice" class="form-control" placeholder="Nhập giá sản phẩm" require>
+                    @if($errors->has('price'))
+                        {{ $errors->frist('price') }}
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="inputImg">Ảnh Sản Phẩm</label>

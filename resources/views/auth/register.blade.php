@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="flex items-center justify-end ">
                                         <x-button type="submit"  class="signup"> {{ __('Register') }} </x-button>
-                                        <a href="/login" class="login">Login</a>
+                                        <a href="{{route('login')}}" class="login">Login</a>
                                     </div>  
                                 </form>
                             </x-guest-layout>
