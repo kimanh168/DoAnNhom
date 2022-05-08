@@ -2,7 +2,7 @@
 @section('content')
 <?php $page = 'protypeadd';?>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper mb-5">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -21,20 +21,12 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content p-1">
     <form action="" method="POST" roles="form" enctype="multipart/form-data">
     @csrf
       <div class="row">
         <div class="col-md-12">
           <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">General</h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
-            </div>
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Nhập tên danh mục</label>
@@ -49,7 +41,7 @@
           <!-- /.card -->
         </div>
       </div>
-      <div class="row">
+      <div class="row p-1">
         <div class="col-12">
           <input type="submit" value="Create new Protype" class="btn btn-success float-right" >
         </div>

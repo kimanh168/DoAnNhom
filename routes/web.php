@@ -20,21 +20,20 @@ Route::get('/menu',[HomeController::class,'menu'])->name('home.menu');
 
 //Route::get('/{id}',[MyController::class,'goto']);
 
-
-
-
 Route::get('/register', function () {return view('/auth/register');})->name('register');
 Route::get('/login', function () {return view('/auth/login');})->name('login');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+require __DIR__.'/auth.php';
 
 Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
 
     // Route::get('/register', function () {return view('/auth/register');})->name('register');
     // Route::get('/login', function () {return view('/auth/login');})->name('login');
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['auth'])->name('dashboard');
-    require __DIR__.'/auth.php';
+   
 
     include 'protype.php';
     include 'product.php';
