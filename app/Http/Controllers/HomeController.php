@@ -22,4 +22,12 @@ class HomeController extends Controller
         $protype = Protype::all();
         return view('menu',['dulieu'=>$protype,'data'=>$product]);
     }
+        //Hien thi theo loại sản phẩm:
+        function getProductByType($id)
+        {
+            $product = Product::all();
+            $protype = Protype::all();
+            $typebyid = Protype::find($id);
+            return view('index',['typebyid'=>$typebyid]);
+        }
 }
