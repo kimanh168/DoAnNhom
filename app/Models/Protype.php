@@ -11,8 +11,8 @@ class Protype extends Model
     public $primaryKey='id';
     protected $fillable = ['id','type_name'];
     public $timestamps = false;
-    // function product(){
-    //     return $this->hasMany(Product::class,'type_id');
-    // }
+    function product(){
+        return $this->hasMany(Product::class,'type_id');
+    }
 
 }
