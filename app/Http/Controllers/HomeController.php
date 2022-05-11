@@ -16,10 +16,10 @@ class HomeController extends Controller
         return view('index',['data'=>$product,'dulieu'=>$protype]);
     }
 
-    //Hiển thị menu
-    function menu(){
-        $product = Product::all();
+    //Hiển thị sản phẩm theo loại
+    function productByType($typeid){
         $protype = Protype::all();
-        return view('menu',['dulieu'=>$protype,'data'=>$product]);
+        $sp_theoloai = Product::where('type_id',$typeid) -> get();
+        return view('menu',['dulieu'=>$protype,'sp_theoloai' => $sp_theoloai]);
     }
 }

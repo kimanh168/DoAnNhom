@@ -23,29 +23,29 @@
     <!-- Main content -->
     <section class="content p-1">
     <form action="" method="POST" roles="form" enctype="multipart/form-data">
-    @csrf
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card card-primary">
-            <div class="card-body">
-              <div class="form-group">
-                <label for="inputName">Nhập tên danh mục</label>
-                <input type="text" name="type_name" id="inputName" class="form-control" placeholder="Nhập tên loại">
-                @if($errors->has('type_name'))
-                  {{$errors->first('type_name') }}
-                @endif
+      @csrf
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-primary">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="inputName">Nhập tên danh mục</label>
+                  <input type="text" name="type_name" id="inputName" class="form-control" placeholder="Nhập tên loại">
+                  @if($errors->has('type_name'))
+                    {{$errors->first('type_name') }}
+                  @endif
+                </div>
               </div>
+              <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
+            <!-- /.card -->
           </div>
-          <!-- /.card -->
         </div>
-      </div>
-      <div class="row p-1">
-        <div class="col-12">
-          <input type="submit" value="Create new Protype" class="btn btn-success float-right" >
+        <div class="row p-1">
+          <div class="col-12">
+            <input type="submit" value="Create new Protype" class="btn btn-success float-right" >
+          </div>
         </div>
-      </div>
     </form>
     </section>
     <!-- /.content -->

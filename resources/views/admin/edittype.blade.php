@@ -24,21 +24,13 @@
     <section class="content">
     <form action="" method="POST" roles="form" enctype="multipart/form-data">      
         @csrf
-      <div class="row">
+      <div class="row p-1">
         <div class="col-md-12">
           <div class="card card-primary">
-            <div class="card-header">        
-              <h3 class="card-title">General</h3>
-              <div class="card-tools ">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
-            </div>
             <div class="card-body">
               <div class="form-group">
                 <div class="form-group">
-                <input type="hidden" name="type_id" value="{{ $typebyid->type_id }}">
+                <input type="hidden" name="type_id" value="{{ $typebyid-> id }}">
                 </div>
                 <label for="inputName">Tên Loại</label>
                 <input type="text" name="type_name" id="inputName" class="form-control" placeholder="Nhập tên loại"  value= "{{ $typebyid->type_name }}" >
@@ -49,9 +41,9 @@
           <!-- /.card -->
         </div>
       </div>
-      <div class="row">
+      <div class="row p-1">
         <div class="col-12">
-          <a href="protypes.php" class="btn btn-secondary">Cancel</a>
+          <a href="{{ route('protypes') }}" class="btn btn-secondary">Cancel</a>
           <input type="submit" value="Edit Protype" class="btn btn-success float-right" >
         </div>
       </div>

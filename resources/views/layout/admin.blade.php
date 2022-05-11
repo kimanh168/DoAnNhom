@@ -20,9 +20,16 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('/admin12/css/sb-admin-2.min.css') }}" rel="stylesheet" >
 
-      <!-- summernote -->
-    <link rel="stylesheet" href="{{ asset('/admin12/plugins/summernote/summernote-bs4.min.css') }} ">
+      <!-- tiny -->
+    <script type="text/javascript">
+        var base_url = function(){
+            return "{{ url('') }}";
+        }
 
+        var akey = function(){
+            return 'y6iFg3JIBfdH5mtfDU8oPWCVR6vfktSMgkTK8DiZfpE';
+        }
+    </script>
 </head>
 
 <body id="page-top">
@@ -99,6 +106,12 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('file') }}">
+                <i class="fas fa-fw fa-folder"></i>
+                    <span>Files</span></a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
@@ -324,7 +337,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/smile.png">
+                                    src="/img/smile.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -420,15 +433,6 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('/admin12/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('/admin12/js/demo/chart-pie-demo.js') }}"></script>
-
-    <!-- Summernote -->
-    <script src="{{ asset('/admin12/plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <script>
-    $(function () {
-        // Summernote
-        $('#summernote').summernote()
-        });
-    </script>
 </body>
 
 </html>

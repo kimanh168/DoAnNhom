@@ -37,17 +37,17 @@
               <tbody>
                   @foreach($data as $protypes)
                   <tr>
-                      <td>{{ $protypes -> type_id }}</td>
+                      <td>{{ $protypes -> id }}</td>
                       <td>
                           <a>{{ $protypes -> type_name }}</a>
                       </td>
                       <td class="project-actions">
-                          <a class="btn btn-info btn-sm" href="{{ route('protype_edit',['id' => $protypes->type_id ]) }}">
+                          <a class="btn btn-info btn-sm" href="{{ route('protype_edit',['id' => $protypes->id ]) }}">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm" href="{{ route('protype_del',['id' => $protypes->type_id ]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
+                          <a class="btn btn-danger btn-sm" href="{{ route('protype_del',['id' => $protypes->id ]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
                               <i class="fas fa-trash">
                               </i>
                               Delete

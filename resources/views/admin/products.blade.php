@@ -30,11 +30,13 @@
           <table class="table table-striped projects">
               <thead>
                   <tr>
-                      <th style="width: 1%">ID</th>
+                      <th style="width: 5%">ID</th>
                       <th style="width: 10%">Name</th>
                       <th style="width: 10%">Image</th>
-                      <th style="width: 10%">Price</th>
-                      <th style="width: 20%">Description</th>
+                      <th style="width: 13%">Price</th>
+                      <th style="width: 9%">Promotion</th>
+                      <th style="width: 13%">Sale Price</th>
+                      <th style="width: 25%">Description</th>
                       <th style="width: 5%">Protype</th>
                       <th style="width: 5%">Expipy</th>
                       <th style="width: 5%">Action</th>
@@ -48,7 +50,9 @@
                           <a>{{ $product->product_name }}</a>
                       </td>
                       <td><img src="../../img/{{ $product->image }}" style="width: 150px" alt=""></td>
-                      <td class="project_progress">{{ $product->price }} VND</td>
+                      <td class="project_progress">{{ number_format($product->price,0,',','.') }} VND</td>
+                      <td class="project_progress">{{ $product->promotion }}%</td>
+                      <td class="project_progress">{{ number_format($product->sale_price,0,',','.') }} VND</td>
                       <td class="project_progress">{{ $product->description }}</td>
                       <td class="project_progress">{{ $product->type_id }}</td>
                       <td class="project_progress">{{ $product->expiry }}</td>

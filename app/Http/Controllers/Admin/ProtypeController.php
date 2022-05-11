@@ -49,7 +49,7 @@ class ProtypeController extends Controller
     //Post sửa loại sản phâm lên:
     function post_edittype($id,Request $request){
         $request -> offsetUnset('_token');
-        Protype::where(['type_id'=>$id])->update($request->all());
+        Protype::where(['id'=>$id])->update($request->all());
         return redirect()->route('protypes');
     }
 }

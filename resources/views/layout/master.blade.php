@@ -86,15 +86,15 @@
             <div class="navbar-nav ms-auto mx-lg-auto py-0">
                 <a href="{{ route('home.index')}}" class="nav-item nav-link active">Home</a>
                 <a href="{{ url('/about')}}" class="nav-item nav-link">About Us</a>
-                <a href="{{ route('home.menu')}}" class="nav-item nav-link">Menu & Pricing</a>
-                <a href="{{ url('/team')}}" class="nav-item nav-link">Master Chefs</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="{{ url('/service')}}" class="dropdown-item">Our Service</a>
-                        <a href="{{ url('/testimonial')}}" class="dropdown-item">Testimonial</a>
-                    </div>
+                <div class="nav-item dropdown" >
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Menu & Pricing</a>
+                    <div class="dropdown-menu m-0" style="border: 5px solid #c4a4ec;"  >
+                        @foreach($dulieu as $row)
+                        <a href="{{ route('menu',$row -> id) }}" class="dropdown-item" style="border-bottom: 1px solid #c4a4ec;">{{$row->type_name}} </a>
+                        @endforeach
+                    </div>  
                 </div>
+                <a href="{{ url('/team')}}" class="nav-item nav-link">Master Chefs</a>
                 <a href="{{ url('/contact')}}" class="nav-item nav-link  pe-5">Contact Us</a>
                 <nav class="navbar">
                         <form class="d-flex">
@@ -198,6 +198,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js" integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script  src="{{ asset('/js/btt.js') }}"></script>
     <script  src="{{ asset('/js/slick.js') }}"></script>
+
 </body>
 
 </html>
