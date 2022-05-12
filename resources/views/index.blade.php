@@ -145,9 +145,9 @@
                                             <div class="product-btns">
 												<button class="add-to-wishlist"><i class="fa fa-heart"></i><span class="tooltipp">add to wishlist</span></button>
 												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+												<button class="quick-view" data-bs-toggle="modal" data-bs-target="#exampleModal" data-product-id="{{ $row->id }}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
 											</div>
-											<h3 class="product-name"><a href="#">{{ $row-> product_name }}</a></h3>
+											<h3 class="product-name"><a href="{{ route('thongtinsp',$row->id) }}">{{ $row-> product_name }}</a></h3>
                                             @if( $row-> promotion != 0 )
                                                 <h4 class="product-price"> {{ number_format($row->sale_price,0,',','.') }} VND <del class="product-old-price">{{ number_format($row->price,0,',','.') }}</del></h4>
                                             @else
@@ -161,7 +161,7 @@
 									</div>
 									<!-- /product -->
                                     @endforeach
-							</div>
+							</div>  
                             <!-- Products tab & slick -->
 					</div>
                 </div>
@@ -169,7 +169,6 @@
         </div>
     </div>
     <!-- Products End -->
-
 
     <!-- Service Start -->
     <div class="container-fluid service position-relative px-5 mt-5" style="margin-bottom: 135px;">
@@ -204,7 +203,6 @@
         </div>
     </div>
     <!-- Service Start -->
-
 
     <!-- Team Start -->
     <div class="container-fluid py-5">
@@ -273,7 +271,6 @@
     </div>
     <!-- Team End -->
 
-
     <!-- Offer Start -->
     <div class="container-fluid bg-offer my-5 py-5">
         <div class="container py-5">
@@ -291,7 +288,6 @@
         </div>
     </div>
     <!-- Offer End -->
-
 
     <!-- Testimonial Start -->
     <div class="container-fluid py-5">
@@ -350,4 +346,20 @@
     </div>
     <!-- Testimonial End -->
     
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Thông Tin Sản Phẩm</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            
+        </div>
+        </div>
+    </div>
+    </div>
+    <!-- Modal -->
+    <script src="{{ asset('/js/ajax.js') }}"></script>
 @endsection

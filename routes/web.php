@@ -17,10 +17,12 @@ use App\Http\Controllers\Admin\FileController;
 */
 
 
+
 Route::get('/',[HomeController::class,'index'])->name('home.index');
 
 Route::get('menu/{type_id?}',[HomeController::class,'productByType'])->name('menu');
 //Route::get('/{id}',[MyController::class,'goto']);
+Route::get('thongtinsp/{id?}',[HomeController::class,'chitietsp'])->name('thongtinsp');
 
 // Dẫn tới trang Đăng Nhập
 Route::get('/register', function () {return view('/auth/register');})->name('register');
