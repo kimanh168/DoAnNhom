@@ -115,13 +115,13 @@
         <div class="container">
             <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
                 <h2 class="text-primary font-secondary">Menu & Pricing</h2>
-                <h1 class="display-4 text-uppercase">Explore Our Cakes</h1>
+                <h1 class="display-4 text-uppercase">New Cakes</h1>
             </div>
             <div class="tab-class text-center">
                 <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase border-inner p-4 mb-5">
                     @foreach($dulieu as $row)
-                    <li class="nav-item">                   
-                        <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-{{$row->type_id}}">{{$row->type_name}}</a>
+                    <li class="nav-item type-item">                   
+                        <a class="nav-link text-white" href="{{ route('menu.id',$row -> id) }}">{{$row->type_name}}</a>
                     </li>
                     @endforeach
                 </ul>
@@ -134,7 +134,7 @@
                                     @foreach($data as $row)
 									<div class="product mb-5 col-xs-3">
 										<div class="product-img">
-											<img src="img/{{ $row-> image }}" alt="" style="margin: 0 auto">
+											<img class="newProductsImg" src="img/{{ $row-> image }}" alt="" style="margin: 0 auto">
 												<div class="product-label">
                                                     @if( $row-> promotion != 0 )
                                                         <span class="sale">-{{ $row-> promotion }}%</span>
@@ -156,7 +156,7 @@
 											
 										</div>
 										<div class="add-to-cart">
-											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                            <a href="{{ route('cart.add',['id' => $row->id]) }}"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
 										</div>
 									</div>
 									<!-- /product -->
@@ -196,8 +196,7 @@
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-6 text-center">
-                    <h1 class="text-uppercase text-light mb-4">30% Discount For This Summer</h1>
-                    <a href="" class="btn btn-primary border-inner py-3 px-5">Order Now</a>
+                    <a href="" class="btn btn-primary border-inner py-3 px-5">Discovery Now</a>
                 </div>
             </div>
         </div>
@@ -277,12 +276,14 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-7 text-center">
                     <div class="section-title position-relative text-center mx-auto mb-4 pb-3" style="max-width: 600px;">
-                        <h2 class="text-primary font-secondary">Special Kombo Pack</h2>
-                        <h1 class="display-4 text-uppercase text-white">Super Crispy Cakes</h1>
+                        <h2 class="text-white font-secondary">Hello Summer</h2>
+                        <h1 class=" text-uppercase text-white">30% DISCOUNT FOR THIS SUMMER</h1>
                     </div>
-                    <p class="text-white mb-4">Eirmod sed tempor lorem ut dolores sit kasd ipsum. Dolor ea et dolore et at sea ea at dolor justo ipsum duo rebum sea. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo lorem. Elitr ut dolores magna sit. Sea dolore sed et.</p>
+                    <p class="text-white mb-4">Delicious would like to send to those who love birthdays this season a new collection of cakes this Summer with the SEA theme. <br> 
+                        Especially in this collection, we bring back Tiramisu - a cake that has caused a lot of memories for many Delicious customers, was once one of the most 
+                        shipped cakes, before Durian Butter Cake was born. In addition, the beauty of this Summer Set can talk about the Longan Pepper cake decorated with the 
+                        concept of the Beach, which will surely bring a new taste to Delicious' "dumb customers".</p>
                     <a href="" class="btn btn-primary border-inner py-3 px-5 me-3">Shop Now</a>
-                    <a href="" class="btn btn-dark border-inner py-3 px-5">Read More</a>
                 </div>
             </div>
         </div>
@@ -361,5 +362,5 @@
     </div>
     </div>
     <!-- Modal -->
-    <script src="{{ asset('/js/ajax.js') }}"></script>
+
 @endsection

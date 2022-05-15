@@ -5,6 +5,8 @@ use App\Http\Controllers\MyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\FileController;
+use App\Helper\CartHelper;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +22,10 @@ use App\Http\Controllers\Admin\FileController;
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
 
-Route::get('menu/{type_id?}',[HomeController::class,'productByType'])->name('menu');
+//Menu
+Route::get('menu',[HomeController::class,'getAllProductMenu'])->name('menu');
+Route::get('menu/{type_id?}',[HomeController::class,'productByType'])->name('menu.id');
+
 //Route::get('/{id}',[MyController::class,'goto']);
 Route::get('thongtinsp/{id?}',[HomeController::class,'chitietsp'])->name('thongtinsp');
 
@@ -43,4 +48,11 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
     include 'product.php';
     Route::get('/file',[FileController::class,'file'])->name('file');
     Route::post('/file',[FileController::class,'upload'])->name('file');
+});
+
+Route::group(['prefix' => 'cart'],function(){
+    Route::get('view',[CartController::class,'view'])->name('cart.view');
+    Route::get('add/{id}',[CartController::class,'add'])->name('cart.add');
+    Route::get('remove/{id}',[CartController::class,'remove'])->name('cart.remove');
+    Route::get('update/{id}/{quantity}',[CartController::class,'update'])->name('cart.update');
 });

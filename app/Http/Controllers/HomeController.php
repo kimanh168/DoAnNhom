@@ -10,18 +10,26 @@ class HomeController extends Controller
 {
     //Hiển thị trang chủ
     function index(){
-        $product = Product::all();
+        $product = Product::limit(10)->orderby('id','DESC')->get();
         $protype = Protype::all();
         //return view('index',['data'=>$product]);
         return view('index',['data'=>$product,'dulieu'=>$protype]);
     }
 
-    //Hiển thị sản phẩm theo loại
+    //Hiển thị sản phẩm theo loại ra trang menu
     function productByType($typeid){
         $protype = Protype::all();
         $sp_theoloai = Product::where('type_id',$typeid) -> get();
         return view('menu',['dulieu'=>$protype,'sp_theoloai' => $sp_theoloai]);
     }
+
+    //Hiển thị tất cả sản phẩm theo ra trang menu
+    function getAllProductMenu(){
+        $product = Product::paginate(6); //SELECT * FROM Product limit(0,5)
+        $protype = Protype::all();
+        return view('menu',['dulieu'=>$protype,'tatcasp' => $product]);
+    }
+
     //Hien thi theo loại sản phẩm:
     function getProductByType($id)
     {

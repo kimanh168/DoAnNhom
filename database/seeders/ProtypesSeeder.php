@@ -17,10 +17,11 @@ class ProtypesSeeder extends Seeder
     {
         //
         DB::table('protypes')->insert([
-            ['type_name' => 'Birthday'],
-            ['type_name' => 'Wedding'],
-            ['type_name' => 'Cookie'],
-            ['type_name' => 'Cannelés'],
+            //['type_name' => 'Birthday'],
+            //['type_name' => 'Wedding'],
+            //['type_name' => 'Cookie'],
+            //['type_name' => 'Cannelés'],
+            ['type_name' => 'Summer Cakes'],
         ]);
     }
 }

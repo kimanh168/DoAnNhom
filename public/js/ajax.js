@@ -37,6 +37,7 @@ CheckBoxCate.forEach(element => {
         ProductsByCategory(1);
     });
 })
+
 // Hiển thị sản phẩm theo loại
 async function ProductsByCategory() {
     const arrayCategories = document.querySelectorAll('input[name=cateCheck]:checked');
@@ -69,4 +70,37 @@ async function ProductsByCategory() {
 						</div>
 					</div>`;
          });
+}
+
+// Tìm sản phẩm theo từ khóa
+async function searchProduct(keyword) {
+    const divResult = document.querySelector("#search-result");
+    if (keyword != '') {
+        //B1: Gửi request:
+        const url = "/api/searchProduct/"+keyword;
+        const response = await fetch(url);
+        //B2: Nhận và đọc kết quả:
+        const result = await response.json();
+        //B3: xuất kết quả:
+        divResult.classList.add('border-search');
+        divResult.innerHTML = '';
+        result.forEach(el => {
+            let regexProductName = new RegExp('(' + keyword + ')', 'gi');
+            const productName = el.product_name.replace(regexProductName, '<b>$1</b>');
+            divResult.innerHTML += `
+            <div class="row border-item-search" >
+                <div class="col-3 ">
+                    <img src="../img/${el.image}" class="img-fluid m-3">
+                </div>
+                <div class="col-9 mt-3">
+                    <a href="./thongtinsp/${el.id}">${productName}</a>
+                    <p>${el.sale_price} VND</p>
+                </div>
+            </div>`;
+        });
+    }
+    else {
+        divResult.innerHTML = '';
+        divResult.classList.remove('border-search');
+    }
 }

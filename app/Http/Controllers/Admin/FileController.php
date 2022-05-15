@@ -13,6 +13,7 @@ class FileController extends Controller
         return view('admin.file');
     }
 
+    //Up ảnh vô file
     function upload(HttpRequest $reg){
         if($reg -> hasFile('file')){
             $name = $reg -> file -> getClientOriginalname();

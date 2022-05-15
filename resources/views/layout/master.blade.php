@@ -43,17 +43,12 @@
                         <h6 class="text-uppercase mb-1">Email Us</h6>
                         <span class="pe-2">hileo52@gmail.com</span>
                     </div>
-                    <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
-                    <div class="text-start">
-                        <h6 class="text-uppercase mb-1">Call Us</h6>
-                        <span>+012 345 6789</span>
-                    </div>
                 </div>
             </div>
-            <div class="col-lg-4 text-center bg-primary border-inner py-3">
+            <div class="col-lg-4 text-center bg-primary border-inner pt-3">
                 <div class="d-inline-flex align-items-center justify-content-center">
                     <a href="index.html" class="navbar-brand">
-                        <h1 class="m-0 text-uppercase text-white"> <i class="fa fa-mug-hot text-white"></i> Delicious</h1>
+                        <h1 class="m-0 text-uppercase text-white"><i class="fa fa-mug-hot text-white"></i> Delicious</h1>
                     </a>
                 </div>
             </div>
@@ -63,10 +58,43 @@
                     <div class="text-start">
                         <a href="/login"><h5 class="text-uppercase ">Login</h5></a>
                     </div>
-                    <i class="fas fa-shopping-cart fs-2 text-primary me-3 ps-5"></i>
+                    <a href="#" id="cart"><i class="fa fa-shopping-cart fs-2 text-primary me-3 ms-5" ></i></a>
                     <div class="text-start">
-                        <a href=""><h5 class="text-uppercase ">Cart</h5></a>
+                        <a href="{{route('cart.view')}}" ><h5 class="text-uppercase ">Cart <span class="badge">{{$cart ->total_quantity}}</span></h5></a>
+                    </div> 
+                    <div class="shop-down">
+                        <div class="shopping-cart">
+                            <div class="shopping-cart-header pb-3">
+                                <i class="fa fa-shopping-cart cart-icon text-primary"><span class="badge">{{$cart ->total_quantity}}</span></i>
+                                <div class="shopping-cart-total">
+                                        <span class="lighter-text">Total:</span>
+                                        <span class="main-color-text">{{number_format($cart ->total_price,0,',','.')}} VND</span>
+                                </div>
+                            </div>
+                            <div class="shop-item-card ">
+                                @foreach($cart->items as $item)
+                                <div class="shopping-cart-items">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <img src="{{ asset('/img') }}/{{ $item['image'] }}" alt="" width="100px">
+                                        </div>
+                                        <div class="cartField col-7">
+                                            <h5>{{ $item['product_name'] }}</h5>
+                                            <h6>{{ number_format($item['price'],0,',','.') }} VND</h6>
+                                            <p>Quantity: {{ $item['quantity'] }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            <div class="row">
+                                <div class="col-6"><a href="{{route('cart.view')}}" class="button-viewcart" value="">View Cart</i></a> </div>
+                                <div class="col-6"><a href="#" class="button-checkout" value="">Check Out <i class="fa fa-arrow-circle-right"></i></a></div>
+                            </div>
+                       
+                        </div> <!--end shopping-cart -->
                     </div>
+                   
                 </div>
             </div>
         </div>
@@ -77,9 +105,15 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-0">
         <a href="index.html" class="navbar-brand d-block d-lg-none">
-            <h1 class="m-0 text-uppercase text-white"><i class="fa fa-birthday-cake fs-1 text-primary me-3"></i>Delicious</h1>
+            <h1 class="m-0 text-uppercase text-white"><i class="fa fa-birthday-cake fs-1 text-primary me-3 "></i>Delicious</h1>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <a href="index.html" class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 text-uppercase text-white"><i class="fa-solid fa-user"></i></h1>
+        </a>
+        <a href="index.html" class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 text-uppercase text-white"><i class="fas fa-shopping-cart"></i></h1>
+        </a>
+        <button class="navbar-toggler mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -89,19 +123,21 @@
                 <div class="nav-item dropdown" >
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Menu & Pricing</a>
                     <div class="dropdown-menu m-0" style="border: 5px solid #c4a4ec;"  >
+                    <a href="{{ route('menu') }}" class="dropdown-item" style="border-bottom: 1px solid #c4a4ec;">All Cakes</a>
                         @foreach($dulieu as $row)
-                        <a href="{{ route('menu',$row -> id) }}" class="dropdown-item" style="border-bottom: 1px solid #c4a4ec;">{{$row->type_name}} </a>
+                            <a href="{{ route('menu.id',$row -> id) }}" class="dropdown-item" style="border-bottom: 1px solid #c4a4ec;">{{$row->type_name}} ({{$row->products->count()}})</a>
                         @endforeach
                     </div>  
                 </div>
                 <a href="{{ url('/team')}}" class="nav-item nav-link">Master Chefs</a>
                 <a href="{{ url('/contact')}}" class="nav-item nav-link  pe-5">Contact Us</a>
                 <nav class="navbar">
-                        <form class="d-flex">
-                        <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </nav>
+                    <form class="d-flex ">
+                        <input class="form-control me-1" style="width: 300px !important" type="search" placeholder="Search" aria-label="Search" oninput="searchProduct(this.value)">
+                        <div id="search-result" class="result-search"></div>
+                        <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>   
+                    </form>
+                </nav>
             </div>
         </div>
     </nav>
@@ -198,6 +234,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js" integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script  src="{{ asset('/js/btt.js') }}"></script>
     <script  src="{{ asset('/js/slick.js') }}"></script>
+    <script src="{{ asset('/js/ajax.js') }}"></script>
     
 </body>
 

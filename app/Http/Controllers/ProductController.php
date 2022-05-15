@@ -56,6 +56,11 @@ class ProductController extends Controller
         return $product;
     }
 
+    public function showProductBySearch($key){
+        $product = Product::where('product_name', 'Like', '%' . $key . '%')->get();
+        return $product;
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

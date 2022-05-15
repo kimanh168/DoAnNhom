@@ -14,7 +14,6 @@ class ProtypeController extends Controller
         return view('/admin/protypes',['data'=>$protype]);
     }
 
-
     //Thêm loại sản phẩm:
     function addprotypes()
     {
@@ -32,6 +31,20 @@ class ProtypeController extends Controller
         return redirect()->route('protypes');
     }
 
+    //Sửa loại sản phẩm:
+    function edittype($id)
+    {
+       $typebyid = Protype::find($id);
+       return view('/admin/edittype',['typebyid'=>$typebyid]);
+    }
+   
+    //Post sửa loại sản phâm lên:
+    function post_edittype($id,Request $request){
+        $request -> offsetUnset('_token');
+        Protype::where(['id'=>$id])->update($request->all());
+        return redirect()->route('protypes');
+    }
+
     //xóa loại sản phẩm:
     function deletetype($id)
     {
@@ -39,17 +52,5 @@ class ProtypeController extends Controller
         return redirect()->back(); //Quay lại trang trước đó
     }
 
-    //Sửa loại sản phẩm:
-    function edittype($id)
-    {
-        $typebyid = Protype::find($id);
-        return view('/admin/edittype',['typebyid'=>$typebyid]);
-    }
-
-    //Post sửa loại sản phâm lên:
-    function post_edittype($id,Request $request){
-        $request -> offsetUnset('_token');
-        Protype::where(['id'=>$id])->update($request->all());
-        return redirect()->route('protypes');
-    }
+ 
 }
