@@ -26,6 +26,15 @@ Route::get('/',[HomeController::class,'index'])->name('home.index');
 Route::get('menu',[HomeController::class,'getAllProductMenu'])->name('menu');
 Route::get('menu/{type_id?}',[HomeController::class,'productByType'])->name('menu.id');
 
+// Dẫn tới trang About us
+Route::get('about',[HomeController::class,'about'])->name('about');
+
+// Dẫn tới trang Team
+Route::get('team',[HomeController::class,'team'])->name('team');
+
+// Dẫn tới trang Contact
+Route::get('contact',[HomeController::class,'contact'])->name('contact');
+
 //Route::get('/{id}',[MyController::class,'goto']);
 Route::get('thongtinsp/{id?}',[HomeController::class,'chitietsp'])->name('thongtinsp');
 

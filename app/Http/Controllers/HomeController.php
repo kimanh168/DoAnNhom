@@ -46,4 +46,19 @@ class HomeController extends Controller
         $modal = Product::find($id);
         return view('thongtinsp',['dulieu'=>$protype,'thongtinsp'=>$modal]);
     }
+    //Hiển thị about:
+    function about(){
+            $protype = Protype::all();
+            return view('about',['dulieu'=>$protype]);
+    }
+    //Hiển thị team:
+    function team(){
+            $protype = Protype::all();
+            return view('team',['dulieu'=>$protype]);
+    }
+    //Hiển thị contact:
+    function contact(){
+            $protype = Protype::all();
+            return view('contact',['dulieu'=>$protype]);
+    }
 }
