@@ -22,11 +22,20 @@ use App\Http\Controllers\CartController;
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
 
-//Menu
+//Dẫn tới trang Menu
 Route::get('menu',[HomeController::class,'getAllProductMenu'])->name('menu');
 Route::get('menu/{type_id?}',[HomeController::class,'productByType'])->name('menu.id');
 
-//Route::get('/{id}',[MyController::class,'goto']);
+// Dẫn tới trang About us
+Route::get('about',[HomeController::class,'about'])->name('about');
+
+// Dẫn tới trang Team
+Route::get('team',[HomeController::class,'team'])->name('team');
+
+// Dẫn tới trang Contact
+Route::get('contact',[HomeController::class,'contact'])->name('contact');
+
+// Dẫn tới trang thông tin sp
 Route::get('thongtinsp/{id?}',[HomeController::class,'chitietsp'])->name('thongtinsp');
 
 // Dẫn tới trang Đăng Nhập
@@ -41,9 +50,6 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
-    // Route::get('/register', function () {return view('/auth/register');})->name('register');
-    // Route::get('/login', function () {return view('/auth/login');})->name('login');
-
     include 'protype.php';
     include 'product.php';
     Route::get('/file',[FileController::class,'file'])->name('file');
@@ -54,5 +60,5 @@ Route::group(['prefix' => 'cart'],function(){
     Route::get('view',[CartController::class,'view'])->name('cart.view');
     Route::get('add/{id}',[CartController::class,'add'])->name('cart.add');
     Route::get('remove/{id}',[CartController::class,'remove'])->name('cart.remove');
-    Route::get('update/{id}/{quantity}',[CartController::class,'update'])->name('cart.update');
+    Route::get('update/{id}',[CartController::class,'update'])->name('cart.update');
 });

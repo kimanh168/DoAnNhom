@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layout.master')
 @section('content')
 
     <!-- Page Header Start -->
@@ -16,17 +16,19 @@
     <div class="container-fluid pt-5">
         <div class="container">
             <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
-                <h1 class="display-4 text-uppercase">Welcome To DELICIOUS</h1>
+                <h2 class="text-primary font-secondary">About Us</h2>
+                <h1 class="display-4 text-uppercase">Welcome To Delicious</h1>
             </div>
             <div class="row gx-5">
                 <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="img/logo-bakery.png" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100" src="img/about.jpg" style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-6 pb-5">
-                    <h4 class="mb-4">Tempor erat elitr rebum clita. Diam dolor diam ipsum erat lorem sed stet labore lorem sit clita duo</h4>
-                    <p class="mb-5">Tempor erat elitr at rebum at at clita. Diam dolor diam ipsum et tempor sit. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna dolore erat amet magna</p>
+                    <p class="mb-4">Pairing a small pastry with your coffee or tea is your favorite thing? Craving for sweets during the long working day? Having party with frends or family and want offer for them a sweet happiness? Foodlover and like to discover new product?</p>
+                    <h4 class="mb-5">Delicious Bakery is a French pastry brand of the Delicious pastry joint stock company. Established in 2021 in a small street in Thu Duc, Vietnam. Delicious Bakery products are made from imported ingredients from countries with traditional baking such as Newzeland, USA, France, Belgium. With delicious flavors typical of cream, butter, milk, cheese, almonds, chocolate... under the skillful hands of experienced bakers.</h4>
+                   
                     <div class="row g-5">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center justify-content-center bg-primary border-inner mb-4" style="width: 90px; height: 90px;">

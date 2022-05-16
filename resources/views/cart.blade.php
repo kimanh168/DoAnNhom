@@ -17,11 +17,12 @@
                 <table id="cart" class="table table-hover table-condensed"> 
                 <thead> 
                 <tr> 
-                    <th style="width:5%">STT</th> 
-                    <th style="width:40%">Tên sản phẩm</th> 
+                    <th style="width:10%">STT</th>
+                    <th style="width:20%">Ảnh sản phẩm</th>  
+                    <th style="width:20%">Tên sản phẩm</th> 
                     <th style="width:20%">Giá</th> 
-                    <th style="width:8%">Số lượng</th> 
-                    <th style="width:10%">Thao Tac</th> 
+                    <th style="width:10%">Số lượng</th> 
+                    <th style="width:15%">Thao Tác</th> 
                 </tr> 
                 </thead> 
                 <tbody>
@@ -29,20 +30,24 @@
                     @foreach($cart->items as  $item)
                     <tr> 
                         <td>{{$n}}</td>
+                        <td data-th="Image"> 
+                                <div class="col-sm-2 hidden-xs"><img src="{{ asset('/img') }}/{{ $item['image'] }}" style="width: 80px" alt="">
+                                </div>  
+                        </td>
                         <td data-th="Product"> 
-                            <div class="row">
-                                <div class="col-sm-2 hidden-xs"><img src="{{ asset('/img') }}/{{ $item['image'] }}" style="width: 70px" alt="">
-                                </div> 
                                 <div class="col-sm-10"> 
                                     <h4 class="nomargin"><a href="">{{ $item['product_name'] }}</a></h4>  
                                 </div> 
-                            </div> 
+                        </td>
+                        <td data-th="Price">{{ number_format($item['price'],0,',','.') }} VND</td>   
+                        <td data-th="Quantity">
+                            <form action="{{ route('cart.update',['id' => $item['id']]) }}" method="get">
+                                <input type="number" name="quantity" class="form-control" value="{{ $item['quantity'] }}">  
                         </td> 
-                        <td data-th="Price">{{ number_format($item['price'],0,',','.') }} VND</td> 
-                        <td data-th="Quantity">{{ $item['quantity'] }}</td> 
                         <td class="actions" data-th="">
-                            <a href=""><button class="btn btn-danger btn-sm" ><i class="fa fa-trash"></i>
-                            </button></a>
+                            <button type="sumbit" value="Update" class="btn  btn-info btn-sm"><i class="fas fa-pencil-alt pr-2 pl-1 text-white"></i></button>
+                            </form>
+                            <a href="{{ route('cart.remove',['id' => $item['id']]) }}"><button class="btn btn-danger btn-sm" ><i class="fa fa-trash"></i></button></a>
                         </td>
                     </tr>
                     <?php $n++ ?>
@@ -50,12 +55,12 @@
                     
                 </tbody>         
         <tfoot> 
-            <tr> <td></td>
-                <td><a  href="index.php" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+            <tr>
+                <td colspan ="2"><a  href="{{ route('menu') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
                 </td> 
-                <td class="hidden-xs text-center">Total: <strong>{{number_format($cart ->total_price,0,',','.')}} VND</strong>
+                <td colspan ="2" class="hidden-xs text-center">Total: <strong>{{number_format($cart ->total_price,0,',','.')}} VND</strong>
                 </td> 
-                <td><a href="checkout.php" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
+                <td colspan ="2" ><a href="checkout.php" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
                 </td> 
             </tr> 
         </tfoot> 

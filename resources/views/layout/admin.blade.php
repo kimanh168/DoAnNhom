@@ -335,7 +335,11 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @if(isset(Auth::user()->name))
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                @else
+                                    <?php return redirect()->route('login'); ?>
+                                @endif
                                 <img class="img-profile rounded-circle"
                                     src="/img/smile.png">
                             </a>

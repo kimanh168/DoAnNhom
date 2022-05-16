@@ -49,7 +49,7 @@
 									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
 									<button class="quick-view" data-bs-toggle="modal" data-bs-target="#exampleModal" data-product-id="{{ $sp->id }}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
 								</div>
-									<h3 class="product-name"><a href="#">{{ $sp-> product_name }}</a></h3>
+									<h3 class="product-name"><a href="{{ route('thongtinsp',$sp->id) }}">{{ $sp-> product_name }}</a></h3>
                                     @if( $sp-> promotion != 0 )
                                     <h4 class="product-price"> {{ number_format($sp->sale_price,0,',','.') }} VND <del class="product-old-price">{{ number_format($sp->price,0,',','.') }}</del></h4>
                                     @else
@@ -57,67 +57,48 @@
                                     @endif
 								</div>
 								<div class="add-to-cart">
-									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+									<a href="{{ route('cart.add',['id' => $sp->id]) }}"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+								</div>
+							</div>       
+                    @endforeach
+                    <div class="clearfix pt-3 pl-3">
+                        {{$sp_theoloai->links()}}
+                    </div>
+                    <?php else: ?>
+                    @foreach($tatcasp as $sp)
+                        <div class="product mb-5 col-xs-3 col-md-4">
+							<div class="product-img">
+								<img class="hinhphone" src="../img/{{ $sp-> image }}" alt="" >
+								<div class="product-label">
+                                @if( $sp-> promotion != 0 )
+                                    <span class="sale">-{{ $sp-> promotion }}%</span>
+                                @endif
 								</div>
 							</div>
-                            
-                    @endforeach
-                    <?php else : ?>
-                    @foreach($tatcasp as $sp)
-                                    <div class="product mb-5 col-xs-3 col-md-4">
-										<div class="product-img">
-											<img class="hinhphone" src="../img/{{ $sp-> image }}" alt="" >
-												<div class="product-label">
-                                                @if( $sp-> promotion != 0 )
-                                                        <span class="sale">-{{ $sp-> promotion }}%</span>
-                                                    @endif
-												</div>
-									    </div>
-										<div class="product-body">
-                                            <div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart"></i><span class="tooltipp">add to wishlist</span></button>
-												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-												<button class="quick-view" data-bs-toggle="modal" data-bs-target="#exampleModal" data-product-id="{{ $sp->id }}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-											</div>
-											<h3 class="product-name"><a href="#">{{ $sp-> product_name }}</a></h3>
-                                            @if( $sp-> promotion != 0 )
-                                                <h4 class="product-price"> {{ number_format($sp->sale_price,0,',','.') }} VND <del class="product-old-price">{{ number_format($sp->price,0,',','.') }}</del></h4>
-                                            @else
-                                            <h4 class="product-price"> {{ number_format($sp->price,0,',','.') }} VND</h4>
-                                            @endif
-										</div>
-										<div class="add-to-cart">
-											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-										</div>
-									</div>
+							<div class="product-body">
+                                <div class="product-btns">
+									<button class="add-to-wishlist"><i class="fa fa-heart"></i><span class="tooltipp">add to wishlist</span></button>
+									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="quick-view" data-bs-toggle="modal" data-bs-target="#exampleModal" data-product-id="{{ $sp->id }}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+								</div>
+								<h3 class="product-name"><a href="{{ route('thongtinsp',$row->id) }}">{{ $sp-> product_name }}</a></h3>
+                                @if( $sp-> promotion != 0 )
+                                    <h4 class="product-price"> {{ number_format($sp->sale_price,0,',','.') }} VND <del class="product-old-price">{{ number_format($sp->price,0,',','.') }}</del></h4>
+                                @else
+                                   <h4 class="product-price"> {{ number_format($sp->price,0,',','.') }} VND</h4>
+                                @endif
+							</div>
+							<div class="add-to-cart">
+								<a href="{{ route('cart.add',['id' => $sp->id]) }}"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+							</div>
+						</div>
                     @endforeach
                     <div class="clearfix pt-3 pl-3">
                         {{$tatcasp->links()}}
                     </div>
                     <?php endif; ?>
-                </div>
-                </div>
-            </div>
-            <div class="tab-class text-center">
-                <!-- <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active ">
-                        <div class="row g-3">
-                            <div class="col-lg-6"> 
-                                <div class="d-flex h-100">
-                                    <div class="flex-shrink-0">
-                                        <img class="img-fluid" src="img/" alt="" style="width: 200px; height: 185px;">
-                                        <h4 class="bg-dark text-primary p-2 m-0"></h4>
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">                                    
-                                        <h5 class="text-uppercase"></h5>
-                                        <h5 class="text-uppercase"></h5>
-                                        <span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>

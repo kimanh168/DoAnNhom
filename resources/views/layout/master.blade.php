@@ -119,7 +119,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto mx-lg-auto py-0">
                 <a href="{{ route('home.index')}}" class="nav-item nav-link active">Home</a>
-                <a href="{{ url('/about')}}" class="nav-item nav-link">About Us</a>
+                <a href="{{ route('about')}}" class="nav-item nav-link">About Us</a>
                 <div class="nav-item dropdown" >
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Menu & Pricing</a>
                     <div class="dropdown-menu m-0" style="border: 5px solid #c4a4ec;"  >
@@ -129,13 +129,13 @@
                         @endforeach
                     </div>  
                 </div>
-                <a href="{{ url('/team')}}" class="nav-item nav-link">Master Chefs</a>
-                <a href="{{ url('/contact')}}" class="nav-item nav-link  pe-5">Contact Us</a>
+                <a href="{{ route('team')}}" class="nav-item nav-link">Master Chefs</a>
+                <a href="{{ route('contact')}}" class="nav-item nav-link  pe-5">Contact Us</a>
                 <nav class="navbar">
-                    <form class="d-flex ">
-                        <input class="form-control me-1" style="width: 300px !important" type="search" placeholder="Search" aria-label="Search" oninput="searchProduct(this.value)">
+                    <form class="d-flex">
+                        <input class="form-control me-1" style="width: 300px !important" type="search" placeholder="Search" aria-label="Search" oninput="searchProduct(this.value)" name="key">
                         <div id="search-result" class="result-search"></div>
-                        <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>   
+                        <button class="btn btn-outline-success" type="submit" ><i class="fa fa-search"></i></button>   
                     </form>
                 </nav>
             </div>

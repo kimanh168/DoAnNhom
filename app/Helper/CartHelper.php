@@ -36,21 +36,22 @@ class CartHelper
       
     }
 
+    public function update($id,$quantity = 1 )
+    {
+        //
+        if(isset($this->items[$id])){
+            $this->items[$id]['quantity'] = $quantity;
+            
+        }
+        session(['cart'=>$this->items]);
+    }
+
     public function remove($id)
     {
         //
         if(isset($this->items[$id])) 
         {
-            unset($this->items[$product->id]);
-        }
-        session(['cart'=>$this->items]);
-    }
-
-    public function update($product,$quantity = 1)
-    {
-        //
-        if(isset($this->items[$id])){
-            $this->items[$product->id]['quantity'] = $quantity;
+            unset($this->items[$id]);
         }
         session(['cart'=>$this->items]);
     }
