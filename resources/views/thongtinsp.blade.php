@@ -10,8 +10,8 @@
                 </div>
 				<form action="addcart.php?id" method="POST" >
                     <div class="container">
-<!-- row -->
-<div class="row">
+                <!-- row -->
+                <div class="row">
                         <!--  Details -->
                         <div class="col-md-6">
                             <div class="billing-details">
@@ -29,17 +29,20 @@
                             <div class="order-summary">
                                 <div class="order-col">
                                     <div><strong>Giá</strong></div>
-                                    <div><strong class="order-total">{{ $thongtinsp -> price  }} VND</strong></div>
+                                    <div><strong class="order-total">{{ number_format($thongtinsp -> price,0,',','.')  }}VND</strong></div>
                                 </div>
                                 <div class="order-products">
                                     <div class="order-col">
                                         <div><strong>Loại sản phẩm</strong></div>
                                         <div><strong>{{ $thongtinsp -> type_id  }}</strong></div>
                                     </div>
-                                    <div class="order-col">
-                                        <div><strong>Số Lượng Mua</strong></div>
-                                        <div><input id="addqty" name="addqty" type="number" min="0" class="form-control" placeholder="Số Lượng" ></div>
-                                    </div>
+                                    <form action="" method="get">
+                                        <div class="order-col">
+                                            <div><strong>Số Lượng Mua</strong></div>
+                                            <div><input id="quantity" name="quantity" type="number" min="0" class="form-control" placeholder="Số Lượng" ></div>
+                                        </div>
+                                    </form>
+                                    
                                     <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
                                         <input name="submit" type="submit" value="Add to cart" class="btn btn-primary border-inner py-3 px-5 me-5">
                                     </div>

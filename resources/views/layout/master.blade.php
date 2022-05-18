@@ -41,26 +41,33 @@
                     <i class="bi bi-envelope fs-1 text-primary me-3"></i>
                     <div class="text-start">
                         <h6 class="text-uppercase mb-1">Email Us</h6>
-                        <span class="pe-2">hileo52@gmail.com</span>
+                        <span class="pe-2">Delicious@gmail.com</span>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 text-center bg-primary border-inner pt-3">
                 <div class="d-inline-flex align-items-center justify-content-center">
-                    <a href="index.html" class="navbar-brand">
+                    <a href="{{ route('home.index')}}" class="navbar-brand">
                         <h1 class="m-0 text-uppercase text-white"><i class="fa fa-mug-hot text-white"></i> Delicious</h1>
                     </a>
                 </div>
             </div>
             <div class="col-lg-4 text-center bg-secondary py-4 pt-4">
                 <div class="d-inline-flex align-items-center justify-content-center">
-                    <i class="fa fa-users fs-2 text-primary me-3"></i>
-                    <div class="text-start">
-                        <a href="/login"><h5 class="text-uppercase ">Login</h5></a>
+                    @if(Auth::guard('cus')->check())
+                    <h5><i class="fa-solid fa-user text-primary"> </i><a href=""> {{ Auth::guard('cus')->user()->customer_name }}</a></h5>
+                    
+                    <div class="text-start ps-5">
+                        <a href="{{ route('home.logout') }}"><h5 class="text-uppercase"><i class="fa-solid fa-right-from-bracket fs-2 text-danger"></i></h5></a>
                     </div>
-                    <a href="#" id="cart"><i class="fa fa-shopping-cart fs-2 text-primary me-3 ms-5" ></i></a>
+                    @else 
                     <div class="text-start">
-                        <a href="{{route('cart.view')}}" ><h5 class="text-uppercase ">Cart <span class="badge">{{$cart ->total_quantity}}</span></h5></a>
+                        <a href="{{ route('home.login') }}"><h5 class="text-uppercase"><i class="fa fa-users fs-2 text-primary me-3"></i> Login</h5></a>
+                    </div>
+                    @endif
+                    <a href="#" id="cart"><i class="fa fa-shopping-cart fs-2 text-primary ms-5" ></i></a>
+                    <div class="text-start">
+                        <a href="{{route('cart.view')}}" ><h5 class="text-uppercase"><span class="badge">{{$cart ->total_quantity}}</span></h5></a>
                     </div> 
                     <div class="shop-down">
                         <div class="shopping-cart">
@@ -89,7 +96,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-6"><a href="{{route('cart.view')}}" class="button-viewcart" value="">View Cart</i></a> </div>
-                                <div class="col-6"><a href="#" class="button-checkout" value="">Check Out <i class="fa fa-arrow-circle-right"></i></a></div>
+                                <div class="col-6"><a href="{{route('checkout')}}" class="button-checkout" value="">Check Out <i class="fa fa-arrow-circle-right"></i></a></div>
                             </div>
                        
                         </div> <!--end shopping-cart -->
@@ -132,7 +139,7 @@
                 <a href="{{ route('team')}}" class="nav-item nav-link">Master Chefs</a>
                 <a href="{{ route('contact')}}" class="nav-item nav-link  pe-5">Contact Us</a>
                 <nav class="navbar">
-                    <form class="d-flex">
+                    <form class="d-flex"  >
                         <input class="form-control me-1" style="width: 300px !important" type="search" placeholder="Search" aria-label="Search" oninput="searchProduct(this.value)" name="key">
                         <div id="search-result" class="result-search"></div>
                         <button class="btn btn-outline-success" type="submit" ><i class="fa fa-search"></i></button>   
@@ -145,7 +152,7 @@
 
         @yield('content');
     
-
+    <script src="{{ asset('/js/ajax.js') }}"></script>
     <!-- Footer Start -->
     <div class="container-fluid bg-img text-secondary" style="margin-top: 90px">
         <div class="container">
@@ -234,7 +241,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js" integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script  src="{{ asset('/js/btt.js') }}"></script>
     <script  src="{{ asset('/js/slick.js') }}"></script>
-    <script src="{{ asset('/js/ajax.js') }}"></script>
+    
     
 </body>
 

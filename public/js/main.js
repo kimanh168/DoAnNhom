@@ -29,11 +29,10 @@
 
 
     
-
+   
     jQuery("#cart").click(function() {
         jQuery(".shopping-cart").fadeToggle("fast");
     });
-    jQuery(".shopping-cart").fadeOut("fast");
     
 })(jQuery);
 

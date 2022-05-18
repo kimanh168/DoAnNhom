@@ -18,11 +18,12 @@
                 <thead> 
                 <tr> 
                     <th style="width:10%">STT</th>
-                    <th style="width:20%">Ảnh sản phẩm</th>  
-                    <th style="width:20%">Tên sản phẩm</th> 
-                    <th style="width:20%">Giá</th> 
+                    <th style="width:10%">Ảnh sản phẩm</th>  
+                    <th style="width:25%">Tên sản phẩm</th> 
+                    <th style="width:15%">Giá</th> 
                     <th style="width:10%">Số lượng</th> 
-                    <th style="width:15%">Thao Tác</th> 
+                    <th style="width:15%">Tổng Tiền</th> 
+                    <th style="width:10%">Thao Tác</th> 
                 </tr> 
                 </thead> 
                 <tbody>
@@ -44,6 +45,7 @@
                             <form action="{{ route('cart.update',['id' => $item['id']]) }}" method="get">
                                 <input type="number" name="quantity" class="form-control" value="{{ $item['quantity'] }}">  
                         </td> 
+                        <td data-th="Thanhtien">{{ number_format($item['price']*$item['quantity'],0,',','.') }} VND</td>   
                         <td class="actions" data-th="">
                             <button type="sumbit" value="Update" class="btn  btn-info btn-sm"><i class="fas fa-pencil-alt pr-2 pl-1 text-white"></i></button>
                             </form>
@@ -56,11 +58,12 @@
                 </tbody>         
         <tfoot> 
             <tr>
-                <td colspan ="2"><a  href="{{ route('menu') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+                <td></td>
+                <td colspan ="2"><a  href="{{ route('menu') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Mua tiếp</a>
                 </td> 
                 <td colspan ="2" class="hidden-xs text-center">Total: <strong>{{number_format($cart ->total_price,0,',','.')}} VND</strong>
                 </td> 
-                <td colspan ="2" ><a href="checkout.php" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
+                <td colspan ="2"><a href="{{ route('checkout') }}" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
                 </td> 
             </tr> 
         </tfoot> 

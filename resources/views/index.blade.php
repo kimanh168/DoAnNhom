@@ -10,7 +10,7 @@
                         <h1 class="display-1 text-uppercase text-white mb-4">Delicious</h1>
                         <h1 class="text-uppercase text-white">The Best Cake In VietNam</h1>
                         <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                            <a href="" class="btn btn-primary border-inner py-3 px-5 me-5">Read More</a>
+                            <a href="{{ route('about') }}" class="btn btn-primary border-inner py-3 px-5 me-5">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                             <div class="team-overlay w-100 h-100 position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center">
                                 <div class="d-flex align-items-center justify-content-start">
                                     <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="https://www.facebook.com/ciiuchinchin/"><i class="fab fa-facebook-f fw-normal"></i></a>
                                     <a class="btn btn-lg btn-primary btn-lg-square border-inner rounded-0 mx-1" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
                                 </div>
                             </div>

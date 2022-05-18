@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Protype;
+use App\Models\Customer;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,7 +25,7 @@ class HomeController extends Controller
         return view('menu',['dulieu'=>$protype,'sp_theoloai'=> $sp_theoloai]);
     }
 
-    //Hiển thị tất cả sản phẩm theo ra trang menu
+    //Hiển thị tất cả sản phẩm ra trang menu
     function getAllProductMenu(){
         $product = Product::paginate(6); //SELECT * FROM Product limit(0,5)
         $protype = Protype::all();
@@ -53,4 +55,59 @@ class HomeController extends Controller
             return view('contact',['dulieu'=>$protype]);
     }
 
+    public function update(){
+        $key = request()->key ? request()->key : '';
+        $search = Product::where('product_name', 'Like', '%' . $key . '%')->get();
+        return view('timkiemsp',['search'=>$search]);
+    }
+
+    public function logout(){
+        Auth::guard('cus')->logout();
+        return redirect()->route('home.index');
+    }
+
+    public function login(){
+        return view('login');
+    }
+
+    public function post_login(Request $req){
+        $this->validate($req,[
+            'email' => 'required',
+            'password' => 'required',
+        ],[
+            'email.required' => 'Vui lòng nhập địa chỉ email',
+            'password.required' => 'Vui lòng nhập mật khẩu'
+        ]);
+
+        if(Auth::guard('cus')->attempt($req->only('email','password'),$req->has('remember'))){
+            return redirect()->route('home.index');
+        }
+        return redirect()->back();
+    }
+
+    public function register(){
+        return view('register');
+    }
+
+    public function post_register(Request $request){
+            $this->validate($request,[
+                'customer_name' => 'required',
+                'email' => 'required|email|unique:customer,email',
+                'password' => 'required',
+                'confirm_password' => 'required|same:password',
+            ],[
+                'customer_name.required' => 'Tên người dùng không được để trống',
+                'email.required' => 'Email không được để trống',
+                'email.unique' => 'Email đã được sử dụng',
+                'email.email' => 'Email phải đúng định dạng',
+                'password.required' => 'Mật khẩu không được để trống',
+                'confirm_password.required' => 'Xác nhận mật khẩu không được để trống',
+                'confirm_password.same' => 'Nhập lại mật khẩu không chính xác'
+
+            ]);
+            $password = bcrypt($request->password);
+            $request->merge(['password'=>$password]);
+            Customer::create($request->all());
+            return redirect()->route('home.login');
+    }
 }

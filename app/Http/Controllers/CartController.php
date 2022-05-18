@@ -9,6 +9,10 @@ use App\Helper\CartHelper;
 
 class CartController extends Controller
 {
+    // public function __construct(){
+    //     $this->middleware('cus');
+    // }
+
     //
     public function view(){
         $protype = Protype::all();
@@ -16,6 +20,7 @@ class CartController extends Controller
     }
 
     public function add(CartHelper $cart,$id){
+        
         $product = Product::Find($id);
         $cart->add($product);
         return redirect()->back();
