@@ -5,8 +5,8 @@
 			<!-- container -->
 			<div class="container-fluid about py-5">
                 <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
-                    <h2 class="text-primary font-secondary">Great Choice</h2>
-                    <h1 class="display-4 text-uppercase">{{ $thongtinsp -> product_name  }}</h1>
+                    <h2 class="text-primary font-secondary">Hello!</h2>
+                    <h1 class="display-4 text-uppercase">{{ Auth::guard('cus')->user()->customer_name }}</h1>
                 </div>
             <div class="container">
                 <!-- row -->
@@ -28,26 +28,24 @@
                             <div class="order-summary">
                                 <div class="order-col">
                                     <div><strong>Giá</strong></div>
-                                    <div><h5 class="text-primary">{{ number_format($thongtinsp -> price,0,',','.')  }} VND</h5></div>
+                                    <div><strong class="order-total">{{ number_format($thongtinsp -> price,0,',','.')  }}VND</strong></div>
                                 </div>
                                 <div class="order-products">
                                     <div class="order-col">
-                                        <div><strong>Loại bánh</strong></div>
-                                        <div><strong>{{ $thongtinsp ->protype-> type_name  }}</strong></div>
+                                        <div><strong>Loại sản phẩm</strong></div>
+                                        <div><span class="badge bg-primary"><strong>{{ $thongtinsp ->protype-> type_name  }}</strong></span> </div>
+                                       
                                     </div>
-                                    <form action="{{route('cart.add',['id' => $thongtinsp->id])}}" method="get">
+                                    <form action="route('cart.add',['id' => $thongtinsp->id])" method="get">
                                         <div class="order-col">
                                             <div><strong>Số Lượng Mua</strong></div>
                                             <div><input id="quantity" name="quantity" type="number" min="0" class="form-control" placeholder="Số Lượng" ></div>
                                         </div>
-                                    <div class="order-col">
-                                        <div><strong>Hạn dử dụng</strong></div>
-                                        <div><span class="badge bg-primary"><strong>{{ $thongtinsp ->expiry  }} Ngày</strong></span> </div>
-                                    </div>
+                                    </form>
+                                    
                                     <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
                                         <input name="submit" type="submit" value="Add to cart" class="btn btn-primary border-inner py-3 px-5 me-5">
                                     </div>
-                                    </form>
                                 </div>
                             </div>
                             <div class="payment-method">
@@ -57,6 +55,8 @@
                         </div>
 					<!-- /Order Details -->
                     </div>
+                    
+					</form>
 				</div>
 				<!-- /row -->
 			</div>

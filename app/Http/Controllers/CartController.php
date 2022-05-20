@@ -22,7 +22,7 @@ class CartController extends Controller
     public function add(CartHelper $cart,$id){
         $quantity = request()->quantity ? request()->quantity : 1;
         $product = Product::Find($id);
-        $cart->add($product);
+        $cart->add($product,$quantity);
         return redirect()->back();
     }
 
