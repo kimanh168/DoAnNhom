@@ -14,7 +14,7 @@
 		</div>
 		<!-- /BREADCRUMB -->
         <div class="container"> 
-                <table id="cart" class="table table-hover table-condensed"> 
+            <table id="cart" class="table table-hover table-condensed"> 
                 <thead> 
                 <tr> 
                     <th style="width:10%">STT</th>

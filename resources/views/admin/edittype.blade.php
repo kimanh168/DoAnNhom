@@ -30,10 +30,13 @@
             <div class="card-body">
               <div class="form-group">
                 <div class="form-group">
-                <input type="hidden" name="type_id" value="{{ $typebyid-> id }}">
+                <input type="hidden" name="id" value="{{ $typebyid-> id }}">
                 </div>
                 <label for="inputName">Tên Loại</label>
                 <input type="text" name="type_name" id="inputName" class="form-control" placeholder="Nhập tên loại"  value= "{{ $typebyid->type_name }}" >
+                @if($errors->has('type_name'))
+                    {{$errors->first('type_name') }}
+                @endif
               </div>
             </div>
             <!-- /.card-body -->

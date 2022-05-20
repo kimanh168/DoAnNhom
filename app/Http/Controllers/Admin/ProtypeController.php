@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Protype;
 use App\Http\Controllers\Controller;
-
+use Auth;
 class ProtypeController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     //Hiển thị loại sản phẩm
     function index(){
         $protype = Protype::all(); //SELECT * FROM Protype
@@ -40,6 +43,9 @@ class ProtypeController extends Controller
    
     //Post sửa loại sản phâm lên:
     function post_edittype($id,Request $request){
+        $this -> validate($request,[
+            'type_name' => 'required'
+        ],['type_name.required' => 'Tên danh mục không được để trống']);
         $request -> offsetUnset('_token');
         Protype::where(['id'=>$id])->update($request->all());
         return redirect()->route('protypes');

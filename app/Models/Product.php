@@ -11,7 +11,7 @@ class Product extends Model
     protected $fillable = ['product_name','type_id','image','price','sale_price','promotion','description','expiry'];
     public $timestamps = false;
     function protype(){
-        return $this->belongsTo(Protype::class,'type_id');
+        return $this->belongsTo(Protype::class,'type_id','id');
     }
 
 }

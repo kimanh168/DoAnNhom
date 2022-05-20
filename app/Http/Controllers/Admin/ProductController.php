@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Protype;
 use App\Http\Controllers\Controller;
-
+use Auth;
 class ProductController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     //Hiển thị 5 sản phẩm
     function index(){
         $product = Product::paginate(5); //SELECT * FROM Product limit(0,5)

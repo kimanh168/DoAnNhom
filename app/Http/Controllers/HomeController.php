@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Protype;
 use App\Models\Customer;
 use Auth;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -15,21 +16,21 @@ class HomeController extends Controller
         $product = Product::limit(10)->orderby('id','DESC')->get();
         $protype = Protype::all();
         //return view('index',['data'=>$product]);
-        return view('index',['data'=>$product,'dulieu'=>$protype]);
+        return view('home.index',['data'=>$product,'dulieu'=>$protype]);
     }
 
     //Hiển thị sản phẩm theo loại ra trang menu
     function productByType($typeid){
         $protype = Protype::all();
         $sp_theoloai = Product::where('type_id',$typeid)->paginate(6);
-        return view('menu',['dulieu'=>$protype,'sp_theoloai'=> $sp_theoloai]);
+        return view('home.menu',['dulieu'=>$protype,'sp_theoloai'=> $sp_theoloai]);
     }
 
     //Hiển thị tất cả sản phẩm ra trang menu
     function getAllProductMenu(){
         $product = Product::paginate(6); //SELECT * FROM Product limit(0,5)
         $protype = Protype::all();
-        return view('menu',['dulieu'=>$protype,'tatcasp' => $product]);
+        return view('home.menu',['dulieu'=>$protype,'tatcasp' => $product]);
     }
 
     //Hiển thị chi tiết sp:
@@ -37,39 +38,57 @@ class HomeController extends Controller
     {
         $protype = Protype::all();
         $modal = Product::find($id);
-        return view('thongtinsp',['dulieu'=>$protype,'thongtinsp'=>$modal]);
+        return view('home.thongtinsp',['dulieu'=>$protype,'thongtinsp'=>$modal]);
     }
     //Hiển thị about:
     function about(){
             $protype = Protype::all();
-            return view('about',['dulieu'=>$protype]);
+            return view('home.about',['dulieu'=>$protype]);
     }
     //Hiển thị team:
     function team(){
             $protype = Protype::all();
-            return view('team',['dulieu'=>$protype]);
+            return view('home.team',['dulieu'=>$protype]);
     }
     //Hiển thị contact:
     function contact(){
             $protype = Protype::all();
-            return view('contact',['dulieu'=>$protype]);
+            return view('home.contact',['dulieu'=>$protype]);
     }
 
+    //Gửi contact:
+    function post_contact(Request $request){
+        Mail::send('email.contact',[
+            'name' => $request->name,
+            'content' => $request->content,
+            'email' => $request->email,
+        ],function($mail) use($request){
+            $mail->to('deliciouscakesy@gmail.com',$request->name);
+            $mail->from($request->email);
+            $mail->subject($request->subject);
+        });
+        return redirect()->route('contact')->with('success','Gửi mail thành công');
+    }
+
+    //Tìm kiếm sp
     public function update(){
         $key = request()->key ? request()->key : '';
         $search = Product::where('product_name', 'Like', '%' . $key . '%')->get();
-        return view('timkiemsp',['search'=>$search]);
+        return view('home.timkiemsp',['search'=>$search]);
     }
 
+    //Thoát
     public function logout(){
         Auth::guard('cus')->logout();
         return redirect()->route('home.index');
     }
 
+    //Hiển thị trang Đăng nhập
     public function login(){
-        return view('login');
+        return view('home.login');
     }
 
+    //Kiểm tra và tiến hành đăng nhập
     public function post_login(Request $req){
         $this->validate($req,[
             'email' => 'required',
@@ -82,13 +101,18 @@ class HomeController extends Controller
         if(Auth::guard('cus')->attempt($req->only('email','password'),$req->has('remember'))){
             return redirect()->route('home.index');
         }
-        return redirect()->back();
+        else{
+            return redirect()->back()->with('error','Sai email hoặc password');
+        }
+       
     }
 
+    //Đăng kí tài khoản
     public function register(){
-        return view('register');
+        return view('home.register');
     }
 
+    //Kiểm tra và tiến hành tạo tài khoản
     public function post_register(Request $request){
             $this->validate($request,[
                 'customer_name' => 'required',

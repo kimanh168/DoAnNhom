@@ -34,9 +34,10 @@
                                 <div class="order-products">
                                     <div class="order-col">
                                         <div><strong>Loại sản phẩm</strong></div>
-                                        <div><strong>{{ $thongtinsp -> type_id  }}</strong></div>
+                                        <div><span class="badge bg-primary"><strong>{{ $thongtinsp ->protype-> type_name  }}</strong></span> </div>
+                                       
                                     </div>
-                                    <form action="" method="get">
+                                    <form action="route('cart.add',['id' => $thongtinsp->id])" method="get">
                                         <div class="order-col">
                                             <div><strong>Số Lượng Mua</strong></div>
                                             <div><input id="quantity" name="quantity" type="number" min="0" class="form-control" placeholder="Số Lượng" ></div>

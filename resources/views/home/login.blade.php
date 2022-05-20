@@ -1,5 +1,6 @@
 <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/bootstrap.min.css') }} " rel="stylesheet">
+<x-guest-layout>
 <div class="content-wrapper">
         <div class="content">
             <div class="signup-wrapper shadow-box">
@@ -27,6 +28,9 @@
                                             <label for="email" >Email address
                                                 <input id="email" class="block w-full" type="text" name="email" />
                                             </label>
+                                            @if($errors->has('email'))
+                                                <p style="color:red"> {{$errors->first('email') }} !!!</p>
+                                            @endif
                                         </p>
 
                                         <!-- Password -->
@@ -34,6 +38,9 @@
                                             <label  for="password">Password
                                                 <input id="password" class="block w-full" type="password" name="password"/>
                                             </label>
+                                            @if($errors->has('password'))
+                                                <p style="color:red"> {{$errors->first('password') }} !!!</p>
+                                            @endif
                                         </p>
 
                                         <!-- Remember Me -->
@@ -43,8 +50,14 @@
                                                 <span class="ml-2 text-sm text-gray-600">Remember me</span>
                                             </label>
                                         </div>
-
-                                        <div class="flex items-center justify-end mt-4">
+                                        @if(session()->has('error'))
+                                        <div class="alert alert-danger d-flex align-items-center mt-3" role="alert">
+                                            <div>
+                                                <strong>X</strong>  {{ session()->get('error') }}
+                                            </div>
+                                        </div>
+                                        @endif
+                                        <div class="flex items-center justify-end ">
                                             <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}"></a>
                                             <button type="submit" class="signup">Login</button>
                                             <a href="{{route('home.register')}}" class="login">Register</a>
@@ -58,3 +71,4 @@
             </div>
         </div>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</x-guest-layout>

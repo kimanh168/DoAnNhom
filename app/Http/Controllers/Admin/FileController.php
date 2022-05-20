@@ -5,9 +5,14 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Protype;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class FileController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     //Hiển thị trang file
     function file(){
         return view('admin.file');

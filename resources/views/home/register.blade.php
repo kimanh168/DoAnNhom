@@ -1,3 +1,4 @@
+<x-guest-layout>
 <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/bootstrap.min.css') }} " rel="stylesheet">
 <div class="content-wrapper">
@@ -94,3 +95,4 @@
             </div>
         </div>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</x-guest-layout>

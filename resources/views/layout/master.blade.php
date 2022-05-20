@@ -41,7 +41,7 @@
                     <i class="bi bi-envelope fs-1 text-primary me-3"></i>
                     <div class="text-start">
                         <h6 class="text-uppercase mb-1">Email Us</h6>
-                        <span class="pe-2">Delicious@gmail.com</span>
+                        <span class="pe-2">deliciouscakesy@gmail.com</span>
                     </div>
                 </div>
             </div>
@@ -171,11 +171,11 @@
                             <h4 class="text-primary text-uppercase mb-4">Get In Touch</h4>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-geo-alt text-primary me-2"></i>
-                                <p class="mb-0">123 Street, New York, USA</p>
+                                <p class="mb-0">4/4 Đường Linh Đông, TP.Thủ Đức, Việt Nam</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-primary me-2"></i>
-                                <p class="mb-0">info@example.com</p>
+                                <p class="mb-0">deliciouscakesy@gmail.com</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-telephone text-primary me-2"></i>

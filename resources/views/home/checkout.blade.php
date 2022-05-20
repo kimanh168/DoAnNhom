@@ -8,6 +8,8 @@
 				<!-- row -->
 				<div class="row">
 					<div class="col-md-7">
+						<form action="" method="post">
+						@csrf
 						<!-- Billing Details -->
 						<div class="row billing-details">
 							<div class="mb-3">
@@ -35,7 +37,7 @@
 						<!-- Order notes -->
 						<div class="col-8 mb-3">
 							<label for="Notes" class="form-label">Notes</label>
-							<textarea class="form-control" id="Notes" placeholder="Order Notes"></textarea>
+							<textarea class="form-control" name="order_note" id="Notes" placeholder="Order Notes"></textarea>
 						</div>
 						<!-- /Order notes -->
 					</div>
@@ -69,15 +71,13 @@
 								<div><strong class="order-total">{{number_format($cart ->total_price,0,',','.')}}VND</strong></div>
 							</div>
 						</div>
-						<div class="input-checkbox">
-							<input type="checkbox" id="terms">
-							<label for="terms">
-								<span></span>
-								I've read and accept the <a href="#">terms & conditions</a>
-							</label>
-						</div>
-						<a href="#" class="btn btn-primary order-submit">Place order</a>
+						@if($cart ->total_price == 0) 
+						<button type="submit" class="btn btn-primary order-submit "  disabled>Place order</button>
+						@else
+						<button type="submit" class="btn btn-primary order-submit ">Place order</button>
+						@endif
 					</div>
+					</form>
 					<!-- /Order Details -->
 				</div>
 				<!-- /row -->

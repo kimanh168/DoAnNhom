@@ -20,6 +20,10 @@ class Customer extends Authenticatable
         'customer_name', 'email', 'password','phone','address'
     ];
 
+    public function order_list(){
+        return $this->hasMany(Order::class,'customer_id','id');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -16,11 +16,11 @@ class CartController extends Controller
     //
     public function view(){
         $protype = Protype::all();
-        return view('cart',['dulieu'=>$protype]);
+        return view('home.cart',['dulieu'=>$protype]);
     }
 
     public function add(CartHelper $cart,$id){
-        
+        $quantity = request()->quantity ? request()->quantity : 1;
         $product = Product::Find($id);
         $cart->add($product);
         return redirect()->back();

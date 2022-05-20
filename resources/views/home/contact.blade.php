@@ -13,7 +13,14 @@
         </div>
     </div>
     <!-- Page Header End -->
-
+    @if(session()->has('success'))
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+                {{ session()->get('success') }}
+            </div>
+    </div>
+    @endif
 
     <!-- Contact Start -->
     <div class="container-fluid contact position-relative px-5" style="margin-top: 90px;">
@@ -43,19 +50,20 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-6">
-                    <form>
+                    <form method="POST" action="">
+                        @csrf
                         <div class="row g-3">
                             <div class="col-sm-6">
-                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Your Name" style="height: 55px;">
+                                <input type="text" name="name" class="form-control bg-light border-0 px-4" placeholder="Your Name" style="height: 55px;">
                             </div>
                             <div class="col-sm-6">
-                                <input type="email" class="form-control bg-light border-0 px-4" placeholder="Your Email" style="height: 55px;">
+                                <input type="email" name="email" class="form-control bg-light border-0 px-4" placeholder="Your Email" style="height: 55px;">
                             </div>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Subject" style="height: 55px;">
+                                <input type="text" name="subject" class="form-control bg-light border-0 px-4" placeholder="Subject" style="height: 55px;">
                             </div>
                             <div class="col-sm-12">
-                                <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Message"></textarea>
+                                <textarea name="content" class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Message"></textarea>
                             </div>
                             <div class="col-sm-12">
                                 <button class="btn btn-primary border-inner w-100 py-3" type="submit">Send Message</button>
@@ -67,4 +75,5 @@
         </div>
     </div>
     <!-- Contact End -->
+    
 @endsection

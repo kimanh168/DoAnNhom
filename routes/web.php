@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\FileController;
 use App\Helper\CartHelper;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Admin\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,22 +45,17 @@ Route::get('team',[HomeController::class,'team'])->name('team');
 
 // Dẫn tới trang Contact
 Route::get('contact',[HomeController::class,'contact'])->name('contact');
+Route::post('contact',[HomeController::class,'post_contact'])->name('contact');
 
 // Dẫn tới trang thông tin sp
 Route::get('thongtinsp/{id?}',[HomeController::class,'chitietsp'])->name('thongtinsp');
 
-// Dẫn tới trang Đăng Nhập
-Route::get('/register', function () {return view('/auth/register');})->name('register');
-
-// Dẫn tới trang Đăng Ký
-Route::get('/login', function () {return view('/auth/login');})->name('login');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-require __DIR__.'/auth.php';
-
+//Admin
 Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
+    
+    Route::get('/dashboard',[AdminController::class,'index'])->middleware(['auth'])->name('dashboard');
+    require __DIR__.'/auth.php';
+    include 'customer.php';
     include 'protype.php';
     include 'product.php';
     Route::get('/file',[FileController::class,'file'])->name('file');

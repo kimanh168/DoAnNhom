@@ -132,7 +132,6 @@ p{
     font-size: 0.9em;
     width: 95%;
     margin: 0 auto;
-    display: inline-block;
     text-align: center;
 
 }
@@ -153,11 +152,8 @@ input::placeholder {
 
 }
 @media (min-width: 300px) {
-    .signup-wrapper .signup-form .login{
-        display: inline-block;
-    }
     .signup-wrapper .signup-form .wrapper-2{
-        margin: 30px 60px;
+        margin: 30px 23px;
     }
 
     .signup-wrapper .company-details .title {
