@@ -24,6 +24,9 @@ class Customer extends Authenticatable
         return $this->hasMany(Order::class,'customer_id','id');
     }
 
+    public function comment_customer(){
+        return $this->belongsTo(Comment::class,'id','customer_id');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

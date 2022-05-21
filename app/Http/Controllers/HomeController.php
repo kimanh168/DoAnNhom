@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Protype;
 use App\Models\Customer;
+use App\Models\Rating;
 use App\Models\Comment;
 use Auth;
 use Mail;
@@ -16,8 +17,9 @@ class HomeController extends Controller
     function index(){
         $product = Product::limit(10)->orderby('id','DESC')->get();
         $protype = Protype::all();
+        $comment = Comment::with('customer')->orderBy('id','DESC')->limit(4)->get();
         //return view('index',['data'=>$product]);
-        return view('home.index',['data'=>$product,'dulieu'=>$protype]);
+        return view('home.index',['data'=>$product,'dulieu'=>$protype,'comment'=>$comment]);
     }
 
     //Hiển thị sản phẩm theo loại ra trang menu
@@ -165,34 +167,34 @@ class HomeController extends Controller
     }
 
     public function sendComment(Request $request){
-        $product_id = $request->id_sp;
-        $comment_cus = $request->customer_id;
-        $comment_content = $request->comment;
+        $comment_cus = $request->comment_cus;
+        $product_id = $request->product_id;
+        $comment_content = $request->comment_content;
         $comment = new Comment ;
-        $comment->customer_id = $customer_id;
-        $comment->product_id = $id_sp;
+        $comment->customer_id = $comment_cus;
+        $comment->product_id = $product_id;
         $comment->content = $comment_content;
         $comment->save();
     }
 
     public function loadComment(Request $request){
         $product_id = $request->product_id;
-        $comment = Comment::Where('product_id',$product_id)->get();
+        $comment = Comment::with('customer')->Where('product_id',$product_id)->orderBy('id','DESC')->get();
         $output = '';
-        foreach($comment as $key => $comm){
-            $output.='
-            <div class="testimonial-item bg-dark text-white border-inner p-4">
-                    <div class="d-flex align-items-center mb-3">
-
-                        <div class="ps-3">
-                            <h4 class="text-primary text-uppercase mb-1">'.$comm->customer_id.'</h4>
-                            <span>Profession</span>
+            foreach($comment as $key => $comm){
+                $output .='
+                <div class="testimonial-item text-white border-inner p-4" style="background-color:#905ddc !important">
+                        <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid flex-shrink-0" src="'.url('/img/smile.png').'" style="width: 60px; height: 60px;">
+                            <div class="ps-3">
+                                <h4 class="text-white text-uppercase mb-1" >'.$comm->customer->customer_name.'</h4>
+                                <span>'.$comm->created_at.'</span>
+                            </div>
                         </div>
+                        <p class="mb-0">'.$comm->content.'</p>
                     </div>
-                    <p class="mb-0">'.$comm->content.'</p>
-                </div>
-            ';
-        }
-        return $output;
+                ';
+                }
+        echo $output;
     }
 }

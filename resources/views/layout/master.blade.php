@@ -252,37 +252,60 @@
     <script  src="{{ asset('/js/slick.js') }}"></script>
     
     <script type="text/javascript">
-$(document).ready(function(){
-    load_comment();
-    function load_comment(){
-        var product_id = $('.comment_id_sp').val();
+    $('.category-filter').click(function(){
+                var category = [],tempArray = [];
+
+                $.each($("[data-filters='category']:checked"),function(){
+                    tempArray.push($(this).val());
+                });
+                tempArray.reverse();
+                if(tempArray.length !== 0){
+                    category += '?cate=' + tempArray.toString();
+                }
+                window.location.href = category
+            })
+    </script>
+
+    <script type="text/javascript">
+       
+    
+    $(document).ready(function(){
+
+        load_comment();
+
+        function load_comment(){
+            var product_id = $('.id_sp').val();
+            var _token = $('input[name="_token"]').val();
+            
+            $.ajax({
+            url:"{{url('/load-comment')}}",
+            method:"POST",
+            data:{product_id:product_id,_token:_token},
+            success:function(data){
+                $('#comment-show').html(data);
+            }
+        });
+    }
+    
+    $('.send-comment').click(function(){
+        var product_id = $('.id_sp').val();
+        var comment_cus = $('.customer_id').val();
+        var comment_content = $('.comment').val();
         var _token = $('input[name="_token"]').val();
-        
         $.ajax({
-        url:"{{url('/load-comment')}}",
-        method:"POST",
-        data:{product_id:product_id,_token:_token},
-        success:function(data){
-            $('#comment-show').html(data);
-        }
+            url:"{{url('/send-comment')}}",
+            method:"POST",
+            data:{product_id:product_id,comment_cus:comment_cus,comment_content:comment_content,_token:_token},
+            success:function(data){
+                $('#notyfy_comment').html('<p>Thêm bình luận thành công</p>');
+                load_comment();
+                $('#notyfy_comment').fadeOut(3000);
+                $('.comment').val('');
+            }
+        });
     });
-}
 });
 
-$('.send-comment').click(function(){
-    var product_id = $('.id_sp').val();
-    var comment_cus = $('.customer_id').val();
-    var comment_content = $('.comment').val();
-    $.ajax({
-        url:"{{url('/send-comment')}}",
-        method:"POST",
-        data:{product_id:product_id,comment_cus:comment_cus,comment_content:comment_content,_token:_token},
-        success:function(data){
-            $('#notyfy_comment').html('<p cladd="text-success">Thêm bình luận thành công</p>');
-            load_comment();
-        }
-    })
-})
 </script>
 </body>
 

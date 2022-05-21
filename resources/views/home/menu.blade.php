@@ -12,10 +12,10 @@
             <div class="row">
                 <div class="col-md-2 pt-2">
                     @foreach($dulieu as $row)
-                    <div class="form-check">
-                        <input class="cateCheck form-check-input" name="cateCheck" type="checkbox" value="{{ $row->type_name }}" id="{{ $row->type_id }}" >
-                        <label class="form-check-label" for="{{ $row->type_id }}">{{ $row->type_name }} ({{$row->products->count()}})</label>
-                    </div>
+                        <label class="checkbox-inline" for="{{ $row->type_id }}">
+                            <input class="category-filter form-control-checkbox" name="category-filter" type="checkbox" value="{{ $row->type_id }}" data-filters="category" >
+                        {{ $row->type_name }} ({{$row->products->count()}})
+                        </label>
                     @endforeach
                 </div>
                 <div class="hienthisp col-md-10 ">

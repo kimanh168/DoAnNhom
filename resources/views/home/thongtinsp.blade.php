@@ -72,7 +72,8 @@
             </div>
             <div class="owl-carousel testimonial-carousel">
                 <div class="testimonial-item bg-dark text-white border-inner p-4">
-                    <form  action="#">                
+                    <form action="#">     
+                    @csrf           
                         <div class="align-items-center mb-3">
                         @if(Auth::guard('cus')->check())  
                             <h4 class="text-primary text-uppercase mb-1">{{ Auth::guard('cus')->user()->customer_name }}</h4>
@@ -81,18 +82,19 @@
                         @endif
                             <label for="comment" class="form-label">Nội dung bình luận</label>
                             <input type="hidden" value="{{ $thongtinsp -> id  }}" name="id_sp" class="id_sp">
-                            <input type="hidden" value="{{  Auth::guard('cus')->user()->id  }}" name="customer_id">
-                            <textarea name="comment" id="comment" class="form-control" cols="auto" rows="3" placeholder="Nhập nội dung (*)" required></textarea>
+                            @if(Auth::guard('cus')->check())
+                            <input type="hidden" value="{{ Auth::guard('cus')->user()->id }}" name="customer_id" class="customer_id">
+                            @endif
+                            <textarea name="comment" id="comment" class="form-control comment" cols="auto" rows="3" placeholder="Nhập nội dung (*)" required></textarea>
                             <div id="commentHelp" class="form-text">Bình luận của bạn sẽ được thấy bởi tất cả mọi người, hãy là một người thưởng thức vị ngon văn minh</div>
                         </div>
+                        <div id="notyfy_comment" class="text-success"></div>
                         <button class="btn btn-primary send-comment" type="button">Gửi bình luận</button>
-                        <div id="notyfy_comment"></div>
+                       
                     </form>
                 </div>
                 <form>
-                @csrf
-                <input type="hidden" value="{{ $thongtinsp -> id  }}" name="comment_id_sp" class="comment_id_sp">
-                <div id="comment-show"></div>      
+                <div id="comment-show" class="overflow-auto" style="max-height:300px;  "></div>      
                 </form>
             </div>
         </div>
