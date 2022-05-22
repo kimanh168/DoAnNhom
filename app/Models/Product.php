@@ -14,4 +14,8 @@ class Product extends Model
         return $this->belongsTo(Protype::class,'type_id','id');
     }
 
+    public function ordDeltail(){
+        return $this->hasMany(OrderDetail::class,'id','order_id');
+    }
+
 }

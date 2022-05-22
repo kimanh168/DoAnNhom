@@ -4,7 +4,7 @@
 </p>
 <h4>Thông tin đơn hàng của bạn</h4>
 <h4>Mã đơn hàng: {{$order->id}}</h4>
-<h4>Ngày đặt hàng: {{$order_date}}</h4>
+<h4>Ngày đặt hàng: {{$order->created_at}}</h4>
 
 <h4>Chi tiết sản phẩm</h4>
 <table border="1" cellspacing="0" cellpadding="0" width="400">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Protype;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Auth;
 class ProtypeController extends Controller
 {
@@ -31,7 +32,7 @@ class ProtypeController extends Controller
         , 'type_name.unique' => 'Tên danh mục đã có trong CSDL'
         ]);
         Protype::create($request->all());
-        return redirect()->route('protypes');
+        return redirect()->route('protypes')->with('success','Thêm danh mục thành công');
     }
 
     //Sửa loại sản phẩm:
@@ -48,15 +49,19 @@ class ProtypeController extends Controller
         ],['type_name.required' => 'Tên danh mục không được để trống']);
         $request -> offsetUnset('_token');
         Protype::where(['id'=>$id])->update($request->all());
-        return redirect()->route('protypes');
+        return redirect()->route('protypes')->with('success','Sửa danh mục thành công');
     }
 
     //xóa loại sản phẩm:
     function deletetype($id)
     {
-        Protype::find($id)->delete();
-        return redirect()->back(); //Quay lại trang trước đó
-    }
-
- 
+        $product = Product::where('type_id',$id)->get();
+        if($product->count() == 0 ){
+            Protype::find($id)->delete();
+             //Quay lại trang trước đó
+            return redirect()->back()->with('success','Xóa danh mục thành công');
+        }else{
+            return redirect()->back()->with('error','Không thể xóa danh mục vì vẫn còn sản phẩm');
+        }     
+    } 
 }

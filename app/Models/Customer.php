@@ -17,7 +17,7 @@ class Customer extends Authenticatable
      */
     protected $table = 'customer';
     protected $fillable = [
-        'customer_name', 'email', 'password','phone','address'
+        'customer_name', 'email', 'password','phone','address','status','token'
     ];
 
     public function order_list(){

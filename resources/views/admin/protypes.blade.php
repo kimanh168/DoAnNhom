@@ -19,7 +19,19 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
+    @if(session()->has('error'))
+    <div class="alert alert-danger d-flex align-items-center mt-3" role="alert">
+      <div>
+        <strong>X</strong>  {{ session()->get('error') }}
+      </div>
+    </div>
+    @elseif(session()->has('success'))
+    <div class="alert alert-success d-flex align-items-center mt-3" role="alert">
+      <div>
+        <strong><i class="fa-solid fa-check"></i></strong>  {{ session()->get('success') }}
+      </div>
+    </div>
+    @endif
     <!-- Main content -->
     <section class="content p-1">
 

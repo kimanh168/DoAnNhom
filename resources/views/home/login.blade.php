@@ -56,6 +56,12 @@
                                                 <strong>X</strong>  {{ session()->get('error') }}
                                             </div>
                                         </div>
+                                        @elseif(session()->has('success'))
+                                        <div class="alert alert-success d-flex align-items-center mt-3" role="alert">
+                                            <div>
+                                                <strong>X</strong>  {{ session()->get('success') }}
+                                            </div>
+                                        </div>
                                         @endif
                                         <div class="flex items-center justify-end ">
                                             <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}"></a>

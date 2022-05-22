@@ -26,10 +26,12 @@ Route::get('/',[HomeController::class,'index'])->name('home.index');
 // Dẫn tới trang đăng ký custommer
 Route::get('home-register',[HomeController::class,'register'])->name('home.register');
 Route::post('home-register',[HomeController::class,'post_register'])->name('home.register');
+Route::get('customer-active/{customer}/{token}',[HomeController::class,'actived'])->name('customer.active');
 
 // Dẫn tới trang đăng nhập custommer
 Route::get('home-login',[HomeController::class,'login'])->name('home.login');
 Route::post('home-login',[HomeController::class,'post_login'])->name('home.login');
+
 // Thoát custommer
 Route::get('home-logout',[HomeController::class,'logout'])->name('home.logout');
 
@@ -47,8 +49,14 @@ Route::get('team',[HomeController::class,'team'])->name('team');
 Route::get('contact',[HomeController::class,'contact'])->name('contact');
 Route::post('contact',[HomeController::class,'post_contact'])->name('contact');
 
-// Dẫn tới trang thông tin sp
+// Dẫn tới trang thông tin sản phẩm
 Route::get('thongtinsp/{id?}',[HomeController::class,'chitietsp'])->name('thongtinsp');
+
+//Dẫn tới trang thông tin khách hàng
+Route::get('thongtinkh/{id?}',[CheckoutController::class,'getOrderByCustomerId'])->name('thongtinkh');
+
+//Dẫn tới trang thông tin đơn hàng
+Route::get('thongtindh/{id?}',[CheckoutController::class,'getOrderDetailByOrderId'])->name('thongtindh');
 
 //Admin
 Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
@@ -62,6 +70,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
     Route::post('/file',[FileController::class,'upload'])->name('file');
 });
 
+//Giỏ hàng
 Route::group(['prefix' => 'cart'],function(){
     Route::get('view',[CartController::class,'view'])->name('cart.view');
     Route::get('add/{id}/{quantity?}',[CartController::class,'add'])->name('cart.add');
@@ -69,6 +78,7 @@ Route::group(['prefix' => 'cart'],function(){
     Route::get('update/{id}/{quantity?}',[CartController::class,'update'])->name('cart.update');
 });
 
+//Thanh toán
 Route::group(['prefix' => 'checkout'],function(){
     Route::get('view',[CheckoutController::class,'form'])->name('checkout');
     Route::post('view',[CheckoutController::class,'submit_form'])->name('checkout');

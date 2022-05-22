@@ -55,7 +55,7 @@
             <div class="col-lg-4 text-center bg-secondary py-4 pt-4">
                 <div class="d-inline-flex align-items-center justify-content-center">
                     @if(Auth::guard('cus')->check())
-                    <h5><i class="fa-solid fa-user text-primary"> </i><a href=""> {{ Auth::guard('cus')->user()->customer_name }}</a></h5>
+                    <h5><i class="fa-solid fa-user text-primary"> </i><a href="{{ route('thongtinkh',Auth::guard('cus')->user()->id) }}"> {{ Auth::guard('cus')->user()->customer_name }}</a></h5>
                     
                     <div class="text-start ps-5">
                         <a href="{{ route('home.logout') }}"><h5 class="text-uppercase"><i class="fa-solid fa-right-from-bracket fs-2 text-danger"></i></h5></a>

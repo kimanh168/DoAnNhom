@@ -17,11 +17,12 @@ class CreateOrdersTable extends Migration
          Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
+            $table->string('order_note',255)->nullable();
             $table->string('email',150)->nullable();
-            $table->integer('phone')->nullable();
+            $table->string('phone',11)->nullable();
             $table->string('address',150)->nullable();
             $table->timestamps();
-
+            $table->tinyInteger('status')->default(0);
             $table->foreign('customer_id')->references('id')->on('customer');
         });
     }

@@ -19,9 +19,13 @@ class CustomerAuthenticate
      */
     public function handle($request, Closure $next,$guard = 'cus')
     {
-        if(Auth::guard($guard)->check()){
-            return $next($request);
+        if(!Auth::guard($guard)->check()){
+            return redirect()->route('home.login')->with('error','Bạn cần đăng nhập');
+        }elseif(Auth::guard('cus')->user()->status == 0){
+            Auth::guard($guard)->logout();
+            return redirect()->route('home.login')->with('error','Bạn cần xác nhận tài khoản');
         }
-        return redirect()->route('home.login')->with('error','Bạn cần đăng nhập');
+        return $next($request);
+       
     }
 }

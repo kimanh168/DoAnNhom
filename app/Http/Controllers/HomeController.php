@@ -98,7 +98,11 @@ class HomeController extends Controller
             'password.required' => 'Vui lòng nhập mật khẩu'
         ]);
 
-        if(Auth::guard('cus')->attempt($req->only('email','password'),$req->has('remember'))){
+        if(Auth::guard('cus')->attempt($req->only('email','password'))){
+            if(Auth::guard('cus')->user()->status == 0){
+                Auth::guard('cus')->logout();
+                return redirect()->route('home.login')->with('error','Tài khoản của bạn chưa được kích hoạt');
+            }
             return redirect()->route('home.index');
         }
         else{
@@ -129,9 +133,31 @@ class HomeController extends Controller
                 'confirm_password.same' => 'Nhập lại mật khẩu không chính xác'
 
             ]);
-            $password = bcrypt($request->password);
-            $request->merge(['password'=>$password]);
-            Customer::create($request->all());
-            return redirect()->route('home.login');
+            $token = strtoupper( random_int(1000000000,9999999999));
+            $password_h = bcrypt($request->password);
+            $data = $request->only('customer_name','email','password','phone','address');
+            $data['password'] = $password_h;
+            $data['token'] = $token;   
+            if($customer = Customer::create($data)){
+                Mail::send('email.active_account',compact('customer'),
+                    function($mail) use ($customer){
+                        $mail->to($customer->email,$customer->customer_name);
+                        $mail->from('deliciouscakesy@gmail.com');
+                        $mail->subject('Delicious Cake - Xác nhận tài khoản');
+                    });
+                    return redirect()->route('home.login')->with('success','Đăng kí tài khoản thành công vui lòng xác nhận email');
+            }
+            return redirect()->back();
+    }
+
+    //Kích hoạt tài khoản
+    public function actived (Customer $customer,$token){
+        if($customer->token === $token){
+            $customer->update(['status'=>1,'token' => null]);
+            return redirect()->route('home.login')->with('success','Xác nhận tài khoản thành công');
+        }
+        else{
+            return redirect()->route('home.login')->with('error','Xác nhận tài khoản thất bại');
+        }
     }
 }

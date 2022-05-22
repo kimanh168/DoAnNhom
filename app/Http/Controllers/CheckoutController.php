@@ -7,6 +7,7 @@ use App\Models\Protype;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Helper\CartHelper;
+use App\Models\Customer;
 use Auth;
 use Mail;
 
@@ -32,8 +33,7 @@ class CheckoutController extends Controller
             'order_note' => $request->order_note,
             'email' => $request->email,
             'phone' => $request->phone,
-            'address' => $request->address,
-           
+            'address' => $request->address,  
         ])) {
             $order_id = $order->id;
             foreach($cart->items as $product_id=>$item){
@@ -64,5 +64,20 @@ class CheckoutController extends Controller
             return view('checkout',['dulieu'=>$protype]);
         }
         
+    }
+
+    //Danh sách đơn hàng đã đặt của 1 khách hàng:
+    public function getOrderByCustomerId($id){
+        $protype = Protype::all();
+        $customer=Customer::find($id);
+        $orders = Order::where('customer_id',$id)->get();
+        return view('home.thongtinkh',['dulieu'=>$protype,'orderbycustomer'=>$orders]);
+    }
+
+    public function getOrderDetailByOrderId($id){
+        $protype = Protype::all();
+        $orders= Order::find($id);
+        $orderDetail = OrderDetail::where('order_id',$id)->get();
+        return view('home.thongtindh',['dulieu'=>$protype,'orderdetalbyId'=>$orderDetail]);
     }
 }

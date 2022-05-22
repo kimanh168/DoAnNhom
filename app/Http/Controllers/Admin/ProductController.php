@@ -49,7 +49,7 @@ class ProductController extends Controller
         $img = str_replace(url('img').'/','',$request-> image);
         $request->merge(['image' => $img]);
         Product::create($request->all());
-        return redirect()->route('products');
+        return redirect()->route('products')->with('success','Thêm sản phẩm thành công');;
     }
 
     //Sửa sản phẩm
@@ -82,14 +82,14 @@ class ProductController extends Controller
         $request->merge(['image' => $img]);
         $request -> offsetUnset('_token');
         Product::where(['id'=>$id])->update($request->all());
-        return redirect()->route('products');
+        return redirect()->route('products')->with('success','Sửa sản phẩm thành công');;
     }
 
     //xóa sản phẩm:
     function delete($id)
     {
         Product::find($id)->delete();
-        return redirect()->back(); //Quay lại trang trước đó
+        return redirect()->back()->with('success','Xóa sản phẩm thành công');; //Quay lại trang trước đó
     }
 
 }
