@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+<?php $title = 'team';?>
 
     <!-- Page Header Start -->
     <div class="container-fluid bg-dark bg-img p-5 mb-5">

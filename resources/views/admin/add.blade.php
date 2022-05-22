@@ -96,7 +96,7 @@
         <div class="row p-1">
             <div class="col-12">
                 <a href="{{ route('products') }}" class="btn btn-secondary">Cancel</a>
-                <input type="submit" value="Create new Porject" class="btn btn-success float-right" >
+                <input type="submit" value="Create new product" class="btn btn-success float-right" >
             </div>
         </div>
         </form>

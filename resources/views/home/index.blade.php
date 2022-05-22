@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('content')
-
+<?php $title = 'home' ?>
     <!-- Hero Start -->
     <div class="container-fluid  py-5 mb-5 hero-header">
             <div class="container py-5">
@@ -47,6 +47,7 @@
                                                     @if( $row-> promotion != 0 )
                                                         <span class="sale">-{{ $row-> promotion }}%</span>
                                                     @endif
+                                                    <span class="new">NEW</span>
 												</div>
 									    </div>
 										<div class="product-body">
@@ -64,7 +65,7 @@
 											
 										</div>
 										<div class="add-to-cart">
-                                            <a href="{{ route('cart.add',['id' => $row->id]) }}"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+                                            <a href="{{ route('cart.add',['id' => $row->id]) }}"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Add cart</button></a>
 										</div>
 									</div>
 									<!-- /product -->

@@ -21,7 +21,10 @@ quickview.forEach(element => {
         <div class="col-6">
             <h1>${result.product_name}</h1>
             <p class="product-price">
-               ${result.price}  VND
+               Giá sản phẩm: ${result.price}  VND
+            </p>
+            <p class="product-price">
+               Hạn sử dụng:  <span class="badge bg-primary"><strong> ${result.expiry} Ngày</strong></span>
             </p>
         </div>
         <p class="product-description pt-4">

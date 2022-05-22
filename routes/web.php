@@ -52,6 +52,8 @@ Route::post('contact',[HomeController::class,'post_contact'])->name('contact');
 // Dẫn tới trang thông tin sản phẩm
 Route::get('thongtinsp/{id?}',[HomeController::class,'chitietsp'])->name('thongtinsp');
 
+Route::get('timkiemsp/{key?}',[HomeController::class,'timkiemsp'])->name('timkiemsp');
+
 //Dẫn tới trang thông tin khách hàng
 Route::get('thongtinkh/{id?}',[CheckoutController::class,'getOrderByCustomerId'])->name('thongtinkh');
 

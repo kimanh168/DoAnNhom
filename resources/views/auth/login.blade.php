@@ -47,12 +47,11 @@
                                             <input type="password" class="form-control form-control-user" name="password"
                                             id="password" placeholder="Password" required autocomplete="current-password" >
                                         </div>
-
                                         <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="remember_me" name="remember">
-                                                <label class="custom-control-label" for="customCheck">{{ __('Remember me') }}</label>
-                                            </div>
+                                            <label for="remember_me" class="inline-flex items-center">
+                                                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                                                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                                            </label>
                                         </div>
                                         <x-button class="signup btn btn-primary btn-user btn-block">
                                                         {{ __('Log in') }} 

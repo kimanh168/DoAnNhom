@@ -38,7 +38,8 @@ class HomeController extends Controller
     {
         $protype = Protype::all();
         $modal = Product::find($id);
-        return view('home.thongtinsp',['dulieu'=>$protype,'thongtinsp'=>$modal]);
+        $sp_cungloai = Product::where('type_id',$modal->type_id)->get();
+        return view('home.thongtinsp',['dulieu'=>$protype,'thongtinsp'=>$modal,'sp_cungloai'=>$sp_cungloai]);
     }
     //Hiển thị about:
     function about(){
@@ -71,10 +72,11 @@ class HomeController extends Controller
     }
 
     //Tìm kiếm sp
-    public function update(){
+    public function timkiemsp(){
+        $protype = Protype::all();
         $key = request()->key ? request()->key : '';
-        $search = Product::where('product_name', 'Like', '%' . $key . '%')->get();
-        return view('home.timkiemsp',['search'=>$search]);
+        $search = Product::where('product_name', 'Like', '%' . $key . '%')->paginate(6);
+        return view('home.timkiemsp',['timkiem'=>$search,'dulieu'=>$protype,'key'=>$key]);
     }
 
     //Thoát

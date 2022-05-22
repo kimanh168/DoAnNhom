@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+<?php $title='contact' ?>
 
     <!-- Page Header Start -->
     <div class="container-fluid bg-dark bg-img p-5 mb-5">
@@ -57,7 +58,7 @@
                                 <input type="text" name="name" class="form-control bg-light border-0 px-4" placeholder="Your Name" style="height: 55px;">
                             </div>
                             <div class="col-sm-6">
-                                <input type="email" name="email" class="form-control bg-light border-0 px-4" placeholder="Your Email" style="height: 55px;">
+                                <input type="email" name="email" class="form-control bg-light border-0 px-4" placeholder="Your Email" style="height: 55px;" required>
                             </div>
                             <div class="col-sm-12">
                                 <input type="text" name="subject" class="form-control bg-light border-0 px-4" placeholder="Subject" style="height: 55px;">

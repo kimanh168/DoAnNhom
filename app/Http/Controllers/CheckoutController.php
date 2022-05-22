@@ -58,10 +58,10 @@ class CheckoutController extends Controller
                 $mail->subject('Email ordered');
             });
             session(['cart'=>'']);
-            return redirect()->back();
+            return redirect()->back()->with('success','Đặt Hàng Thành Công');
         }
         else{
-            return view('checkout',['dulieu'=>$protype]);
+            return view('checkout',['dulieu'=>$protype])->with('error','Đặt Hàng Thất Bại');;
         }
         
     }

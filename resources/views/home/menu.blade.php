@@ -1,5 +1,7 @@
 @extends('layout.master')
 @section('content')
+<?php $title = 'menu';?>
+
     <!-- Products Start -->
     <div class="container-fluid about py-5">
         <div class="container">

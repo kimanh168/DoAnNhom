@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('content')
-
+<?php $title='about' ?>
     <!-- Page Header Start -->
     <div class="container-fluid bg-dark bg-img p-5 mb-5">
         <div class="row">

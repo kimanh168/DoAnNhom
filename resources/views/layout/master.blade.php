@@ -55,7 +55,7 @@
             <div class="col-lg-4 text-center bg-secondary py-4 pt-4">
                 <div class="d-inline-flex align-items-center justify-content-center">
                     @if(Auth::guard('cus')->check())
-                    <h5><i class="fa-solid fa-user text-primary"> </i><a href="{{ route('thongtinkh',Auth::guard('cus')->user()->id) }}"> {{ Auth::guard('cus')->user()->customer_name }}</a></h5>
+                    <h5><i class="fa-solid fa-user text-primary"></i><a href="{{ route('thongtinkh',Auth::guard('cus')->user()->id) }}"> {{ Auth::guard('cus')->user()->customer_name }}</a></h5>
                     
                     <div class="text-start ps-5">
                         <a href="{{ route('home.logout') }}"><h5 class="text-uppercase"><i class="fa-solid fa-right-from-bracket fs-2 text-danger"></i></h5></a>
@@ -111,13 +111,19 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-0">
-        <a href="index.html" class="navbar-brand d-block d-lg-none">
+        <a href="{{route('home.index')}}" class="navbar-brand d-block d-lg-none">
             <h1 class="m-0 text-uppercase text-white"><i class="fa fa-birthday-cake fs-1 text-primary me-3 "></i>Delicious</h1>
         </a>
-        <a href="index.html" class="navbar-brand d-block d-lg-none">
+        @if(Auth::guard('cus')->check())
+        <a href="{{ route('home.logout') }}" class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 text-uppercase text-white"><i class="fa-solid fa-right-from-bracket text-danger"></i></h1>
+        </a>
+        @else
+        <a href="{{ route('home.login') }}" class="navbar-brand d-block d-lg-none">
             <h1 class="m-0 text-uppercase text-white"><i class="fa-solid fa-user"></i></h1>
         </a>
-        <a href="index.html" class="navbar-brand d-block d-lg-none">
+        @endif
+        <a href="{{route('cart.view')}}" class="navbar-brand d-block d-lg-none">
             <h1 class="m-0 text-uppercase text-white"><i class="fas fa-shopping-cart"></i></h1>
         </a>
         <button class="navbar-toggler mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -125,10 +131,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto mx-lg-auto py-0">
-                <a href="{{ route('home.index')}}" class="nav-item nav-link active">Home</a>
-                <a href="{{ route('about')}}" class="nav-item nav-link">About Us</a>
+                <a href="{{route('home.index')}} " class="nav-item nav-link <?php if(isset($title) && $title=='home'){echo 'active';} ?>">Home</a>
+                <a href="{{ route('about')}}" class="nav-item nav-link <?php if(isset($title) && $title=='about') {echo 'active';} ?>">About Us</a>
                 <div class="nav-item dropdown" >
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Menu & Pricing</a>
+                    <a href="#" class="nav-link dropdown-toggle <?php if(isset($title) && $title=='menu'){echo 'active';} ?>" data-bs-toggle="dropdown"  >Menu & Pricing</a>
                     <div class="dropdown-menu m-0" style="border: 5px solid #c4a4ec;"  >
                     <a href="{{ route('menu') }}" class="dropdown-item" style="border-bottom: 1px solid #c4a4ec;">All Cakes</a>
                         @foreach($dulieu as $row)
@@ -136,13 +142,13 @@
                         @endforeach
                     </div>  
                 </div>
-                <a href="{{ route('team')}}" class="nav-item nav-link">Master Chefs</a>
-                <a href="{{ route('contact')}}" class="nav-item nav-link  pe-5">Contact Us</a>
+                <a href="{{ route('team')}}" class="nav-item nav-link <?php if(isset($title) && $title=='team') {echo 'active';} ?>" >Master Chefs</a>
+                <a href="{{ route('contact')}}" class="nav-item nav-link <?php if(isset($title) && $title=='contact') {echo 'active';} ?> pe-5">Contact Us</a>
                 <nav class="navbar">
-                    <form class="d-flex"  >
+                    <form action="{{route('timkiemsp')}}" method="get" class="d-flex"  >
                         <input class="form-control me-1" style="width: 300px !important" type="search" placeholder="Search" aria-label="Search" oninput="searchProduct(this.value)" name="key">
                         <div id="search-result" class="result-search"></div>
-                        <button class="btn btn-outline-success" type="submit" ><i class="fa fa-search"></i></button>   
+                        <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>   
                     </form>
                 </nav>
             </div>
