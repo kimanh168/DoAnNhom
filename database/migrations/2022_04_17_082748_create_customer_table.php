@@ -21,8 +21,8 @@ class CreateCustomerTable extends Migration
             $table->String('phone',11);
             $table->String('address',150);
             $table->timestamps();
-            $table->tinyInteger('status')->default(0);
-            $table->String('token',10);
+            $table->tinyInteger('status')->default(0)->nullable();
+            $table->String('token',10)->nullable();
            
         });
     }

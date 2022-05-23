@@ -24,3 +24,5 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::get('/showProductByType', [ProductController::class, 'showProductByType']);
 
 Route::get('/searchProduct/{key}', [ProductController::class, 'showProductBySearch']);
+
+

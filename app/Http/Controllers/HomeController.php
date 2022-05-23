@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Protype;
 use App\Models\Customer;
+use App\Models\Comment;
 use Auth;
 use Mail;
 
@@ -118,7 +119,7 @@ class HomeController extends Controller
         return view('home.register');
     }
 
-    //Kiểm tra và tiến hành tạo tài khoản
+    //Kiểm tra và tiến hành tạo tài khoản và gửi email yêu cầu xác nhận
     public function post_register(Request $request){
             $this->validate($request,[
                 'customer_name' => 'required',
@@ -161,5 +162,37 @@ class HomeController extends Controller
         else{
             return redirect()->route('home.login')->with('error','Xác nhận tài khoản thất bại');
         }
+    }
+
+    public function sendComment(Request $request){
+        $product_id = $request->id_sp;
+        $comment_cus = $request->customer_id;
+        $comment_content = $request->comment;
+        $comment = new Comment ;
+        $comment->customer_id = $customer_id;
+        $comment->product_id = $id_sp;
+        $comment->content = $comment_content;
+        $comment->save();
+    }
+
+    public function loadComment(Request $request){
+        $product_id = $request->product_id;
+        $comment = Comment::Where('product_id',$product_id)->get();
+        $output = '';
+        foreach($comment as $key => $comm){
+            $output.='
+            <div class="testimonial-item bg-dark text-white border-inner p-4">
+                    <div class="d-flex align-items-center mb-3">
+
+                        <div class="ps-3">
+                            <h4 class="text-primary text-uppercase mb-1">'.$comm->customer_id.'</h4>
+                            <span>Profession</span>
+                        </div>
+                    </div>
+                    <p class="mb-0">'.$comm->content.'</p>
+                </div>
+            ';
+        }
+        return $output;
     }
 }

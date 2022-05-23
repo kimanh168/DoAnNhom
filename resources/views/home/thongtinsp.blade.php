@@ -72,31 +72,28 @@
             </div>
             <div class="owl-carousel testimonial-carousel">
                 <div class="testimonial-item bg-dark text-white border-inner p-4">
-                    <form action="" method="post">
-                        <input type="text">
-                        <input type="button">
+                    <form  action="#">                
+                        <div class="align-items-center mb-3">
+                        @if(Auth::guard('cus')->check())  
+                            <h4 class="text-primary text-uppercase mb-1">{{ Auth::guard('cus')->user()->customer_name }}</h4>
+                        @else
+                        <h4 class="text-primary text-uppercase mb-1">Client Name</h4>
+                        @endif
+                            <label for="comment" class="form-label">Nội dung bình luận</label>
+                            <input type="hidden" value="{{ $thongtinsp -> id  }}" name="id_sp" class="id_sp">
+                            <input type="hidden" value="{{  Auth::guard('cus')->user()->id  }}" name="customer_id">
+                            <textarea name="comment" id="comment" class="form-control" cols="auto" rows="3" placeholder="Nhập nội dung (*)" required></textarea>
+                            <div id="commentHelp" class="form-text">Bình luận của bạn sẽ được thấy bởi tất cả mọi người, hãy là một người thưởng thức vị ngon văn minh</div>
+                        </div>
+                        <button class="btn btn-primary send-comment" type="button">Gửi bình luận</button>
+                        <div id="notyfy_comment"></div>
                     </form>
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid flex-shrink-0" src="img/testimonial-1.jpg" style="width: 60px; height: 60px;">
-                        <div class="ps-3">
-                            <h4 class="text-primary text-uppercase mb-1">Client Name</h4>
-                            <span>Profession</span>
-                        </div>
-                    </div>
-                    <p class="mb-0">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                    </p>
                 </div>
-                <div class="testimonial-item bg-dark text-white border-inner p-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid flex-shrink-0" src="img/testimonial-2.jpg" style="width: 60px; height: 60px;">
-                        <div class="ps-3">
-                            <h4 class="text-primary text-uppercase mb-1">Client Name</h4>
-                            <span>Profession</span>
-                        </div>
-                    </div>
-                    <p class="mb-0">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
-                    </p>
-                </div>
+                <form>
+                @csrf
+                <input type="hidden" value="{{ $thongtinsp -> id  }}" name="comment_id_sp" class="comment_id_sp">
+                <div id="comment-show"></div>      
+                </form>
             </div>
         </div>
     </div>

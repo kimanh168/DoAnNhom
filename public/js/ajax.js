@@ -107,3 +107,7 @@ async function searchProduct(keyword) {
         divResult.classList.remove('border-search');
     }
 }
+
+
+
+

@@ -48,7 +48,7 @@
             <div class="col-lg-4 text-center bg-primary border-inner pt-3">
                 <div class="d-inline-flex align-items-center justify-content-center">
                     <a href="{{ route('home.index')}}" class="navbar-brand">
-                        <h1 class="m-0 text-uppercase text-white"><i class="fa fa-mug-hot text-white"></i> Delicious</h1>
+                        <h1 class="m-0 text-uppercase text-white mb-3"><i class="fa fa-mug-hot text-white"></i> Delicious</h1>
                     </a>
                 </div>
             </div>
@@ -58,14 +58,17 @@
                     <h5><i class="fa-solid fa-user text-primary"></i><a href="{{ route('thongtinkh',Auth::guard('cus')->user()->id) }}"> {{ Auth::guard('cus')->user()->customer_name }}</a></h5>
                     
                     <div class="text-start ps-5">
-                        <a href="{{ route('home.logout') }}"><h5 class="text-uppercase"><i class="fa-solid fa-right-from-bracket fs-2 text-danger"></i></h5></a>
+                        <a href="{{ route('home.logout') }}"><h5 class="text-uppercase"><i class="fa-solid fa-right-from-bracket fs-3 text-danger"></i></h5></a>
                     </div>
                     @else 
                     <div class="text-start">
-                        <a href="{{ route('home.login') }}"><h5 class="text-uppercase"><i class="fa fa-users fs-2 text-primary me-3"></i> Login</h5></a>
+                        <a href="{{ route('home.login') }}"><h5 class="text-uppercase"><i class="fa fa-users fs-3 text-primary "></i> Login</h5></a>
+                    </div>
+                    <div class="text-start ps-5">
+                        <a href="{{ route('home.register') }}"><h5 class="text-uppercase"><i class="fa fa-edit fs-3 text-primary"></i> Register</h5></a>
                     </div>
                     @endif
-                    <a href="#" id="cart"><i class="fa fa-shopping-cart fs-2 text-primary ms-5" ></i></a>
+                    <a href="#" id="cart"><i class="fa fa-shopping-cart fs-3 text-primary ms-5" ></i></a>
                     <div class="text-start">
                         <a href="{{route('cart.view')}}" ><h5 class="text-uppercase"><span class="badge">{{$cart ->total_quantity}}</span></h5></a>
                     </div> 
@@ -248,7 +251,39 @@
     <script  src="{{ asset('/js/btt.js') }}"></script>
     <script  src="{{ asset('/js/slick.js') }}"></script>
     
-    
+    <script type="text/javascript">
+$(document).ready(function(){
+    load_comment();
+    function load_comment(){
+        var product_id = $('.comment_id_sp').val();
+        var _token = $('input[name="_token"]').val();
+        
+        $.ajax({
+        url:"{{url('/load-comment')}}",
+        method:"POST",
+        data:{product_id:product_id,_token:_token},
+        success:function(data){
+            $('#comment-show').html(data);
+        }
+    });
+}
+});
+
+$('.send-comment').click(function(){
+    var product_id = $('.id_sp').val();
+    var comment_cus = $('.customer_id').val();
+    var comment_content = $('.comment').val();
+    $.ajax({
+        url:"{{url('/send-comment')}}",
+        method:"POST",
+        data:{product_id:product_id,comment_cus:comment_cus,comment_content:comment_content,_token:_token},
+        success:function(data){
+            $('#notyfy_comment').html('<p cladd="text-success">Thêm bình luận thành công</p>');
+            load_comment();
+        }
+    })
+})
+</script>
 </body>
 
 </html>

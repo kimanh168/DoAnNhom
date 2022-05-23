@@ -61,6 +61,8 @@ class ProductController extends Controller
         return $product;
     }
 
+    
+
     /**
      * Show the form for editing the specified resource.
      *

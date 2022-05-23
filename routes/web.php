@@ -85,3 +85,6 @@ Route::group(['prefix' => 'checkout'],function(){
     Route::get('view',[CheckoutController::class,'form'])->name('checkout');
     Route::post('view',[CheckoutController::class,'submit_form'])->name('checkout');
 });
+
+Route::post('load-comment', [HomeController::class,'loadComment']);
+Route::post('send-comment', [HomeController::class,'sendComment']);
