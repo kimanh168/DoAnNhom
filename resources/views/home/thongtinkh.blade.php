@@ -7,8 +7,15 @@
 			<div class="container">
 				<!-- row -->
 				<div class="row">
+				@if(session()->has('success'))
+					<div class="alert alert-success d-flex align-items-center mt-3" role="alert">
+					<div>
+						<strong><i class="fa-solid fa-check"></i></strong>  {{ session()->get('success') }}
+					</div>
+					</div>
+					@endif
 					<div class="col-md-7">
-						<form action="" method="post">
+						<form action="" method="POST">
 						@csrf
 						<!-- Billing Details -->
 						<div class="row billing-details">
@@ -17,21 +24,32 @@
 							</div>
 							<div class="col-8 mb-3">
 								<label for="name" class="form-label">Full Name</label>
-								<input class="form-control" type="text" id="name" name="first-name" placeholder="Your Name" value="{{ Auth::guard('cus')->user()->customer_name }}">
+								<input class="form-control" type="text" id="name" name="customer_name" placeholder="Your Name" value="{{ Auth::guard('cus')->user()->customer_name }}">
+								@if($errors->has('customer_name'))
+                                    <p style="color:red"> {{$errors->first('customer_name') }} !!!</p>
+                                @endif
 							</div>
 							<div class="col-8 mb-3">
 								<label for="email" class="form-label">Email</label>
-								<input class="form-control" type="email" id="email" name="email" placeholder="exam@email.com" value="{{ Auth::guard('cus')->user()->email }}">
+								<input class="form-control" type="email" id="email" name="email" placeholder="exam@email.com" value="{{ Auth::guard('cus')->user()->email }}" readonly>
 							</div>
 							<div class="col-8 mb-3">
 								<label for="address" class="form-label">Address</label>
 								<input class="form-control" type="text" name="address" placeholder="Your Address" value="{{ Auth::guard('cus')->user()->address }}">
+								@if($errors->has('address'))
+                                    <p style="color:red"> {{$errors->first('address') }} !!!</p>
+                                @endif
 							</div>
 							<div class="col-8 mb-3">
 								<label for="phone" class="form-label">Phone Number</label>
 								<input class="form-control" type="tel" name="phone" placeholder="Telephone" value="{{ Auth::guard('cus')->user()->phone }}">
+								@if($errors->has('phone'))
+                                    <p style="color:red"> {{$errors->first('phone') }} !!!</p>
+                                @endif
 							</div>
 						</div>
+						<button type="submit" class="btn btn-primary order-submit ">Update Information</button>
+						</form>
 						<!-- /Billing Details -->
 					</div>
 
@@ -44,9 +62,10 @@
 							<table id="cart" class="table table-hover table-condensed"> 
 								<thead> 
 									<tr> 
-										<th style="width:33%">Mã Vận Đơn</th>
-										<th style="width:33%">Trạng Thái</th>  
-										<th style="width:33%">Chi Tiết </th> 
+										<th style="width:25%">Mã Đơn</th>
+										<th style="width:20%">Trạng Thái</th>  
+										<th style="width:30%">Ngày Đặt</th>  
+										<th style="width:25%">Chi Tiết </th> 
 									</tr> 
 								</thead> 
 								<tbody>
@@ -56,14 +75,15 @@
 										@if($item['status'] == 0)
 										<td><span class="badge bg-warning">Chờ xác nhận</span></td>
 										@endif
-										<td><a class="text-info" href="{{ route('thongtindh',$item['id']) }}">Hiển thị</a> </td>	
+										<td>{{ $item['created_at'] }}</td>
+										<td><span class="badge bg-info"><a class="text-white" href="{{ route('thongtindh',$item['id']) }}">Hiển thị</a></span></td>	
 									</tr>
 									@endforeach
 								</tbody>
 							</table>
 						</div>
 					</div>
-					</form>
+					
 					<!-- /Order Details -->
 				</div>
 				<!-- /row -->

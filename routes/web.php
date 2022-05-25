@@ -37,7 +37,6 @@ Route::get('home-logout',[HomeController::class,'logout'])->name('home.logout');
 
 //Dẫn tới trang Menu
 Route::get('menu',[HomeController::class,'getAllProductMenu'])->name('menu');
-Route::get('menu/{type_id?}',[HomeController::class,'productByType'])->name('menu.id');
 
 // Dẫn tới trang About us
 Route::get('about',[HomeController::class,'about'])->name('about');
@@ -56,6 +55,7 @@ Route::get('timkiemsp/{key?}',[HomeController::class,'timkiemsp'])->name('timkie
 
 //Dẫn tới trang thông tin khách hàng
 Route::get('thongtinkh/{id?}',[CheckoutController::class,'getOrderByCustomerId'])->name('thongtinkh');
+Route::post('thongtinkh/{id?}',[HomeController::class,'update_Profile'])->name('thongtinkh');
 
 //Dẫn tới trang thông tin đơn hàng
 Route::get('thongtindh/{id?}',[CheckoutController::class,'getOrderDetailByOrderId'])->name('thongtindh');
@@ -86,5 +86,13 @@ Route::group(['prefix' => 'checkout'],function(){
     Route::post('view',[CheckoutController::class,'submit_form'])->name('checkout');
 });
 
+//Comment
 Route::post('load-comment', [HomeController::class,'loadComment']);
 Route::post('send-comment', [HomeController::class,'sendComment']);
+
+//Giỏ hàng
+Route::group(['prefix' => 'wish'],function(){
+    Route::get('view',[HomeController::class,'wishView'])->name('wish.view');
+    Route::get('add/{id}',[HomeController::class,'addToWish'])->name('wish.add');
+    Route::get('remove/{id}',[HomeController::class,'removeToWish'])->name('wish.remove');
+});

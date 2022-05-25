@@ -8,6 +8,7 @@ use App\Models\Protype;
 use App\Models\Customer;
 use App\Models\Rating;
 use App\Models\Comment;
+use App\Models\WishList;
 use Auth;
 use Mail;
 
@@ -15,25 +16,24 @@ class HomeController extends Controller
 {
     //Hiển thị trang chủ
     function index(){
-        $product = Product::limit(10)->orderby('id','DESC')->get();
+        $product = Product::limit(10)->orderby('id','DESC')->with('wishlist')->get();
         $protype = Protype::all();
         $comment = Comment::with('customer')->orderBy('id','DESC')->limit(4)->get();
         //return view('index',['data'=>$product]);
         return view('home.index',['data'=>$product,'dulieu'=>$protype,'comment'=>$comment]);
     }
 
-    //Hiển thị sản phẩm theo loại ra trang menu
-    function productByType($typeid){
-        $protype = Protype::all();
-        $sp_theoloai = Product::where('type_id',$typeid)->paginate(6);
-        return view('home.menu',['dulieu'=>$protype,'sp_theoloai'=> $sp_theoloai]);
-    }
 
-    //Hiển thị tất cả sản phẩm ra trang menu
-    function getAllProductMenu(){
-        $product = Product::paginate(6); //SELECT * FROM Product limit(0,5)
+    //Lọc sản phẩm ra trang menu
+    public function getAllProductMenu(Request $request){
+        if(isset($_GET['cate'])){
+            $category_filter = $request->cate;
+            $category_arr = explode(",",$category_filter);
+            $category_by_id = Product::with('protype')->whereIn('type_id',$category_arr)->paginate(6)->appends(request()->query());
+        }
         $protype = Protype::all();
-        return view('home.menu',['dulieu'=>$protype,'tatcasp' => $product]);
+        $giamgia = Product::with('protype')->where('promotion','>',0)->get();
+        return view('home.menu',['dulieu'=>$protype,'sp_theoloai' => $category_by_id,'giamgia' => $giamgia]);       
     }
 
     //Hiển thị chi tiết sp:
@@ -46,18 +46,16 @@ class HomeController extends Controller
     }
     //Hiển thị about:
     function about(){
-            $protype = Protype::all();
-            return view('home.about',['dulieu'=>$protype]);
+        return view('home.about');
     }
     //Hiển thị team:
     function team(){
-            $protype = Protype::all();
-            return view('home.team',['dulieu'=>$protype]);
+         return view('home.team');
     }
     //Hiển thị contact:
     function contact(){
             $protype = Protype::all();
-            return view('home.contact',['dulieu'=>$protype]);
+            return view('home.contact');
     }
 
     //Gửi contact:
@@ -76,10 +74,9 @@ class HomeController extends Controller
 
     //Tìm kiếm sp
     public function timkiemsp(){
-        $protype = Protype::all();
         $key = request()->key ? request()->key : '';
         $search = Product::where('product_name', 'Like', '%' . $key . '%')->paginate(6);
-        return view('home.timkiemsp',['timkiem'=>$search,'dulieu'=>$protype,'key'=>$key]);
+        return view('home.timkiemsp',['timkiem'=>$search,'key'=>$key]);
     }
 
     //Thoát
@@ -197,4 +194,53 @@ class HomeController extends Controller
                 }
         echo $output;
     }
+
+
+    //Wish view:
+    public function wishView(){
+        $wishList = WishList::where('customer_id',Auth::guard('cus')->user()->id)->get();
+        
+        return view('home.wishlist',['wishlist'=>$wishList]);
+    }
+
+    //Thêm vào ds yêu thích
+    public function addToWish($productID){
+        if(Auth::guard('cus')->check()){
+            $wishPresent = WishList::where('customer_id',Auth::guard('cus')->user()->id)->where('product_id',$productID)->get();
+            if( $wishPresent -> count() == 0){
+                $wishList = new WishList;
+                $wishList -> customer_id = Auth::guard('cus')->user()->id;
+                $wishList -> product_id = $productID;
+                $wishList -> save();
+                return back()->with('success','Thêm vào wish list thành công');
+            }    
+            else{
+                return back()->with('error','Sản phẩm này đã có trong wish list của bạn');
+            }
+        }
+        return redirect()->route('home.login')->with('error','Vui lòng đăng nhập');;
+    }
+
+    //Xóa khỏi danh sách yêu thích
+    public function removeToWish($productID){
+        WishList::where('customer_id',Auth::guard('cus')->user()->id)->where('product_id',$productID)->delete();
+        return back();
+    }
+
+    //Cập nhật thông tin cá nhân
+    public function update_Profile(Request $request){
+        $this->validate($request,[
+            'customer_name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+        ],[
+                'customer_name.required' => 'Tên người dùng không được để trống',
+                'address.required' => 'Địa chỉ không được để trống',
+                'phone.required' => 'Số điện thoại không được để trống',
+        ]);
+        $request -> offsetUnset('_token');
+        Customer::where(['id'=>Auth::guard('cus')->user()->id])->update($request->all());
+        return back()->with('success','Sửa thông tin thành công');
+    }
+
 }

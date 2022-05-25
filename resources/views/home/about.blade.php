@@ -63,7 +63,7 @@
                         </div>
                         <div class="ps-4">
                             <h6 class="text-primary text-uppercase">Our Experience</h6>
-                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">12345</h1>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">5</h1>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="ps-4">
                             <h6 class="text-primary text-uppercase">Cake Specialist</h6>
-                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">12345</h1>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">3</h1>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                         </div>
                         <div class="ps-4">
                             <h6 class="text-primary text-uppercase">Complete Project</h6>
-                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">12345</h1>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">1000</h1>
                         </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="ps-4">
                             <h6 class="text-primary text-uppercase">Happy Clients</h6>
-                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">12345</h1>
+                            <h1 class="display-5 text-white mb-0" data-toggle="counter-up">500</h1>
                         </div>
                     </div>
                 </div>

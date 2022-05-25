@@ -37,7 +37,7 @@
                         </td>
                         <td data-th="Product"> 
                                 <div class="col-sm-10"> 
-                                    <h4 class="nomargin"><a href="">{{ $item['product_name'] }}</a></h4>  
+                                    <h4 class="nomargin"><a href="{{ route('thongtinsp',$item['id']) }}">{{ $item['product_name'] }}</a></h4>  
                                 </div> 
                         </td>
                         <td data-th="Price">{{ number_format($item['price'],0,',','.') }} VND</td>   

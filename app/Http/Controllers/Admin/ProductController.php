@@ -82,7 +82,7 @@ class ProductController extends Controller
         $request->merge(['image' => $img]);
         $request -> offsetUnset('_token');
         Product::where(['id'=>$id])->update($request->all());
-        return redirect()->route('products')->with('success','Sửa sản phẩm thành công');;
+        return redirect()->route('products')->with('success','Sửa sản phẩm thành công');
     }
 
     //xóa sản phẩm:

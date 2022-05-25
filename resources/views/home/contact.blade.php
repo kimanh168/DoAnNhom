@@ -31,14 +31,14 @@
                     <div class="bg-primary border-inner text-center text-white p-5">
                         <i class="bi bi-geo-alt fs-1 text-white"></i>
                         <h6 class="text-uppercase my-2">Our Office</h6>
-                        <span>123 Street, New York, USA</span>
+                        <span>TP.Thủ Đức, Việt Nam</span>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="bg-primary border-inner text-center text-white p-5">
                         <i class="bi bi-envelope-open fs-1 text-white"></i>
                         <h6 class="text-uppercase my-2">Email Us</h6>
-                        <span>info@example.com</span>
+                        <span>deliciouscakesy@gmail.com</span>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">

@@ -6,6 +6,16 @@ quickview.forEach(element => {
     });
 });
 
+function formatNumber(a, b, c, d) {
+    var e = isNaN(b = Math.abs(b)) ? 2 : b;
+    b = void 0 == c ? "," : c;
+    d = void 0 == d ? "," : d;
+    c = 0 > a ? "-" : "";
+    var g = parseInt(a = Math.abs(+a || 0).toFixed(e)) + "",
+        n = 3 < (n = g.length) ? n % 3 : 0;
+    return c + (n ? g.substr(0, n) + d : "") + g.substr(n).replace(/(\d{3})(?=\d)/g, "$1" + d) + (e ? b + Math.abs(a - g).toFixed(e).slice(2) : "")
+}
+
  async function getProductDetail(productId) {
      const url = '/api/product/' + productId;
      const response = await fetch(url);
@@ -21,7 +31,7 @@ quickview.forEach(element => {
         <div class="col-6">
             <h1>${result.product_name}</h1>
             <p class="product-price">
-               Giá sản phẩm: ${result.price}  VND
+               Giá sản phẩm:${ formatNumber(result.sale_price, 0, ",", ".")}  VND
             </p>
             <p class="product-price">
                Hạn sử dụng:  <span class="badge bg-primary"><strong> ${result.expiry} Ngày</strong></span>
@@ -50,13 +60,14 @@ async function searchProduct(keyword) {
         result.forEach(el => {
             let regexProductName = new RegExp('(' + keyword + ')', 'gi');
             const productName = el.product_name.replace(regexProductName, '<b>$1</b>');
+            link = '/thongtinsp/' + el.id;
             divResult.innerHTML += `
             <div class="row border-item-search" >
                 <div class="col-3 ">
                     <img src="../img/${el.image}" class="img-fluid m-3">
                 </div>
                 <div class="col-9 mt-3">
-                    <a href="./thongtinsp/${el.id}">${productName}</a>
+                    <a href="${link}">${productName}</a>
                     <p>${el.sale_price} VND</p>
                 </div>
             </div>`;

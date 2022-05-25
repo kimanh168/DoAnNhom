@@ -17,5 +17,7 @@ class Product extends Model
     public function ordDeltail(){
         return $this->hasMany(OrderDetail::class,'id','order_id');
     }
-
+    public function wishlist(){
+        return $this->belongsTo(Comment::class,'product_id','id');
+    }
 }

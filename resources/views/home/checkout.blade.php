@@ -4,7 +4,7 @@
 	@if(session()->has('success'))
 		<div class="alert alert-success d-flex align-items-center mt-3" role="alert">
 		<div>
-			<strong><i class="fa-solid fa-check"></i></strong>  {{ session()->get('success') }}
+			<strong><i class="fa-solid fa-check"></i></strong> {{ session()->get('success') }}
 		</div>
 		</div>
 	@endif

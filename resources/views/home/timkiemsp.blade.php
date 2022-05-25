@@ -23,7 +23,7 @@
 							</div>
 							<div class="product-body">
                                 <div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart"></i><span class="tooltipp">add to wishlist</span></button>
+                                    <button class="add-to-wishlist" ><a href="{{ route('wish.add',['id' => $sp->id]) }}"><i class="fa fa-heart"></i></a><span class="tooltipp">add to wishlist</span></button>
 									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
 									<button class="quick-view" data-bs-toggle="modal" data-bs-target="#exampleModal" data-product-id="{{ $sp->id }}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
 								</div>
@@ -50,26 +50,6 @@
     </div>
     <!-- Products End -->
 
-
-    <!-- Offer Start -->
-    <div class="container-fluid bg-offer my-5 py-5">
-        <div class="container py-5">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-7 text-center">
-                    <div class="section-title position-relative text-center mx-auto mb-4 pb-3" style="max-width: 600px;">
-                        <h2 class="text-white font-secondary">Hello Summer</h2>
-                        <h1 class=" text-uppercase text-white">30% DISCOUNT FOR THIS SUMMER</h1>
-                    </div>
-                    <p class="text-white mb-4">Delicious would like to send to those who love birthdays this season a new collection of cakes this Summer with the SEA theme. <br> 
-                        Especially in this collection, we bring back Tiramisu - a cake that has caused a lot of memories for many Delicious customers, was once one of the most 
-                        shipped cakes, before Durian Butter Cake was born. In addition, the beauty of this Summer Set can talk about the Longan Pepper cake decorated with the 
-                        concept of the Beach, which will surely bring a new taste to Delicious' "dumb customers".</p>
-                    <a href="" class="btn btn-primary border-inner py-3 px-5 me-3">Shop Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Offer End -->
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
