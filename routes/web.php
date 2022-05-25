@@ -70,6 +70,12 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
     include 'product.php';
     Route::get('/file',[FileController::class,'file'])->name('file');
     Route::post('/file',[FileController::class,'upload'])->name('file');
+    Route::get('/order',[AdminController::class,'orders'])->name('orders');
+    Route::get('/editOrder-{id}',[AdminController::class,'editOrder'])->name('editOrder');
+    Route::post('/editOrder-{id}',[AdminController::class,'post_editOrder'])->name('editOrder');
+    Route::get('/order-del-{id}',[AdminController::class,'deleteorder'])->name('del_order');
+    Route::get('/comment',[AdminController::class,'comments'])->name('comment');
+    Route::get('/comment-del-{id}',[AdminController::class,'deletecomment'])->name('del_comment');
 });
 
 //Giỏ hàng

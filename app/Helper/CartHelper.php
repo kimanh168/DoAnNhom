@@ -17,6 +17,7 @@ class CartHelper
 
     }
 
+    //Thêm vào session cart
     public function add($product,$quantity = 1)
     {
         $item = [
@@ -36,6 +37,7 @@ class CartHelper
       
     }
 
+    //Cập nhật giỏ hàng helper
     public function update($id,$quantity = 1 )
     {
         //

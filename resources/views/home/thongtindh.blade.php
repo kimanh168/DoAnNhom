@@ -6,8 +6,8 @@
     <div class="container-fluid about py-5">
 		<div class="container">
             <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
-                <h2 class="text-primary font-secondary">Check & Payment</h2>
-                <h1 class="display-4 text-uppercase">Your Cart</h1>
+                <h2 class="text-primary font-secondary">Order Detail</h2>
+                <h1 class="display-4 text-uppercase">Your Order Detail</h1>
             </div>
 			</div>
 			<!-- /container -->
@@ -49,7 +49,9 @@
                 </tbody>         
         <tfoot> 
             <tr>
-                <td colspan ="6" class="hidden-xs text-center">Total: <strong>{{ number_format($total,0,',','.') }} VND</strong>
+            <td colspan ="3" class="hidden-xs text-center">Time Order: <strong>{{ $orderbtId->created_at }}</strong>
+                </td> 
+                <td colspan ="3" class="hidden-xs text-center">Total: <strong>{{ number_format($total,0,',','.') }} VND</strong>
                 </td> 
             </tr> 
         </tfoot> 

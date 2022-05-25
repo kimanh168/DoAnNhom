@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Nhom12 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Nhóm 12</div>
             </a>
 
             <!-- Divider -->
@@ -116,8 +116,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Home Page Management</h6>
                         <a class="collapse-item <?php if($page == 'customers'){echo 'active';}?>" href="{{route('customers') }}">Customer</a>
-                        <a class="collapse-item" href="register.html">Order</a>
-                        <a class="collapse-item" href="forgot-password.html">User</a>
+                        <a class="collapse-item <?php if($page == 'orders'){echo 'active';}?>"  href="{{route('orders') }}">Order</a>
+                        <a class="collapse-item <?php if($page == 'comment'){echo 'active';}?>" href="{{route('comment') }}">Comment</a>
                     </div>
                 </div>
             </li>

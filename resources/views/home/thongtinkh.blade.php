@@ -73,7 +73,11 @@
 									<tr>
 										<td>{{ $item['id'] }}</td>
 										@if($item['status'] == 0)
-										<td><span class="badge bg-warning">Chờ xác nhận</span></td>
+										    <td><span class="badge bg-warning text-white">Chờ xác nhận</span></td>
+                      					@elseif($item['status'] == 1)
+										    <td><span class="badge bg-success text-white">Đang giao hàng</span></td>
+                      					@elseif($item['status'] == 2)
+										    <td><span class="badge bg-primary text-white">Đã Nhận Hàng</span></td>
 										@endif
 										<td>{{ $item['created_at'] }}</td>
 										<td><span class="badge bg-info"><a class="text-white" href="{{ route('thongtindh',$item['id']) }}">Hiển thị</a></span></td>	

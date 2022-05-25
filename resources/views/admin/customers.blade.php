@@ -33,9 +33,9 @@
                       <th style="width: 1%">ID</th>
                       <th style="width: 20%">Name</th>
                       <th style="width: 20%">Email</th>
-                      <th style="width: 20%">Phone</th>
+                      <th style="width: 18%">Phone</th>
                       <th style="width: 20%">Address</th>
-                      <th style="width: 9%">Action</th>
+                      <th style="width: 10%">Action</th>
                   </tr>
               </thead>
               <tbody>
@@ -54,7 +54,7 @@
                       <td>
                           <a>{{ $customer->address }}</a>
                       </td>
-                      <td class="project-actions text-right">
+                      <td class="project-actions">
                           <a class="btn btn-danger btn-sm" href="{{ route('customer_del',['id' => $customer->id ]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
                               <i class="fas fa-trash">
                               </i>

@@ -26,6 +26,7 @@
                     <th style="width:10%">Thao Tác</th> 
                 </tr> 
                 </thead> 
+                @if($cart ->total_price > 0)
                 <tbody>
                     <?php $n = 1; ?>
                     @foreach($cart->items as  $item)
@@ -55,7 +56,12 @@
                     <?php $n++ ?>
                     @endforeach
                     
-                </tbody>         
+                </tbody>
+                @else
+                <tbody>
+                    <td colspan="7" class="text-center p-5"><h4>There are no product in your Cart</h4></td>
+                </tbody> 
+                @endif         
         <tfoot> 
             <tr>
                 <td></td>

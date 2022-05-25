@@ -19,6 +19,7 @@ class CartController extends Controller
         return view('home.cart',['dulieu'=>$protype]);
     }
 
+    //Thêm vào giỏ hàng
     public function add(CartHelper $cart,$id){
         $quantity = request()->quantity ? request()->quantity : 1;
         $product = Product::Find($id);
@@ -26,11 +27,13 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    //Xóa khỏi giỏ hàng
     public function remove(CartHelper $cart,$id){
         $cart->remove($id);
         return redirect()->back();
     }
 
+    //Cập nhật giỏ hàng
     public function update(CartHelper $cart,$id){
         $quantity = request()->quantity ? request()->quantity : 1;
         $cart->update($id,$quantity);

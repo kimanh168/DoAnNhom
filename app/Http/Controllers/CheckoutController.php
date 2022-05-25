@@ -78,6 +78,6 @@ class CheckoutController extends Controller
         $protype = Protype::all();
         $orders= Order::find($id);
         $orderDetail = OrderDetail::where('order_id',$id)->get();
-        return view('home.thongtindh',['dulieu'=>$protype,'orderdetalbyId'=>$orderDetail]);
+        return view('home.thongtindh',['dulieu'=>$protype,'orderdetalbyId'=>$orderDetail,'orderbtId'=>$orders]);
     }
 }

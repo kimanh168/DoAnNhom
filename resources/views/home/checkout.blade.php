@@ -51,7 +51,7 @@
 
 					<!-- Order Details -->
 					<div class="col-md-5 order-details">
-						<div class="section-title text-center">
+						<div class="section-title text-center " style="max-height=400px">
 							<h3 class="title">Your Order</h3>
 						</div>
 						<div class="order-summary">

@@ -13,6 +13,7 @@ class Order extends Model
     public function cus(){
         return $this->hasOne(Customer::class,'id','customer_id');
     }
-
-    
+    public function order_detail(){
+        return $this->hasMany(Order::class,'id','order_id');
+    }
 }

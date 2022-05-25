@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     //Hiển thị 5 sản phẩm
     function index(){
-        $product = Product::paginate(5); //SELECT * FROM Product limit(0,5)
+        $product = Product::orderby('id','DESC')->paginate(5); //SELECT * FROM Product limit(0,5)
         //return view('index',['data'=>$product]);
         return view('/admin/products',['data'=>$product]);
     }

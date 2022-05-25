@@ -8,6 +8,8 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Protype;
 use App\Models\Customer;
+use App\Models\Comment;
+use App\Models\WishList;
 use App\Http\Controllers\Controller;
 use Auth;
 use Mail;
@@ -44,7 +46,8 @@ class AdminController extends Controller
             OrderDetail::Where('order_id',$item->id)->delete();
         }
         Order::where('customer_id',$id)->delete();
-
+        WishList::where('customer_id',$id)->delete();
+        Comment::where('customer_id',$id)->delete();
         Mail::send('email.deletecustomer',[
             'c_name' => $c_name,
         ],function($mail) use($c_email,$c_name){
@@ -57,9 +60,50 @@ class AdminController extends Controller
         return redirect()->back(); //Quay lại trang trước đó
     }
 
-    // //Hiển thị 5 đơn hàng
-    // function orders(){
-    //     $orders = Order::paginate(5); //SELECT * FROM orders limit(0,5)
-    //     return view('/admin/orders',['order'=>$orders]);
-    // }
+    //Hiển thị 5 đơn hàng
+    function orders(){
+        $orders = Order::orderby('id','DESC')->paginate(5); //SELECT * FROM orders limit(0,5)
+        return view('/admin/order',['order'=>$orders]);
+    }
+
+    //Sửa đơn hàng
+    function editOrder($id)
+    {
+       $orderbyid = Order::find($id);
+       return view('/admin/editorder',['orderbyid'=>$orderbyid]);
+    }
+
+    //Post sửa trạng thái đơn hàng lên:
+     function post_editOrder($id,Request $request){
+        $this -> validate($request,[
+            'status' => 'required'
+        ],['status.required' => 'Trạng thái không được để trống']);
+        $request -> offsetUnset('_token');
+        Order::where(['id'=>$id])->update($request->all());
+        return redirect()->route('orders')->with('success','Sửa trạng thái thành công');
+    }
+
+    //Xóa đơn hàng
+    function deleteorder($id){
+        $orders = Order::where('id',$id)->get();
+        foreach($orders as $item){
+            OrderDetail::Where('order_id',$item->id)->delete();
+        }
+        Order::where('id',$id)->delete();    
+         return redirect()->back()->with('success','Xóa order thành công');; //Quay lại trang trước đó
+    }
+
+    //Hiển thị 5 comment
+    function comments(){
+        $comments = Comment::orderby('id','DESC')->paginate(5); //SELECT * FROM comments limit(0,5)
+        return view('/admin/comment',['comments'=>$comments]);
+    }
+     //Xóa comment:
+     function deletecomment($id)
+     {
+         Comment::find($id)->delete();
+         return redirect()->back()->with('success','Xóa comment thành công');; //Quay lại trang trước đó
+     }
+ 
+    
 }
