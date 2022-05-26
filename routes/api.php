@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,7 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::get('/showProductByType', [ProductController::class, 'showProductByType']);
 
 Route::get('/searchProduct/{key}', [ProductController::class, 'showProductBySearch']);
+
+Route::resource('comments', CommentController::class);
 
 

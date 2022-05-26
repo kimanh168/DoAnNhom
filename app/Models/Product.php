@@ -18,6 +18,11 @@ class Product extends Model
         return $this->hasMany(OrderDetail::class,'id','order_id');
     }
     public function wishlist(){
-        return $this->belongsTo(Comment::class,'product_id','id');
+        return $this->hasOne(WishList::class,'product_id','id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

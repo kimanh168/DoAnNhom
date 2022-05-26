@@ -37,10 +37,11 @@
               <thead>
                   <tr>
                       <th style="width: 1%">ID</th>
-                      <th style="width: 10%">Name</th>
+                      <th style="width: 15%">Name</th>
                       <th style="width: 10%">Email</th>
                       <th style="width: 10%">Phone</th>
-                      <th style="width: 10%">Address</th>
+                      <th style="width: 15%">Address</th>
+                      <th style="width: 10%">Notes</th>
                       <th style="width: 10%">Detail</th>
                       <th style="width: 10%">Status</th>
                       <th style="width: 9%">Action</th>
@@ -63,8 +64,9 @@
                           <a>{{ $orders->address }}</a>
                       </td>
                       <td>
-                        Detail
+                          <a>{{ $orders->order_note }}</a>
                       </td>
+                      <td><span class="badge bg-info"><a class="text-white" href="{{ route('order_detail',['id'=>$orders->id]) }}">Hiển thị</a></span></td>	
                       @if($orders->status == 0)
 										    <td><span class="badge bg-warning text-white">Chờ xác nhận</span></td>
                       @elseif($orders->status == 1)

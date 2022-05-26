@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- SECTION -->
 <div class="section">
 			<!-- container -->
@@ -44,6 +45,26 @@
                                         <div><strong>Hạn dử dụng</strong></div>
                                         <div><span class="badge bg-primary"><strong>{{ $thongtinsp ->expiry  }} Ngày</strong></span> </div>
                                     </div>
+                                    <div class="order-col">
+                                        <div><strong>Đánh giá</strong></div>
+                                        <div>
+                                        <ul class="list-inline ngoisao" title="Average Rating">
+                                        @for ($count=1; $count <= 5; $count++)
+                                            @php
+                                                if($count<=$sosao){
+                                                    $color = 'color:#ffcc00;';
+                                                }
+                                                else{
+                                                    $color = 'color:#ccc;';
+                                                }
+                                            @endphp
+                                            <li title="star_rating" class="ngoisao" style="display: inline-block;cusor:pointer; {{$color}};font-size:30px;">&#9733;</li>
+                                        @endfor
+                                        </ul>
+                                        </div>
+                                        
+                                        
+                                    </div>
                                     <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
                                         <input name="submit" type="submit" value="Add to cart" class="btn btn-primary border-inner py-3 px-5 me-5">
                                     </div>
@@ -72,30 +93,47 @@
             </div>
             <div class="owl-carousel testimonial-carousel">
                 <div class="testimonial-item bg-dark text-white border-inner p-4">
-                    <form action="#">     
-                    @csrf           
-                        <div class="align-items-center mb-3">
-                        @if(Auth::guard('cus')->check())  
-                            <h4 class="text-primary text-uppercase mb-1">{{ Auth::guard('cus')->user()->customer_name }}</h4>
-                        @else
-                        <h4 class="text-primary text-uppercase mb-1">Client Name</h4>
-                        @endif
-                            <label for="comment" class="form-label">Nội dung bình luận</label>
-                            <input type="hidden" value="{{ $thongtinsp -> id  }}" name="id_sp" class="id_sp">
-                            @if(Auth::guard('cus')->check())
-                            <input type="hidden" value="{{ Auth::guard('cus')->user()->id }}" name="customer_id" class="customer_id">
-                            @endif
-                            <textarea name="comment" id="comment" class="form-control comment" cols="auto" rows="3" placeholder="Nhập nội dung (*)" required></textarea>
-                            <div id="commentHelp" class="form-text">Bình luận của bạn sẽ được thấy bởi tất cả mọi người, hãy là một người thưởng thức vị ngon văn minh</div>
+                <div class="align-items-center mb-3">
+                    <div class="container razz">
+                        <div id="rating-container">
+                            <div class="rating" data-rating="1" name="rating" value="1" onclick=rate(1)>★</div>
+                            <div class="rating" data-rating="2" name="rating" value="2" onclick=rate(2)>★</div>
+                            <div class="rating" data-rating="3" name="rating" value="3" onclick=rate(3)>★</div>
+                            <div class="rating" data-rating="4" name="rating" value="4" onclick=rate(4)>★</div>
+                            <div class="rating" data-rating="5" name="rating" value="5" onclick=rate(5)>★</div>
                         </div>
-                        <div id="notyfy_comment" class="text-success"></div>
-                        <button class="btn btn-primary send-comment" type="button">Gửi bình luận</button>
-                       
-                    </form>
+                    </div>
+                    @if(Auth::guard('cus')->check())  
+                        <h4 class="text-primary text-uppercase mb-1">{{ Auth::guard('cus')->user()->customer_name }}</h4>
+                        <input type="hidden" class="form-control" id="customer_id" name="customer_id" value="{{Auth::guard('cus')->user()->id}}">
+                        <input type="hidden" class="form-control" id="customer_name" name="customer_name" value="{{Auth::guard('cus')->user()->customer_name}}">
+                    @else
+                        <h4 class="text-primary text-uppercase mb-1">Client Name</h4>
+                    @endif 
+                    <textarea type="text" class="form-control" id="comment_content" name="comment_content" cols="auto" rows="3" placeholder="Nhập nội dung (*)" required ></textarea>
+                    <div id="commentHelp" class="form-text mb-3">Bình luận của bạn sẽ được thấy bởi tất cả mọi người, hãy là một người thưởng thức vị ngon văn minh</div>
+                      
+                    @if(Auth::guard('cus')->check()) 
+                        <button id="btn-comment" type="button" class="btn btn-primary" data-product-id="{{ $thongtinsp->id }}" data-url="{{ route('comments.store') }}">Gửi bình luận</button>
+                    @else
+                        <button class="btn btn-primary" type="button" disabled >Gửi bình luận</button>
+                    @endif 
+                    </div>         
                 </div>
-                <form>
-                <div id="comment-show" class="overflow-auto" style="max-height:300px;  "></div>      
-                </form>
+                <div id="show-comment" class="overflow-auto" style="max-height:300px; ">
+                    @foreach($comments as $comment)
+                    <div class="testimonial-item text-white border-inner p-4" style="background-color:#905ddc !important">
+                        <div class="d-flex align-items-center mb-3">
+                            <img class="img-fluid flex-shrink-0" src="{{url('/img/smile.png')}}" style="width: 60px; height: 60px;">
+                            <div class="ps-3">
+                                <h4 class="text-white text-uppercase mb-1" >{{$comment->customer_name}}</h4>
+                                <span>{{$comment->rating}} Sao</span>
+                            </div>
+                        </div>
+                        <p class="mb-0">{{$comment->comment_content}}</p>
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $table = 'comment';
-    protected $fillable = ['customer_id','product_id','content'];
+    protected $fillable = ['customer_id','customer_name','product_id','content','rating'];
    
     public function customer(){
         return $this->hasOne(Customer::class,'id','customer_id');
     }
 
-    public function product(){
-        return $this->hasOne(Product::class,'id','product_id');
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
+
 }

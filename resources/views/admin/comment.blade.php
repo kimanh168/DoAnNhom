@@ -37,8 +37,9 @@
               <thead>
                   <tr>
                       <th style="width: 1%">ID</th>
-                      <th style="width: 20%">Name</th>
-                      <th style="width: 20%">Product</th>
+                      <th style="width: 15%">Name</th>
+                      <th style="width: 15%">Product</th>
+                      <th style="width: 10%">Star</th>
                       <th style="width: 20%">Content</th>
                       <th style="width: 20%">Created</th>
                       <th style="width: 9%">Action</th>
@@ -49,13 +50,16 @@
                   <tr>
                       <td>{{ $comment->id }}</td>
                       <td>
-                          <a>{{ $comment->customer->customer_name }}</a>
+                          <a>{{ $comment->customer_name }}</a>
                       </td>
                       <td>
-                          <a>{{ $comment->product->product_name }}</a>
+                          <a href="{{route('thongtinsp',['id'=>$comment->product_id])}}">{{ $comment->product->product_name }}</a>
                       </td>
                       <td>
-                          <a>{{ $comment->content }}</a>
+                          <a>{{ $comment->rating }} Star</a>
+                      </td>
+                      <td>
+                          <a>{{ $comment->comment_content }}</a>
                       </td>
                       <td>
                           <a>{{ $comment->created_at }}</a>

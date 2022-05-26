@@ -76,6 +76,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
     Route::get('/order-del-{id}',[AdminController::class,'deleteorder'])->name('del_order');
     Route::get('/comment',[AdminController::class,'comments'])->name('comment');
     Route::get('/comment-del-{id}',[AdminController::class,'deletecomment'])->name('del_comment');
+    Route::get('orderdetail/{id?}',[AdminController::class,'getOrderDetailByOrderId'])->name('order_detail');
 });
 
 //Giỏ hàng

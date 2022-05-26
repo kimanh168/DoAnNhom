@@ -96,7 +96,7 @@ class AdminController extends Controller
     //Hiển thị 5 comment
     function comments(){
         $comments = Comment::orderby('id','DESC')->paginate(5); //SELECT * FROM comments limit(0,5)
-        return view('/admin/comment',['comments'=>$comments]);
+        return view('admin.comment',['comments'=>$comments]);
     }
      //Xóa comment:
      function deletecomment($id)
@@ -105,5 +105,12 @@ class AdminController extends Controller
          return redirect()->back()->with('success','Xóa comment thành công');; //Quay lại trang trước đó
      }
  
+
+     public function getOrderDetailByOrderId($id){
+        $protype = Protype::all();
+        $orders= Order::find($id);
+        $orderDetail = OrderDetail::where('order_id',$id)->get();
+        return view('admin.orderdetail',['dulieu'=>$protype,'orderdetalbyId'=>$orderDetail,'orderbtId'=>$orders]);
+    }
     
 }

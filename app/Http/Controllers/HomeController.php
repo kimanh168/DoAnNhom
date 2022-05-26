@@ -42,7 +42,10 @@ class HomeController extends Controller
         $protype = Protype::all();
         $modal = Product::find($id);
         $sp_cungloai = Product::where('type_id',$modal->type_id)->get();
-        return view('home.thongtinsp',['dulieu'=>$protype,'thongtinsp'=>$modal,'sp_cungloai'=>$sp_cungloai]);
+        $comment = Comment::with('customer')->Where('product_id',$id)->orderBy('id','DESC')->get();
+        $sosao = Comment::where('product_id',$id)->avg('rating');
+        $sosao = round($sosao);
+        return view('home.thongtinsp',['dulieu'=>$protype,'thongtinsp'=>$modal,'sp_cungloai'=>$sp_cungloai,'comments'=>$comment,'sosao' => $sosao]);
     }
     //Hiển thị about:
     function about(){
@@ -161,38 +164,6 @@ class HomeController extends Controller
         else{
             return redirect()->route('home.login')->with('error','Xác nhận tài khoản thất bại');
         }
-    }
-
-    public function sendComment(Request $request){
-        $comment_cus = $request->comment_cus;
-        $product_id = $request->product_id;
-        $comment_content = $request->comment_content;
-        $comment = new Comment ;
-        $comment->customer_id = $comment_cus;
-        $comment->product_id = $product_id;
-        $comment->content = $comment_content;
-        $comment->save();
-    }
-
-    public function loadComment(Request $request){
-        $product_id = $request->product_id;
-        $comment = Comment::with('customer')->Where('product_id',$product_id)->orderBy('id','DESC')->get();
-        $output = '';
-            foreach($comment as $key => $comm){
-                $output .='
-                <div class="testimonial-item text-white border-inner p-4" style="background-color:#905ddc !important">
-                        <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid flex-shrink-0" src="'.url('/img/smile.png').'" style="width: 60px; height: 60px;">
-                            <div class="ps-3">
-                                <h4 class="text-white text-uppercase mb-1" >'.$comm->customer->customer_name.'</h4>
-                                <span>'.$comm->created_at.'</span>
-                            </div>
-                        </div>
-                        <p class="mb-0">'.$comm->content.'</p>
-                    </div>
-                ';
-                }
-        echo $output;
     }
 
 

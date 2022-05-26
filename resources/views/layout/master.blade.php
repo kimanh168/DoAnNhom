@@ -256,46 +256,8 @@
                     category += '?cate=' + tempArray.toString();
                 }
                 window.location.href = category;
-            })
-    
-    $(document).ready(function(){
-
-        load_comment();
-
-        function load_comment(){
-            var product_id = $('.id_sp').val();
-            var _token = $('input[name="_token"]').val();
-            
-            $.ajax({
-            url:"{{url('/load-comment')}}",
-            method:"POST",
-            data:{product_id:product_id,_token:_token},
-            success:function(data){
-                $('#comment-show').html(data);
-            }
-        });
-    }
-    
-    $('.send-comment').click(function(){
-        var product_id = $('.id_sp').val();
-        var comment_cus = $('.customer_id').val();
-        var comment_content = $('.comment').val();
-        var _token = $('input[name="_token"]').val();
-        $.ajax({
-            url:"{{url('/send-comment')}}",
-            method:"POST",
-            data:{product_id:product_id,comment_cus:comment_cus,comment_content:comment_content,_token:_token},
-            success:function(data){
-                $('#notyfy_comment').html('<p>Thêm bình luận thành công</p>');
-                load_comment();
-                $('#notyfy_comment').fadeOut(3000);
-                $('.comment').val('');
-            }
-        });
-    });
-});
-
-</script>
+            });
+    </script>
 </body>
 
 </html>

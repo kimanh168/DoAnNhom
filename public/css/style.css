@@ -886,3 +886,29 @@ body { /*cho Firefox*/
 .add-to-wishlist>a:hover{
   color:#ffffff !important;
 }
+
+/* Đánh giá sản phẩm */
+.razz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#rating-container {
+/*   border: 1px solid rgba(222, 222, 222, 0.6); */
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 0 auto;
+  text-shadow: 2px 2px 10px #000;
+}
+#rating-container > div {
+  float: left;
+  padding: 0px 2px;
+  font-size: 60px;
+  color: #a9a9a9;
+  cursor: pointer;
+}
+#rating-container > div.active,
+#rating-container > div.selected{
+  color: #fcd000;
+}
