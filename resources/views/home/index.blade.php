@@ -113,7 +113,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="bg-primary border-inner text-center text-white p-5">
                         <h4 class="text-uppercase mb-3">Cookie</h4>
-                        <p>A cookie is a baked or cooked snack or dessert that is typically small and sweet. It usually contains flour, sugar, egg, and some type of fat or butter. It may include other ingredients such as raisins, nuts, etc.</p>
+                        <p>A cookie is a baked or cooked snack or dessert that is typically sweet. It usually contains sugar, egg, and some type of fat or butter. It may include other ingredients such as raisins, nuts, etc.</p>
                         <a class="text-uppercase text-dark" href="">Read More <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -315,11 +315,11 @@
                     <div class="d-flex align-items-center mb-3">
                         <img class="img-fluid flex-shrink-0" src="./img/smile.png" style="width: 60px; height: 60px;">
                         <div class="ps-3">
-                            <h4 class="text-primary text-uppercase mb-1">{{$comm->customer->customer_name}}</h4>
+                            <h4 class="text-primary text-uppercase mb-1">{{$comm->customer->customer_name}} - {{$comm->rating}} SAO</h4>
                             <span>{{$comm->created_at}}  <a href="{{ route('thongtinsp',$comm->product->id) }}">{{$comm->product->product_name}}</a></span>
                         </div>
                     </div>
-                    <p class="mb-0">{{$comm->content}}
+                    <p class="mb-0">{{$comm->comment_content}}
                     </p>
                 </div>
                 @endforeach

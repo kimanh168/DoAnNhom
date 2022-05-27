@@ -17,6 +17,7 @@ class CreateWishListTable extends Migration
             $table->increments('id');
             $table->interger('customer_id',10);
             $table->integer('product_id',10);
+
         });
     }
 

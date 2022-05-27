@@ -93,10 +93,6 @@ Route::group(['prefix' => 'checkout'],function(){
     Route::post('view',[CheckoutController::class,'submit_form'])->name('checkout');
 });
 
-//Comment
-Route::post('load-comment', [HomeController::class,'loadComment']);
-Route::post('send-comment', [HomeController::class,'sendComment']);
-
 //Giỏ hàng
 Route::group(['prefix' => 'wish'],function(){
     Route::get('view',[HomeController::class,'wishView'])->name('wish.view');
