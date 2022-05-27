@@ -10,8 +10,6 @@ class CommentController extends Controller
 {
     public function store(Request $request)
     {
-        // Con thieu validate
-
         // Save binh luan
         $comment = new Comment;
         $comment->customer_id = $request->customer_id;

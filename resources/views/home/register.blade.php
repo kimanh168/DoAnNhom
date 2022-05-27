@@ -19,7 +19,7 @@
                     </div>
                     <div class="signup-form ">
                         <div class="wrapper-2">
-                            <div class="form-title">Login to cakes world</div>
+                            <div class="form-title">Register to cakes world</div>
                                 <div class="form">
                                     <form method="post" action="" role="form">
                                     @csrf

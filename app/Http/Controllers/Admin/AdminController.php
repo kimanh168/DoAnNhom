@@ -98,6 +98,7 @@ class AdminController extends Controller
         $comments = Comment::orderby('id','DESC')->paginate(5); //SELECT * FROM comments limit(0,5)
         return view('admin.comment',['comments'=>$comments]);
     }
+    
      //Xóa comment:
      function deletecomment($id)
      {
