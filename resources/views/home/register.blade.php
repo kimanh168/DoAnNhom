@@ -14,18 +14,18 @@
                                 </div>
                             </a>
                             <h1 class="title">Delicious</h1>
-                            <div class="slogan">We deliver cakes to you.</div>
+                            <div class="slogan">Lan tỏa ngọt ngào tới mọi người.</div>
                         </div>
                     </div>
                     <div class="signup-form ">
                         <div class="wrapper-2">
-                            <div class="form-title">Register to cakes world</div>
+                            <div class="form-title">Đăng ký</div>
                                 <div class="form">
                                     <form method="post" action="" role="form">
                                     @csrf
                                             <!-- Name -->
                                         <p class="content-item">
-                                            <label for="name">Name
+                                            <label for="name">Tên Của Bạn
                                                 <input id="name" class="block w-full" type="text" name="customer_name"/>
                                             </label>
                                             @if($errors->has('customer_name'))
@@ -35,7 +35,7 @@
 
                                         <!-- Email Address -->
                                         <p class="content-item">
-                                            <label for="email" >Email address
+                                            <label for="email" >Địa Chỉ Email
                                                 <input id="email" class="block w-full" type="text" name="email" />
                                                 @if($errors->has('email'))
                                                     <p style="color:red"> {{$errors->first('email') }} !!!</p>
@@ -46,7 +46,7 @@
 
                                         <!-- Password -->
                                        <p class="content-item">
-                                            <label  for="password">Password
+                                            <label  for="password">Mật Khẩu
                                                 <input id="password" class="block w-full" type="password" name="password"/>
                                             </label>
                                             @if($errors->has('password'))
@@ -56,7 +56,7 @@
 
                                         <!-- Confirm Password -->
                                        <p class="content-item">
-                                            <label  for="confirm_password">Confirm Password
+                                            <label  for="confirm_password">Nhập Lại Mật Khẩu
                                                 <input id="confirm_password" class="block w-full" type="password" name="confirm_password"/>
                                             </label>
                                             @if($errors->has('confirm_password'))
@@ -66,7 +66,7 @@
 
                                         <!-- Phone -->
                                        <p class="content-item">
-                                            <label  for="phone">Phone
+                                            <label  for="phone">Số điện thoại
                                                 <input id="phone" class="block w-full" type="text" name="phone"/>
                                             </label>
                                             @if($errors->has('phone'))
@@ -76,15 +76,15 @@
                                         
                                          <!-- Address -->
                                        <p class="content-item">
-                                            <label  for="address">Address
+                                            <label  for="address">Địa chỉ
                                                 <input id="address" class="block w-full" type="text" name="address"/>
                                             </label>
                                         </p>
 
                                         <div class="flex items-center justify-end mt-4">
                                             <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}"></a>
-                                            <button type="submit" class="signup">Register</button>
-                                            <a href="{{route('home.login')}}" class="login">Login</a>
+                                            <button type="submit" class="signup">Đăng ký</button>
+                                            <a href="{{route('home.login')}}" class="login">Đăng nhập</a>
                                         </div>
                                     </form>
                                 </div>

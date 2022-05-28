@@ -6,8 +6,8 @@
     <div class="container-fluid about py-5">
         <div class="container">
             <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
-                <h2 class="text-primary font-secondary">Menu & Pricing</h2>
-                <h1 class="display-4 text-uppercase">Explore Our Cakes</h1>
+                <h2 class="text-primary font-secondary">Thực đơn & Giá cả</h2>
+                <h1 class="display-4 text-uppercase">Các loại bánh</h1>
             </div>
             <div class="row">
                 <div class="col-md-2 pt-2">
@@ -74,23 +74,25 @@
     <!-- Products End -->
 
 
-    <!-- Offer Start -->
-    <div class="container-fluid bg-offer my-5 py-5">
+     <!-- Offer Start -->
+     <div class="container-fluid bg-offer my-5 py-5">
         <div class="container py-5">
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-7 text-center">
                     <div class="section-title position-relative text-center mx-auto mb-4 pb-3" style="max-width: 600px;">
-                        <h2 class="text-white font-secondary">Hello Summer</h2>
-                        <h1 class=" text-uppercase text-white">30% DISCOUNT FOR THIS SUMMER</h1>
+                        <h2 class="text-white font-secondary">Xin chào mùa hè</h2>
+                        <h1 class=" text-uppercase text-white">GIẢM GIÁ 30% CHO MÙA HÈ NÀY</h1>
                     </div>
-                    <p class="text-white mb-4">Delicious would like to send to those who love birthdays this season a new collection of cakes this Summer with the SEA theme. <br> 
-                        Especially in this collection, we bring back Tiramisu - a cake that has caused a lot of memories for many Delicious customers, was once one of the most 
-                        shipped cakes, before Durian Butter Cake was born. In addition, the beauty of this Summer Set can talk about the Longan Pepper cake decorated with the 
-                        concept of the Beach, which will surely bring a new taste to Delicious' "dumb customers".</p>
+                    <p class="text-white mb-4">Delicious xin gửi đến những người yêu thương sinh nhật bộ sưu tập bánh mới Hè này với chủ đề BIỂN.
+                    Đặc biệt trong bộ sưu tập lần này, chúng tôi mang đến món bánh Tiramisu - món bánh gây thương nhớ cho nhiều khách hàng của 
+                    Delicious, đã từng là một trong những loại bánh được ship nhiều nhất, trước khi Bánh Bơ Sầu Riêng ra đời. Ngoài ra, mỹ nhân của 
+                    Summer Set này có thể kể đến món Bánh PINA COLADA được trang trí theo concept Bãi biển, chắc chắn sẽ mang đến một hương vị mới 
+                    lạ cho những “khách hàng đỏng đảnh” của Delicious.</p>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Offer End -->
     <div class="container">
           <!-- Offer End -->
           <div class="tab-content">

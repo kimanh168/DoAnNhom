@@ -40,7 +40,7 @@
                 <div class="d-inline-flex align-items-center justify-content-center">
                     <i class="bi bi-envelope fs-1 text-primary me-3"></i>
                     <div class="text-start">
-                        <h6 class="text-uppercase mb-1">Email Us</h6>
+                        <h6 class="text-uppercase mb-1">ĐỊA CHỈ EMAIL</h6>
                         <span class="pe-2">deliciouscakesy@gmail.com</span>
                     </div>
                 </div>
@@ -64,10 +64,10 @@
                     </div>
                     @else 
                     <div class="text-start">
-                        <a href="{{ route('home.login') }}"><h5 class="text-uppercase"><i class="fa fa-users fs-3 text-primary "></i> Login</h5></a>
+                        <a href="{{ route('home.login') }}"><h5 class="text-uppercase"><i class="fa fa-users fs-3 text-primary "></i> Đăng Nhập</h5></a>
                     </div>
                     <div class="text-start ps-5">
-                        <a href="{{ route('home.register') }}"><h5 class="text-uppercase"><i class="fa fa-edit fs-3 text-primary"></i> Register</h5></a>
+                        <a href="{{ route('home.register') }}"><h5 class="text-uppercase"><i class="fa fa-edit fs-3 text-primary"></i> Đăng Kí</h5></a>
                     </div>
                     @endif
                     <a href="#" id="cart"><i class="fa fa-shopping-cart fs-3 text-primary ms-5 " ></i></a>
@@ -79,7 +79,7 @@
                             <div class="shopping-cart-header  pb-3">
                                 <i class="fa fa-shopping-cart  cart-icon text-primary"><span class="badge">{{$cart ->total_quantity}}</span></i>
                                 <div class="shopping-cart-total">
-                                        <span class="lighter-text">Total:</span>
+                                        <span class="lighter-text">Thành tiền:</span>
                                         <span class="main-color-text">{{number_format($cart ->total_price,0,',','.')}} VND</span>
                                 </div>
                             </div>
@@ -93,20 +93,19 @@
                                         <div class="cartField col-7">
                                             <h5>{{ $item['product_name'] }}</h5>
                                             <h6>{{ number_format($item['price'],0,',','.') }} VND</h6>
-                                            <p>Quantity: {{ $item['quantity'] }}</p>
+                                            <p>Số lượng: {{ $item['quantity'] }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 @endforeach
                             </div>
                             <div class="row">
-                                <div class="col-6"><a href="{{route('cart.view')}}" class="button-viewcart" value="">View Cart</i></a> </div>
-                                <div class="col-6"><a href="{{route('checkout')}}" class="button-checkout" value="">Check Out <i class="fa fa-arrow-circle-right"></i></a></div>
+                                <div class="col-6"><a href="{{route('cart.view')}}" class="button-viewcart" value="">Giỏ hàng</i></a> </div>
+                                <div class="col-6"><a href="{{route('checkout')}}" class="button-checkout" value="">Thanh toán <i class="fa fa-arrow-circle-right"></i></a></div>
                             </div>
                        
                         </div> <!--end shopping-cart -->
                     </div>
-                   
                 </div>
             </div>
         </div>
@@ -136,14 +135,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto mx-lg-auto py-0">
-                <a href="{{route('home.index')}} " class="nav-item nav-link <?php if(isset($title) && $title=='home'){echo 'active';} ?>">Home</a>
-                <a href="{{ route('about')}}" class="nav-item nav-link <?php if(isset($title) && $title=='about') {echo 'active';} ?>">About Us</a>
-                <a href="{{ route('menu',['cate'=> 1]) }}" class="nav-link nav-link <?php if(isset($title) && $title=='menu'){echo 'active';} ?>"  >Menu & Pricing</a>
-                <a href="{{ route('team')}}" class="nav-item nav-link <?php if(isset($title) && $title=='team') {echo 'active';} ?>" >Master Chefs</a>
-                <a href="{{ route('contact')}}" class="nav-item nav-link <?php if(isset($title) && $title=='contact') {echo 'active';} ?> pe-5">Contact Us</a>
+                <a href="{{route('home.index')}} " class="nav-item nav-link <?php if(isset($title) && $title=='home'){echo 'active';} ?>">Trang chủ</a>
+                <a href="{{ route('about')}}" class="nav-item nav-link <?php if(isset($title) && $title=='about') {echo 'active';} ?>">Giới thiệu</a>
+                <a href="{{ route('menu',['cate'=> 1]) }}" class="nav-link nav-link <?php if(isset($title) && $title=='menu'){echo 'active';} ?>" >Thực đơn
+                <a href="{{ route('team')}}" class="nav-item nav-link <?php if(isset($title) && $title=='team') {echo 'active';} ?>" >Đầu bếp</a>
+                <a href="{{ route('contact')}}" class="nav-item nav-link <?php if(isset($title) && $title=='contact') {echo 'active';} ?> pe-5">Liên Hệ</a>
                 <nav class="navbar">
                     <form action="{{route('timkiemsp')}}" method="get" class="d-flex"  >
-                        <input class="form-control me-1" style="width: 300px !important" type="search" placeholder="Search" aria-label="Search" oninput="searchProduct(this.value)" name="key">
+                        <input class="form-control me-1" style="width: 300px !important" type="search" placeholder="Tìm kiếm..." aria-label="Search" oninput="searchProduct(this.value)" name="key">
                         <div id="search-result" class="result-search"></div>
                         <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>   
                     </form>
@@ -165,13 +164,13 @@
                         <a href="index.html" class="navbar-brand">
                             <h1 class="m-0 text-uppercase text-white"><i class="fa fa-birthday-cake fs-1 text-dark me-3"></i>Delicious</h1>
                         </a>
-                        <p class="mt-3">You are a lover of beauty and love of sweetness. Go to Delicious, we will bring you unforgettable moments with magic cakes.Another, Delicious Bakery prides itself in the exceptional customer service and attention to detail to all the pastries we will serve.</p>
+                        <p class="mt-3">Bạn là người yêu cái đẹp và thích sự ngọt ngào. Hãy đến với Delicious, chúng tôi sẽ mang đến cho bạn những khoảnh khắc khó quên với những chiếc bánh kỳ diệu. Một điều khác, Delicious Bakery tự hào về dịch vụ chăm sóc khách hàng đặc biệt và sự quan tâm đến từng chi tiết đối với các loại bánh mà chúng tôi sẽ phục vụ.</p>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-6">
                     <div class="row gx-5">
                         <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                            <h4 class="text-primary text-uppercase mb-4">Get In Touch</h4>
+                            <h4 class="text-primary text-uppercase mb-4">Liên lạc</h4>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-geo-alt text-primary me-2"></i>
                                 <p class="mb-0">4/4 Đường Linh Đông, TP.Thủ Đức, Việt Nam</p>
@@ -191,21 +190,21 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                            <h4 class="text-primary text-uppercase mb-4">Quick Links</h4>
+                            <h4 class="text-primary text-uppercase mb-4">Đường Dẫn Nhanh</h4>
                             <div class="d-flex flex-column justify-content-start">
-                                <a class="text-secondary mb-2" href="{{ url('/')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                                <a class="text-secondary mb-2" href="{{ url('/about')}}"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                                <a class="text-secondary mb-2" href="{{ url('/team')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                                <a class="text-secondary" href="{{ url('/contact')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                                <a class="text-secondary mb-2" href="{{ url('/')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Trang Chủ</a>
+                                <a class="text-secondary mb-2" href="{{ url('/about')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Giới Thiệu</a>
+                                <a class="text-secondary mb-2" href="{{ url('/team')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Gặp Gỡ Đầu Bếp</a>
+                                <a class="text-secondary" href="{{ url('/contact')}}"><i class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ Chúng Tôi</a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                            <h4 class="text-primary text-uppercase mb-4">Newsletter</h4>
-                            <p>To receive the latest notifications please leave your email</p>
+                            <h4 class="text-primary text-uppercase mb-4">Thông Báo Mới</h4>
+                            <p>Để lại email của bạn để được nhận thông báo mới nhất từ chúng tôi</p>
                             <form action="">
                                 <div class="input-group">
-                                    <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                                    <button class="btn btn-primary">Sign Up</button>
+                                    <input type="text" class="form-control border-white p-3" placeholder="Email của bạn...">
+                                    <button class="btn btn-primary">Đồng Ý</button>
                                 </div>
                             </form>
                         </div>

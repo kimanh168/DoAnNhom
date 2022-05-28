@@ -6,8 +6,8 @@
     <div class="container-fluid about py-5">
 		<div class="container">
             <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
-                <h2 class="text-primary font-secondary">Check & Payment</h2>
-                <h1 class="display-4 text-uppercase">Your Cart</h1>
+                <h2 class="text-primary font-secondary">Kiểm tra & Thanh toán</h2>
+                <h1 class="display-4 text-uppercase">Giỏ Hàng Của Bạn</h1>
             </div>
 			</div>
 			<!-- /container -->
@@ -67,7 +67,7 @@
                 <td></td>
                 <td colspan ="2"><a  href="{{ route('menu') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Mua tiếp</a>
                 </td> 
-                <td colspan ="2" class="hidden-xs text-center">Total: <strong>{{number_format($cart ->total_price,0,',','.')}} VND</strong>
+                <td colspan ="2" class="hidden-xs text-center">Thành tiền: <strong>{{number_format($cart ->total_price,0,',','.')}} VND</strong>
                 </td> 
                 <td colspan ="2"><a href="{{ route('checkout') }}" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
                 </td> 

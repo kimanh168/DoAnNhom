@@ -20,43 +20,43 @@
 						<!-- Billing Details -->
 						<div class="row billing-details">
 							<div class="mb-3">
-								<h3 class="title">Your Information</h3>
+								<h3 class="title">Thông tin cá nhân</h3>
 							</div>
 							<div class="col-8 mb-3">
-								<label for="name" class="form-label">Full Name</label>
+								<label for="name" class="form-label">Họ và tên</label>
 								<input class="form-control" type="text" id="name" name="customer_name" placeholder="Your Name" value="{{ Auth::guard('cus')->user()->customer_name }}">
 								@if($errors->has('customer_name'))
                                     <p style="color:red"> {{$errors->first('customer_name') }} !!!</p>
                                 @endif
 							</div>
 							<div class="col-8 mb-3">
-								<label for="email" class="form-label">Email</label>
+								<label for="email" class="form-label">Địa chỉ Email</label>
 								<input class="form-control" type="email" id="email" name="email" placeholder="exam@email.com" value="{{ Auth::guard('cus')->user()->email }}" readonly>
 							</div>
 							<div class="col-8 mb-3">
-								<label for="address" class="form-label">Address</label>
+								<label for="address" class="form-label">Địa chỉ</label>
 								<input class="form-control" type="text" name="address" placeholder="Your Address" value="{{ Auth::guard('cus')->user()->address }}">
 								@if($errors->has('address'))
                                     <p style="color:red"> {{$errors->first('address') }} !!!</p>
                                 @endif
 							</div>
 							<div class="col-8 mb-3">
-								<label for="phone" class="form-label">Phone Number</label>
+								<label for="phone" class="form-label">Số điện thoại</label>
 								<input class="form-control" type="tel" name="phone" placeholder="Telephone" value="{{ Auth::guard('cus')->user()->phone }}">
 								@if($errors->has('phone'))
                                     <p style="color:red"> {{$errors->first('phone') }} !!!</p>
                                 @endif
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary order-submit ">Update Information</button>
+						<button type="submit" class="btn btn-primary order-submit ">Cập nhật thông tin</button>
 						</form>
 						<!-- /Billing Details -->
 					</div>
 
 					<!-- Order Details -->
 					<div class="col-md-5 order-details">
-						<div class="section-title text-center">
-							<h3 class="title">Your Order</h3>
+						<div class="section-title text-center ">
+							<h3 class="title">Đơn hàng của bạn</h3>
 						</div>
 						<div class="order-summary">
 							<table id="cart" class="table table-hover table-condensed"> 

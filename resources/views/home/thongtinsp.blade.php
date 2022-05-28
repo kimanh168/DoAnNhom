@@ -6,7 +6,7 @@
 			<!-- container -->
 			<div class="container-fluid about py-5">
                 <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
-                    <h2 class="text-primary font-secondary">Great Choice</h2>
+                    <h2 class="text-primary font-secondary">Lựa chọn tuyệt vời</h2>
                     <h1 class="display-4 text-uppercase">{{ $thongtinsp -> product_name  }}</h1>
                 </div>
             <div class="container">
@@ -24,7 +24,7 @@
                         <!-- Order Details -->
                         <div class="col-md-6 order-details">
                             <div class="section-title text-center">
-                                <h3 class="title">Detail</h3>
+                                <h3 class="title">Chi tiết sản phẩm</h3>
                             </div>
                             <div class="order-summary">
                                 <div class="order-col">
@@ -88,8 +88,8 @@
     <div class="container-fluid py-5">
         <div class="container">
             <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
-                <h2 class="text-primary font-secondary">Testimonial</h2>
-                <h1 class="display-4 text-uppercase">Our Clients Say!!!</h1>
+                <h2 class="text-primary font-secondary">Lời chứng thực</h2>
+                <h1 class="display-4 text-uppercase">Khách hàng đánh giá!!!</h1>
             </div>
             <div class="owl-carousel testimonial-carousel">
                 <div class="testimonial-item bg-dark text-white border-inner p-4">
@@ -108,7 +108,7 @@
                         <input type="hidden" class="form-control" id="customer_id" name="customer_id" value="{{Auth::guard('cus')->user()->id}}">
                         <input type="hidden" class="form-control" id="customer_name" name="customer_name" value="{{Auth::guard('cus')->user()->customer_name}}">
                     @else
-                        <h4 class="text-primary text-uppercase mb-1">Client Name</h4>
+                        <h4 class="text-primary text-uppercase mb-1">Tài khoản khách</h4>
                     @endif 
                     <textarea type="text" class="form-control" id="comment_content" name="comment_content" cols="auto" rows="3" placeholder="Nhập nội dung (*)" required ></textarea>
                     <div id="commentHelp" class="form-text mb-3">Bình luận của bạn sẽ được thấy bởi tất cả mọi người, hãy là một người thưởng thức vị ngon văn minh</div>
@@ -141,7 +141,7 @@
     <div class="container-fluid about py-5">
         <div class="container">
             <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
-                <h2 class="text-primary font-secondary">Other products in the same category</h2>
+                <h2 class="text-primary font-secondary">Các sản phẩm tương tự</h2>
             </div>
             <div class="tab-class text-center">
                 <div class="tab-content">

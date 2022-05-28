@@ -78,7 +78,7 @@ class HomeController extends Controller
     //Tìm kiếm sp
     public function timkiemsp(){
         $key = request()->key ? request()->key : '';
-        $search = Product::where('product_name', 'Like', '%' . $key . '%')->paginate(6);
+        $search = Product::where('product_name', 'Like', '%' . $key . '%')->paginate(8);
         return view('home.timkiemsp',['timkiem'=>$search,'key'=>$key]);
     }
 

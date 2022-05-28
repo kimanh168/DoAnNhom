@@ -4,15 +4,15 @@
     <div class="container-fluid about py-5">
         <div class="container">
             <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
-                <h2 class="text-primary font-secondary">Search</h2>
-                <h1 class="display-4 text-uppercase">Cakes by keyword "{{$key}}"</h1>
+                <h2 class="text-primary font-secondary">Tìm kiếm</h2>
+                <h1 class="display-4 text-uppercase">Sản phẩm với từ khóa "{{$key}}"</h1>
             </div>
             <div class="row">
                 <div class="hienthisp col-md-12 ">
                     <div class="list-product row">
                     <?php if(isset($timkiem)): ?>
                     @foreach($timkiem as $sp)
-                        <div class="product mb-5 col-xs-3 col-md-4">
+                        <div class="product mb-5 col-xs-3 col-md-3">
 							<div class="product-img">
 								<img class="hinhphone" src="../img/{{ $sp-> image }}" alt="" >
 									<div class="product-label">
