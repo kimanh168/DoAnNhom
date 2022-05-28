@@ -59,7 +59,7 @@
                       <td class="project_progress">{{ number_format($product->price,0,',','.') }} VND</td>
                       <td class="project_progress">{{ $product->promotion }}%</td>
                       <td class="project_progress">{{ number_format($product->sale_price,0,',','.') }} VND</td>
-                      <td class="project_progress">{{ $product->description }}</td>
+                      <td class="project_progress"><?php echo $product->description ?></td>
                       <td class="project_progress">{{ $product->type_id }}</td>
                       <td class="project_progress">{{ $product->expiry }}</td>
                       <td class="project-actions text-right">

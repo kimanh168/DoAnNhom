@@ -59,7 +59,7 @@
                 </tbody>
                 @else
                 <tbody>
-                    <td colspan="7" class="text-center p-5"><h4>There are no product in your Cart</h4></td>
+                    <td colspan="7" class="text-center p-5"><h4>Không có sản phẩm nào trong giỏ hàng của bạn</h4></td>
                 </tbody> 
                 @endif         
         <tfoot> 

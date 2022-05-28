@@ -73,7 +73,7 @@
                             </div>
                             <div class="payment-method">
                                 <h4 class="title">Mô Tả</h4></br>
-                                <p>{{ $thongtinsp -> description  }}</p>
+                                <p><?php echo $thongtinsp -> description ?></p>
                             </div>
                         </div>
 					<!-- /Order Details -->

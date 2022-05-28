@@ -31,10 +31,11 @@
               <thead>
                   <tr>
                       <th style="width: 1%">ID</th>
-                      <th style="width: 20%">Name</th>
+                      <th style="width: 15%">Name</th>
                       <th style="width: 20%">Email</th>
-                      <th style="width: 18%">Phone</th>
-                      <th style="width: 20%">Address</th>
+                      <th style="width: 14%">Phone</th>
+                      <th style="width: 19%">Address</th>
+                      <th style="width: 10%">Status</th>
                       <th style="width: 10%">Action</th>
                   </tr>
               </thead>
@@ -54,6 +55,11 @@
                       <td>
                           <a>{{ $customer->address }}</a>
                       </td>
+                      @if($customer->status == 0)
+										    <td><span class="badge bg-warning text-white">Chưa kích hoạt</span></td>
+                      @elseif($customer->status == 1)
+										    <td><span class="badge bg-success text-white">Đã kích hoạt</span></td>
+                      @endif
                       <td class="project-actions">
                           <a class="btn btn-danger btn-sm" href="{{ route('customer_del',['id' => $customer->id ]) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
                               <i class="fas fa-trash">
