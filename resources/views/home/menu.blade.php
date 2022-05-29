@@ -91,14 +91,12 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Offer End -->
-    <div class="container">
-          <!-- Offer End -->
-          <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active ">
-                        <!-- Products tab & slick -->
-							<!-- tab -->
+    
+    <div class="tab-content">
+        <div id="tab-1" class="tab-pane fade show p-0 active ">
+                    <!-- Products tab & slick -->
+						<!-- tab -->
+                        <div class="container">
                             <div class="row multiple-items ">
 									<!-- product -->
                                     @foreach($giamgia as $row)
@@ -114,10 +112,11 @@
 									    </div>
 										<div class="product-body">
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist" ><a href="{{ route('wish.add',['id' => $row->id]) }}"><i class="fa fa-heart"></i></a><span class="tooltipp">add to wishlist</span></button>
-												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+												<button class="add-to-wishlist" ><a href="{{ route('wish.add',['id' => $row->id]) }}"><i class="fa fa-heart"></i></a><span class="tooltipp">add to wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
 												<button class="quick-view" data-bs-toggle="modal" data-bs-target="#exampleModal" data-product-id="{{ $row->id }}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-											</div>
+											
+                                            </div>
 											<h3 class="product-name"><a href="{{ route('thongtinsp',$row->id) }}">{{ $row-> product_name }}</a></h3>
                                             @if( $row-> promotion != 0 )
                                                 <h4 class="product-price"> {{ number_format($row->sale_price,0,',','.') }} VND <del class="product-old-price">{{ number_format($row->price,0,',','.') }}</del></h4>
@@ -133,11 +132,11 @@
 									<!-- /product -->
                                     @endforeach
 							</div>  
+                    </div>
                             <!-- Products tab & slick -->
-					</div>
-                </div>
+			</div>
     </div>
-  
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

@@ -49,6 +49,7 @@
                     <div id="tab-1" class="tab-pane fade show p-0 active ">
                         <!-- Products tab & slick -->
 							<!-- tab -->
+                            <div class="container">
                             <div class="row multiple-items ">
 									<!-- product -->
                                     @foreach($data as $row)
@@ -83,7 +84,8 @@
 									</div>
 									<!-- /product -->
                                     @endforeach
-							</div>  
+							    </div>  
+                            </div>
                             <!-- Products tab & slick -->
 					</div>
                 </div>

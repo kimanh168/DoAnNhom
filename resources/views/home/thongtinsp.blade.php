@@ -15,8 +15,8 @@
                         <!--  Details -->
                         <div class="col-md-6">
                             <div class="billing-details">
-                                <div class="product-img" style="margin-left:50px">
-                                    <img src="/img/{{ $thongtinsp -> image  }}" width="400px">
+                                <div class="product-img">
+                                    <img src="/img/{{ $thongtinsp -> image  }}" >
                                 </div>
                             </div>
                             <!--  Details -->

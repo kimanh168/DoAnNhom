@@ -331,11 +331,21 @@ h6,
     -webkit-box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #ab00d1;
     box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #9900d1;
   }
-  
+  .billing-details .product-img>img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    object-fit: cover;
+    max-width: 500px;
+  }
+
   .product .product-img>img {
-    width: 300px;
+    width: 100%;
     height: 300px;
     position: relative;
+    object-fit: cover;
+    max-width: 300px;
+    max-height: 300px;
   }
   
   .product .product-img .product-label {

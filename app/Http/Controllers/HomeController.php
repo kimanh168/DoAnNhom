@@ -32,7 +32,7 @@ class HomeController extends Controller
             $category_by_id = Product::with('protype')->whereIn('type_id',$category_arr)->paginate(6)->appends(request()->query());
         }
         $protype = Protype::all();
-        $giamgia = Product::with('protype')->where('promotion','>',0)->get();
+        $giamgia = Product::with('protype')->where('promotion',30)->get();
         return view('home.menu',['dulieu'=>$protype,'sp_theoloai' => $category_by_id,'giamgia' => $giamgia]);       
     }
 
