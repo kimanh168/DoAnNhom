@@ -60,6 +60,7 @@ Route::post('thongtinkh/{id?}',[HomeController::class,'update_Profile'])->name('
 //Dẫn tới trang thông tin đơn hàng
 Route::get('thongtindh/{id?}',[CheckoutController::class,'getOrderDetailByOrderId'])->name('thongtindh');
 
+//Để đăng nhập vào admin vui lòng http://127.0.0.1:8000/admin/login 
 //Admin
 Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
     
